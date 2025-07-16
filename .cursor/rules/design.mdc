@@ -1,0 +1,513 @@
+---
+description: Guía de diseño completa para Bestiari basada en el sistema de diseño de Figma
+globs: ["**/*.vue", "**/*.js", "**/*.ts", "**/*.jsx", "**/*.tsx", "**/*.html", "**/*.css"]
+alwaysApply: true
+---
+
+# Guía de Diseño - Bestiari
+
+## Filosofía de Diseño
+
+Bestiari utiliza un enfoque moderno, limpio y profesional con elementos lúdicos que incorporan animales como avatares distintivos. El diseño combina gradientes vibrantes, tipografía clara y espaciado generoso para crear una experiencia digital atractiva y funcional.
+
+## Paleta de Colores
+
+### Colores Base
+```css
+/* Principales */
+--color-black: #000000;           /* Texto principal, elementos sólidos */
+--color-white: #FFFFFF;           /* Backgrounds, texto sobre fondos oscuros */
+--color-gray-light: #D9D9D9;      /* Cards, elementos de apoyo */
+--color-gray-medium: #767474;     /* Texto secundario */
+--color-gray-dark: #3D3D3D;       /* Texto en botones, elementos secundarios */
+--color-gray-input: #8D8D8D;      /* Placeholders, labels */
+
+/* Colores de Marca */
+--color-primary-red: #E61655;     /* Color principal - rojo vibrante */
+--color-primary-purple: #8E2DFE;  /* Purple principal */
+--color-accent-yellow: #FFD93B;   /* Amarillo de acento */
+--color-accent-blue: #002BFF;     /* Azul de acento */
+--color-accent-green: #72FF29;    /* Verde para estados activos */
+```
+
+### Gradientes Principales
+```css
+/* Gradiente Principal (Rojo-Púrpura) */
+background: linear-gradient(135deg, #8E2DFE 0%, #E61655 100%);
+
+/* Gradiente de Contacto (Púrpura-Rosa) */
+background: linear-gradient(135deg, #8E2DFE 0%, #E61655 47%, #E61655 100%);
+
+/* Gradiente de Botón Especial */
+background: linear-gradient(0deg, #8E2DFE 0%, #E61655 100%);
+
+/* Gradiente Suave para Cards */
+background: linear-gradient(135deg, #FFD93B 0%, #E61655 50%, #8E2DFE 100%);
+
+/* Gradiente para Overlays */
+background: linear-gradient(180deg, rgba(230, 22, 85, 1) 38%, rgba(36, 55, 153, 0) 100%);
+```
+
+## Tipografía
+
+### Familia de Fuente
+- **Principal**: Inter
+- **Fallback**: Sans-serif del sistema
+
+### Escalas de Texto
+```css
+/* Títulos Principales */
+.hero-title {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1em;
+  letter-spacing: -6%;
+}
+
+/* Títulos de Sección */
+.section-title {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 33px;
+  line-height: 1.03em;
+  letter-spacing: -6%;
+}
+
+/* Subtítulos */
+.subtitle {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 3.2em;
+  letter-spacing: -6%;
+}
+
+/* Texto de Cards */
+.card-title {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.7em;
+  letter-spacing: -6%;
+}
+
+.card-description {
+  font-family: Inter;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 1.4em;
+  letter-spacing: -6%;
+}
+
+/* Botones */
+.button-text {
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 3.2em;
+  letter-spacing: -6%;
+}
+
+/* Navegación */
+.nav-link {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 4.8em;
+  letter-spacing: -6%;
+}
+
+/* Texto de Formularios */
+.form-label {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 6em;
+  letter-spacing: -6%;
+}
+
+.form-input {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 4.8em;
+  letter-spacing: -6%;
+}
+```
+
+## Espaciado y Layout
+
+### Sistema de Espaciado
+```css
+/* Espaciado Base */
+--spacing-xs: 8px;
+--spacing-sm: 16px;
+--spacing-md: 24px;
+--spacing-lg: 32px;
+--spacing-xl: 48px;
+--spacing-2xl: 64px;
+--spacing-3xl: 96px;
+
+/* Contenedores */
+--container-max-width: 852px;
+--section-padding: 89px;
+```
+
+### Border Radius
+```css
+--radius-small: 5px;     /* Botones pequeños, inputs */
+--radius-medium: 10px;   /* Cards pequeñas */
+--radius-large: 15px;    /* Cards principales */
+--radius-pill: 30px;     /* Botones redondeados */
+```
+
+## Componentes
+
+### Header
+```vue
+<!-- Estructura del Header -->
+<header class="header">
+  <div class="header-container">
+    <div class="logo"><!-- Logo Bestiari --></div>
+    <nav class="navigation">
+      <a href="#" class="nav-link">Inicio</a>
+      <a href="#" class="nav-link">Nosotros</a>
+      <a href="#" class="nav-link">Proyectos</a>
+      <a href="#" class="nav-link">Servicios</a>
+      <a href="#" class="nav-link nav-link--cta">Contacto</a>
+    </nav>
+  </div>
+</header>
+```
+
+### Cards Principales
+```vue
+<!-- Card con efecto de sombra y gradiente -->
+<div class="card-main">
+  <div class="card-background">
+    <!-- Imagen de fondo fluida -->
+  </div>
+  <div class="card-content">
+    <h3 class="card-title">Título del Card</h3>
+    <p class="card-description">Descripción del contenido...</p>
+  </div>
+  <div class="card-overlay"></div>
+</div>
+```
+
+Estilos:
+```css
+.card-main {
+  width: 250px;
+  height: 313px;
+  border-radius: 15px;
+  background: #D9D9D9;
+  box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.74);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 97px;
+  background: linear-gradient(180deg, rgba(230, 22, 85, 1) 38%, rgba(254, 153, 4, 0) 100%);
+}
+```
+
+### Botones
+
+#### Botón Principal (CTA)
+```vue
+<button class="btn btn--primary">
+  <span>Empieza hoy</span>
+  <div class="btn-indicator"></div>
+</button>
+```
+
+```css
+.btn--primary {
+  background: #000000;
+  border-radius: 30px;
+  padding: 8px 24px;
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 5.33em;
+  letter-spacing: -6%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-indicator {
+  width: 8.63px;
+  height: 8.63px;
+  background: #FFD93B;
+  border-radius: 50%;
+}
+```
+
+#### Botón Secundario
+```vue
+<button class="btn btn--secondary">Contáctanos</button>
+```
+
+```css
+.btn--secondary {
+  background: #FFFFFF;
+  border-radius: 5px;
+  padding: 12px 32px;
+  color: #3D3D3D;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 3.2em;
+  letter-spacing: -6%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+```
+
+#### Botón con Gradiente
+```vue
+<button class="btn btn--gradient">Enviar Mensaje</button>
+```
+
+```css
+.btn--gradient {
+  background: linear-gradient(0deg, #8E2DFE 0%, #E61655 100%);
+  border-radius: 5px;
+  padding: 12px 32px;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 4.8em;
+  letter-spacing: -6%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+```
+
+### Avatares de Animales
+```vue
+<!-- Avatar circular con animal -->
+<div class="animal-avatar">
+  <div class="avatar-circle">
+    <div class="avatar-background"></div>
+    <img src="/animal-image.jpg" alt="Animal avatar" class="avatar-image">
+  </div>
+</div>
+```
+
+```css
+.animal-avatar {
+  width: 27px;
+  height: 27px;
+  position: relative;
+}
+
+.avatar-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #FFFEFE;
+  overflow: hidden;
+  position: relative;
+}
+
+.avatar-background {
+  width: 36px;
+  height: 43px;
+  background: #FFFFFF;
+  position: absolute;
+  top: -4px;
+  left: 0;
+}
+
+.avatar-image {
+  width: 41px;
+  height: 54px;
+  position: absolute;
+  top: 2px;
+  left: -7px;
+  object-fit: cover;
+}
+```
+
+### Formularios
+```vue
+<!-- Input con label flotante -->
+<div class="form-field">
+  <label class="form-label">Nombre</label>
+  <input type="text" class="form-input" placeholder="Xavier Pilasi">
+  <div class="form-underline"></div>
+</div>
+```
+
+```css
+.form-field {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.form-label {
+  color: #8D8D8D;
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 6em;
+  letter-spacing: -6%;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid #000000;
+  padding: 8px 0;
+  color: #3D3D3D;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 4.8em;
+  letter-spacing: -6%;
+}
+
+.form-input:focus {
+  outline: none;
+  border-bottom-color: #E61655;
+}
+```
+
+### Footer
+```vue
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <div class="footer-logo"><!-- Logo --></div>
+      <h2 class="footer-title">Work Smarter, Not Harder</h2>
+      <p class="footer-description">
+        Desarrollamos aplicaciones y sitios web a medida para negocios...
+      </p>
+      <small class="footer-copyright">2025 Copyright</small>
+    </div>
+    <div class="footer-navigation">
+      <!-- Menús de navegación organizados en columnas -->
+    </div>
+  </div>
+</footer>
+```
+
+## Efectos y Animaciones
+
+### Sombras
+```css
+/* Sombra principal para cards */
+box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.74);
+
+/* Sombra para botones */
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+/* Sombra para proyectos */
+box-shadow: 0px 4px 13px 3px rgba(0, 0, 0, 0.25);
+```
+
+### Transiciones
+```css
+/* Transición estándar para hover */
+transition: all 0.2s ease-in-out;
+
+/* Transición para colores */
+transition: background-color 0.2s ease-in-out;
+```
+
+## Estados Interactivos
+
+### Hover States
+```css
+/* Botones */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* Links de navegación */
+.nav-link:hover {
+  color: #E61655;
+}
+
+/* Cards */
+.card-main:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.8);
+}
+```
+
+## Responsive Design
+
+### Breakpoints
+```css
+/* Mobile First */
+@media (min-width: 768px) { /* Tablet */ }
+@media (min-width: 1024px) { /* Desktop */ }
+@media (min-width: 1440px) { /* Large Desktop */ }
+```
+
+### Adaptaciones Móviles
+- Reducir padding de secciones a 32px
+- Stack navigation vertical en móvil
+- Cards en una sola columna
+- Texto más pequeño pero legible
+
+## Iconografía
+
+### Iconos del Sistema
+- Usar íconos de línea simple (2px stroke)
+- Color base: #33363F
+- Tamaño estándar: 16px-24px
+- Para gradientes: aplicar el gradiente principal
+
+### Íconos Específicos
+- Flecha derecha: Para CTAs y navegación
+- Mensaje: Para contacto
+- Usuario: Para perfiles
+- Ubicación: Para información de contacto
+
+## Imágenes y Media
+
+### Imágenes de Fondo
+- Usar imágenes fluidas abstractas con formas suaves
+- Aplicar overlays con gradientes de marca
+- Mantener contraste para legibilidad del texto
+
+### Imágenes de Proyecto
+- Border radius: 15px en la parte superior
+- Aspect ratio: mantener proporciones 4:3 o 16:9
+- Usar máscaras para integrar con el diseño
+
+## Mejores Prácticas
+
+### Implementación
+1. **Usar Tailwind CSS** como base
+2. **Variables CSS** para colores y espaciado
+3. **Componentes reutilizables** en Vue
+4. **Consistencia** en todos los elementos
+5. **Accesibilidad** con contraste adecuado
+
+### Contenido
+1. **Textos claros y directos**
+2. **Llamadas a la acción prominentes**
+3. **Información organizada jerárquicamente**
+4. **Avatares de animales como elemento distintivo**
+
+### Performance
+1. **Optimizar imágenes** (WebP cuando sea posible)
+2. **Lazy loading** para imágenes
+3. **Gradientes CSS** en lugar de imágenes cuando sea posible
