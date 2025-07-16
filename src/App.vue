@@ -1,11 +1,19 @@
-<script setup>
+<script >
 
+import Layout from '@/layout/Layout.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Layout,
+    
+  }
+}
 </script>
-<template>
-  <div>
-    <h1 class="text-3xl font-bold underline">BESTIARI</h1>
-  </div>
-</template>
 
+<template class="">
+  <Layout />
+
+</template>
 <style scoped>
-</style>
+</style>  
