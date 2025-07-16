@@ -1,0 +1,282 @@
+---
+description: Reglas para Vue 3 con Options API y orden específico de bloques
+globs: ["**/*.vue"]
+alwaysApply: true
+---
+
+# Reglas para Vue 3 - Options API
+
+## Estructura Obligatoria
+
+### 1. Usar SIEMPRE Vue 3 con Options API
+- Todos los componentes deben usar la sintaxis de Options API
+- NO usar Composition API (`<script setup>` o `setup()`)
+- Mantener compatibilidad con Vue 3
+
+### 2. Orden obligatorio de bloques
+El orden de los bloques en archivos `.vue` debe ser SIEMPRE:
+
+1. **`<script>`** - Primero
+2. **`<template>`** - Segundo  
+3. **`<style>`** - Tercero (opcional)
+
+### 3. Estructura del bloque script
+
+```vue
+<script>
+export default {
+  name: 'ComponentName',
+  components: {
+    // Componentes importados
+  },
+  props: {
+    // Props del componente
+  },
+  emits: ['event-name'],
+  data() {
+    return {
+      // Estado local del componente
+    }
+  },
+  computed: {
+    // Propiedades computadas
+  },
+  watch: {
+    // Watchers
+  },
+  methods: {
+    // Métodos del componente
+  },
+  // Lifecycle hooks
+  created() {},
+  mounted() {},
+  updated() {},
+  unmounted() {}
+}
+</script>
+
+<template>
+  <!-- Template del componente -->
+</template>
+
+<style scoped>
+/* Estilos del componente */
+</style>
+```
+
+### 4. Orden dentro del objeto de componente
+
+El orden de las propiedades dentro del `export default` debe seguir esta secuencia:
+
+1. `name`
+2. `components`
+3. `props`
+4. `emits`
+5. `data()`
+6. `computed`
+7. `watch`
+8. `methods`
+9. Lifecycle hooks (en orden de ejecución)
+
+### 5. Ejemplos de estructura correcta
+
+#### ✅ CORRECTO:
+```vue
+<script>
+import ChildComponent from './ChildComponent.vue'
+
+export default {
+  name: 'ParentComponent',
+  components: {
+    ChildComponent
+  },
+  props: {
+    title: {
+      type: String,
+      required: true
+    },
+    count: {
+      type: Number,
+      default: 0
+    }
+  },
+  emits: ['update-count', 'submit'],
+  data() {
+    return {
+      isVisible: true,
+      items: []
+    }
+  },
+  computed: {
+    formattedTitle() {
+      return this.title.toUpperCase()
+    }
+  },
+  watch: {
+    count(newVal) {
+      console.log('Count changed:', newVal)
+    }
+  },
+  methods: {
+    handleClick() {
+      this.$emit('update-count', this.count + 1)
+    },
+    fetchItems() {
+      // Lógica para obtener items
+    }
+  },
+  created() {
+    this.fetchItems()
+  },
+  mounted() {
+    console.log('Component mounted')
+  }
+}
+</script>
+
+<template>
+  <div class="component-wrapper">
+    <h1>{{ formattedTitle }}</h1>
+    <button @click="handleClick">
+      Count: {{ count }}
+    </button>
+    <ChildComponent 
+      v-if="isVisible"
+      :items="items"
+      @submit="handleSubmit"
+    />
+  </div>
+</template>
+
+<style scoped>
+.component-wrapper {
+  padding: 1rem;
+}
+</style>
+```
+
+#### ❌ INCORRECTO:
+
+```vue
+<!-- MAL: Template antes que script -->
+<template>
+  <div>{{ title }}</div>
+</template>
+
+<script setup>
+// MAL: Usando Composition API
+const props = defineProps(['title'])
+</script>
+```
+
+```vue
+<script>
+// MAL: Orden incorrecto de propiedades
+export default {
+  data() {
+    return { value: 0 }
+  },
+  name: 'BadComponent', // Debería ir primero
+  methods: {
+    increment() { this.value++ }
+  },
+  computed: {
+    doubled() { return this.value * 2 }
+  }
+}
+</script>
+```
+
+### 6. Convenciones adicionales
+
+#### Props:
+- Usar camelCase en JavaScript
+- Usar kebab-case en templates
+- Definir tipos y valores por defecto
+
+```vue
+<script>
+export default {
+  props: {
+    userName: {      // camelCase en JS
+      type: String,
+      required: true
+    },
+    isActive: {
+      type: Boolean,
+      default: false
+    }
+  }
+}
+</script>
+
+<template>
+  <!-- kebab-case en template -->
+  <div>{{ userName }}</div>
+  <MyComponent :user-name="userName" :is-active="isActive" />
+</template>
+```
+
+#### Events:
+- Usar kebab-case para nombres de eventos
+- Declarar eventos en `emits`
+
+```vue
+<script>
+export default {
+  emits: ['user-selected', 'data-updated'],
+  methods: {
+    handleSelection(user) {
+      this.$emit('user-selected', user)
+    }
+  }
+}
+</script>
+```
+
+### 7. Lifecycle hooks disponibles en Vue 3
+
+Usar en este orden cuando sean necesarios:
+
+1. `beforeCreate()`
+2. `created()`
+3. `beforeMount()`
+4. `mounted()`
+5. `beforeUpdate()`
+6. `updated()`
+7. `beforeUnmount()` (antes `beforeDestroy`)
+8. `unmounted()` (antes `destroyed`)
+
+### 8. Características específicas de Vue 3
+
+#### Multiple root elements (permitido):
+```vue
+<template>
+  <header>Header</header>
+  <main>Main content</main>
+  <footer>Footer</footer>
+</template>
+```
+
+#### Teleport:
+```vue
+<template>
+  <div>
+    <teleport to="body">
+      <div class="modal">Modal content</div>
+    </teleport>
+  </div>
+</template>
+```
+
+### 9. Verificación antes de escribir código
+
+Antes de crear cualquier componente Vue, asegúrate de:
+
+1. ¿Estoy usando Options API en lugar de Composition API?
+2. ¿El orden de bloques es script → template → style?
+3. ¿Las propiedades del objeto están en el orden correcto?
+4. ¿Estoy usando las características correctas de Vue 3?
+5. ¿Los props y eventos siguen las convenciones de nomenclatura?
+
+

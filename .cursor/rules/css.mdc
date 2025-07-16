@@ -1,0 +1,150 @@
+---
+description: Reglas para priorizar Tailwind CSS sobre CSS vanilla en el proyecto
+globs: ["**/*.vue", "**/*.js", "**/*.ts", "**/*.jsx", "**/*.tsx", "**/*.html", "**/*.css"]
+alwaysApply: true
+---
+
+# Reglas de CSS - Priorizar Tailwind CSS
+
+## Directrices Principales
+
+### 1. Usar SIEMPRE Tailwind CSS como primera opción
+- Utiliza clases de Tailwind para todos los estilos posibles
+- Evita escribir CSS vanilla en archivos `.css` o bloques `<style>`
+- Prefiere utilities de Tailwind sobre estilos personalizados
+
+### 2. Excepciones permitidas para CSS vanilla
+
+**Solo se permite CSS vanilla en estos casos:**
+
+#### A) Funcionalidades que Tailwind no puede lograr:
+- Animaciones complejas con múltiples keyframes
+- Pseudo-elementos avanzados (::before, ::after con contenido dinámico)
+- Selectores CSS complejos que no se pueden expresar con Tailwind
+- Propiedades CSS experimentales o muy específicas
+- Gradientes extremadamente complejos con múltiples stops
+
+#### B) Requerimientos de librerías externas:
+- CSS requerido por librerías de terceros que no funcionan con Tailwind
+- Estilos de reset o normalización específicos de componentes
+- Overrides necesarios para librerías UI que no son compatibles con Tailwind
+
+### 3. Estructura recomendada
+
+```vue
+<!-- CORRECTO: Usar Tailwind -->
+<template>
+  <div class="bg-blue-500 text-white p-4 rounded-lg shadow-md hover:bg-blue-600 transition-colors">
+    <h2 class="text-xl font-bold mb-2">Título</h2>
+    <p class="text-sm opacity-90">Contenido</p>
+  </div>
+</template>
+
+<!-- INCORRECTO: CSS vanilla innecesario -->
+<template>
+  <div class="custom-card">Contenido</div>
+</template>
+
+<style>
+.custom-card {
+  background: blue;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+}
+</style>
+```
+
+### 4. Para casos especiales, usar Tailwind con CSS personalizado mínimo
+
+```vue
+<template>
+  <!-- Combinar Tailwind con CSS custom solo cuando sea necesario -->
+  <div class="bg-gradient-to-r from-purple-500 to-pink-500 custom-animation">
+    Contenido
+  </div>
+</template>
+
+<style scoped>
+/* Solo para animaciones que Tailwind no puede manejar */
+.custom-animation {
+  animation: complexPulse 3s ease-in-out infinite;
+}
+
+@keyframes complexPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(5deg); }
+  50% { transform: scale(0.9) rotate(-5deg); }
+  75% { transform: scale(1.05) rotate(2deg); }
+}
+</style>
+```
+
+### 5. Configuración recomendada de Tailwind
+
+Asegúrate de tener configurado:
+- Todas las utilidades necesarias en `tailwind.config.js`
+- Purging habilitado para optimización
+- Plugins adicionales si necesitas funcionalidades específicas
+
+### 6. Antes de escribir CSS vanilla, pregúntate:
+
+1. ¿Puede esto lograrse con clases de Tailwind existentes?
+2. ¿Puede lograrse combinando múltiples clases de Tailwind?
+3. ¿Puede lograrse extendiendo Tailwind en la configuración?
+4. ¿Es realmente una limitación de Tailwind o falta de conocimiento de sus capabilities?
+
+Solo si las respuestas son "no" a todas, entonces considera CSS vanilla.
+
+### 7. Ejemplos de conversiones comunes
+
+```css
+/* ❌ CSS vanilla */
+.button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: #2563eb;
+}
+```
+
+```html
+<!-- ✅ Tailwind -->
+<button class="bg-blue-500 text-white px-4 py-2 rounded border-none cursor-pointer transition-colors hover:bg-blue-600">
+  Botón
+</button>
+```
+
+### 8. Patrones de diseño recomendados
+
+#### Responsive Design:
+```html
+<!-- ✅ Responsive con Tailwind -->
+<div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
+  <img class="w-full h-48 md:h-56 lg:h-64 object-cover rounded-lg" src="image.jpg" alt="Imagen">
+</div>
+```
+
+#### Estados interactivos:
+```html
+<!-- ✅ Estados con Tailwind -->
+<button class="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:ring-4 focus:ring-blue-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200">
+  Enviar
+</button>
+```
+
+#### Dark mode:
+```html
+<!-- ✅ Dark mode con Tailwind -->
+<div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+  Contenido que se adapta al modo oscuro
+</div>
+```
+
