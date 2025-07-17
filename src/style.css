@@ -3,6 +3,7 @@
 
 @theme{
   --font-inter: 'Inter', sans-serif;
+  --font-instrument-serif: 'Instrument Serif', serif;
   --color-bg-primary: #F4F4F4;
 }
 /* Inter Font Family - All Variants */
@@ -156,6 +157,28 @@
   font-family: 'Inter';
   src: url('./assets/fonts/Inter/static/Inter_18pt-BlackItalic.ttf') format('truetype');
   font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ================================ */
+/* Instrument Serif Font Family */
+/* ================================ */
+
+/* Instrument Serif Regular */
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('./assets/fonts/Instrument_Serif/InstrumentSerif-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Instrument Serif Italic */
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('./assets/fonts/Instrument_Serif/InstrumentSerif-Italic.ttf') format('truetype');
+  font-weight: 400;
   font-style: italic;
   font-display: swap;
 }

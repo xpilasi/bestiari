@@ -1,5 +1,5 @@
 <script>
-import BestiariLogo from '@/assets/logos/logo-bestiari-dark.svg?component'
+import BestiariLogo from '@/assets/img/logos/logo-bestiari-dark.svg?component'
 import { RouterLink } from 'vue-router'
 
 export default {
@@ -145,7 +145,7 @@ export default {
 
 <template>
   <!-- Header Desktop (xl y superior) -->
-  <header class="hidden xl:flex w-full h-20 flex-row items-center justify-between bg-bg-primary px-4 xl:px-48">
+  <header class="hidden xl:flex w-full h-20 flex-row items-center justify-between bg-bg-primary px-4 xl:px-48 2xl:px-80">
     <!-- Logo Section -->
     <RouterLink to="/" class="flex flex-col justify-center">
       <BestiariLogo class="h-10" />
@@ -157,7 +157,7 @@ export default {
         <RouterLink :to="item.to">
           <button
             @click="$router.push(item.to)"
-            :class="item.isSpecial ? ' cursor-pointer text-white  font-light text-md tracking-tighter  bg-gradient-to-r from-[#002BFF] to-[#FF6EFF] rounded-2xl py-1 px-4  flex items-center justify-center  group hover:shadow-lg transition-all duration-200 ' : ' py-4 w-20 cursor-pointer flex items-center justify-center font-normal text-md tracking-tighter transition-colors duration-200 relative group ' "
+            :class="item.isSpecial ? ' cursor-pointer text-white  font-light text-md tracking-tighter  bg-gradient-to-r from-[#002BFF] to-[#FF6EFF] hover:scale-105 rounded-2xl py-1 px-4  flex items-center justify-center  group hover:shadow-lg transition-all duration-300 ' : ' py-4 w-20 cursor-pointer flex items-center justify-center font-normal text-md tracking-tighter transition-colors duration-200 relative group ' "
           >
             {{ item.name }}
           </button>
