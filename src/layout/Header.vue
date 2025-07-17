@@ -1,5 +1,5 @@
 <script>
-import BestiariLogo from '@/assets/logos/logo-bestiari-dark.svg?component'
+import BestiariLogo from '@/assets/img/logos/logo-bestiari-dark.svg?component'
 import { RouterLink } from 'vue-router'
 
 export default {
