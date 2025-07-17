@@ -1,6 +1,13 @@
 <script>
+import RegularCard from '../components/RegularCard.vue'
+import RegularMobileCard from '../components/RegularMobileCard.vue'
+
 export default {
   name: 'HomeHeroSection',
+  components: {
+    RegularCard,
+    RegularMobileCard
+  },
   data() {
     return {
       heroTitle: 'Tu web profesional empieza aquí',
@@ -39,84 +46,44 @@ export default {
 </script>
 
 <template>
-  <section class="min-h-screen bg-primary flex flex-col justify-start py-30 ">
+  <section class="min-h-screen-[100vh] bg-primary flex flex-col justify-center xl:justify-start py-10 xl:py-30  ">
     <div class="mx-auto w-full ">
-      <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
+      <div class="flex flex-col xl:flex-row items-center justify-between gap-8 lg:gap-16">
         
         <!-- Hero Header - Lado Izquierdo -->
         <div class="flex flex-col  ">
-                     <h1 class="text-4xl lg:text-7xl font-medium tracking-tighter leading-0.5 text-black  mb-6 max-w-3xl" 
-               style="font-family: Inter; letter-spacing: -6%; line-height: 1em;"
-               v-html="processedTitle">
-           </h1>
-                     <p class="text-base lg:text-xl text-gray-600 font-extralight leading-relaxed"
-              style="font-family: Inter; letter-spacing: -6%; line-height: 3.2em;">
-             {{ heroSubtitle }}
-           </p>
+          <h1 class="text-4xl lg:text-7xl font-medium tracking-tighter leading-0.5 text-black  mb-6 max-w-3xl" 
+              style="font-family: Inter; letter-spacing: -6%; line-height: 1em;"
+              v-html="processedTitle">
+          </h1>
+          <p class="text-base lg:text-xl text-gray-600 font-extralight !leading-[25px] tracking-tight"
+             style="font-family: Inter; letter-spacing: -6%; line-height: 3.2em;">
+            {{ heroSubtitle }}
+          </p>
         </div>
 
-        <!-- Regular Card - Lado Derecho -->
-        <div class="relative">
-          <div class="w-64 h-80 xl:w-96 xl:h-120 bg-gray-300 rounded-2xl shadow-2xl overflow-hidden relative"
-               style="box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.74);">
-            
-            <!-- Imagen de fondo fluida -->
-            <img src="../assets/img/fluid-bg.png" 
-                 alt="Fluid background"
-                 class="absolute -top-56 -left-36 w-120 h-[900px] object-cover z-0">
-            
-            <!-- Imagen del caballo -->
-            <img src="../assets/img/horse-cool.png" 
-                 alt="Horse cool character"
-                 class="absolute top-0 left-22 bottom-0 w-80 object-cover z-10 ">
-            
-            <!-- Gradiente azul inferior -->
-            <div class="absolute bottom-0 left-0 right-0 h-56 z-20 bg-gradient-to-b from-transparent to-blue-500"></div>
-            
-            <!-- Botón Empieza hoy -->
-            <button @click="handleStartTodayClick"
-                    class="absolute top-5 left-6 bg-black rounded-full px-4 py-2 flex items-center gap-2 text-white text-xs font-normal z-30"
-                    >
-                    <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
-              <span class="py-1">Empieza hoy</span>
-              
-            </button>
-            
-            <!-- Botón Contáctanos -->
-            <button @cick="handleContactClick"
-                    class="absolute bottom-28 left-9  right-9 bg-white rounded-lg py-4  text-gray-700 font-semibold tracking-tighter text-2xl shadow-xl z-30"
-                    >
-              Contáctanos
-            </button>
-            
-            <!-- Meeting Action Widget -->
-            <div class="absolute justify-between flex-row bottom-8 left-9 right-9 flex items-center gap-3 z-30">
-              <!-- Animal Avatar -->
-              <div class="relative">
-                <div class="w-10 h-10 bg-white rounded-full overflow-hidden relative">
-                  <div class="absolute -top-1 left-0 w-9 h-11 "></div>
-                  <img src="../assets/img/panda-avatar.png" 
-                       alt="Panda avatar"
-                       class="absolute   h-24 object-cover">
-                </div>
-              </div>
-              
-              <!-- Meeting Text -->
-              <div class=" flex flex-col justify-start items-start gap-1 ">
-
-                <span class="text-white font-semibold text-xs leading-tight ">{{ meetingTitle }}</span>
-                <p class="text-gray-300 font-light text-xs ">{{ meetingSubtitle }}</p>
-
-              </div>
-              
-              <!-- Arrow Button -->
-              <button @click="handleMeetingClick"
-                      class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <img src="../assets/img/arrow-right.svg" 
-                     alt="Arrow right"
-                     class="w-6 h-6">
-              </button>
-            </div>
+        <!-- Regular Cards - Lado Derecho -->
+        <div class="flex justify-center">
+          <!-- Mobile Card - Visible solo en móvil -->
+          <div class="block xl:hidden">
+            <RegularMobileCard 
+              :meeting-title="meetingTitle"
+              :meeting-subtitle="meetingSubtitle"
+              @start-today="handleStartTodayClick"
+              @contact-click="handleContactClick"
+              @meeting-click="handleMeetingClick"
+            />
+          </div>
+          
+          <!-- Desktop Card - Visible solo en desktop -->
+          <div class="hidden xl:block">
+            <RegularCard 
+              :meeting-title="meetingTitle"
+              :meeting-subtitle="meetingSubtitle"
+              @start-today="handleStartTodayClick"
+              @contact-click="handleContactClick"
+              @meeting-click="handleMeetingClick"
+            />
           </div>
         </div>
         
@@ -126,27 +93,6 @@ export default {
 </template>
 
 <style scoped>
-/* Estilos adicionales específicos para ajustes finos */
-.w-120 {
-  width: 30rem;
-}
-
-.h-180 {
-  height: 45rem;
-}
-
-.w-33 {
-  width: 8.25rem;
-}
-
-.-top-56 {
-  top: -14rem;
-}
-
-.-left-36 {
-  left: -9rem;
-}
-
 /* Estilo para la palabra destacada - Solo gradiente */
 .highlighted-word {
   background: linear-gradient(135deg, #8E2DFE 0%, #E61655 100%);
