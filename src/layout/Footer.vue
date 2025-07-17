@@ -46,7 +46,7 @@ export default {
 
 <template>
   <footer class="bg-black text-white relative w-full overflow-hidden">
-    <div class="mx-auto px-4 xl:px-48 py-8 md:py-12 xl:py-16">
+    <div class="mx-auto px-4 xl:px-48 2xl:px-80 py-8 md:py-12 xl:py-16">
       
       <!-- Layout Desktop (lg y superior) -->
       <div class="hidden lg:grid grid-cols-12 gap-8">

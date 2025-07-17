@@ -145,7 +145,7 @@ export default {
 
 <template>
   <!-- Header Desktop (xl y superior) -->
-  <header class="hidden xl:flex w-full h-20 flex-row items-center justify-between bg-bg-primary px-4 xl:px-48">
+  <header class="hidden xl:flex w-full h-20 flex-row items-center justify-between bg-bg-primary px-4 xl:px-48 2xl:px-80">
     <!-- Logo Section -->
     <RouterLink to="/" class="flex flex-col justify-center">
       <BestiariLogo class="h-10" />
