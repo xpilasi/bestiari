@@ -117,7 +117,7 @@ export default {
       
       <!-- Botón Contáctanos -->
       <button @click="handleContactClick"
-              class="absolute bottom-28 left-9 right-9 bg-white rounded-lg py-4 text-gray-700 font-semibold tracking-tighter text-2xl shadow-xl z-30">
+              class="absolute hover:scale-105 cursor-pointer transition-all duration-300 bottom-28 left-9 right-9 bg-white rounded-lg py-4 text-gray-700 font-semibold tracking-tighter text-2xl shadow-xl z-30">
         {{ contactButtonText }}
       </button>
       
@@ -141,7 +141,7 @@ export default {
         
         <!-- Arrow Button -->
         <button @click="handleMeetingClick"
-                class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:scale-105 cursor-pointer transition-all duration-300">
           <ArrowRight class="w-6 h-6 text-gray-700" />
         </button>
       </div>
