@@ -1,9 +1,9 @@
 <script>
 // Importar imágenes por defecto
-import fluidBgDefault from '@/assets/img/fluid-bg.png'
-import horseDefault from '@/assets/img/horse-cool.png'
-import avatarDefault from '@/assets/img/panda-avatar.png'
-// Importar icono de flecha
+import fluidBgDefault from '@/assets/img/bg/fluid-bg.png'
+import horseDefault from '@/assets/img/animals/horse-cool.png'
+import avatarDefault from '@/assets/img/animals/panda-avatar.png'
+// Importar icono de flechaºº
 import { ArrowRight } from 'lucide-vue-next'
 
 export default {
@@ -35,6 +35,10 @@ export default {
       type: String,
       default: 'blue-500'
     },
+    customGradientClasses: {
+      type: String,
+      default: 'bg-gradient-to-t from-purple-600 via-purple-400 to-pink-500'
+    },
     
     // Props para posicionamiento del fondo (adaptado para móvil y tablet)
     bgTopPosition: {
@@ -63,6 +67,10 @@ export default {
       type: String,
       default: 'Agenda ahora'
     },
+    meetingSubtitleColor: {
+      type: String,
+      default: 'text-gray-300'
+    },
     
     // Props para dimensiones de la card (optimizado para móvil y tablet)
     cardWidth: {
@@ -85,7 +93,7 @@ export default {
   computed: {
     gradientClasses() {
       if (this.useCustomGradient) {
-        return 'bestiari-gradient';
+        return this.customGradientClasses;
       }
       return 'gradient-overlay';
     },
@@ -164,7 +172,7 @@ export default {
         <!-- Meeting Text -->
         <div class="flex flex-col justify-start items-start gap-0.5 md:gap-1 flex-1 min-w-0">
           <span class="text-white font-semibold text-xs md:text-lg leading-tight truncate w-full">{{ meetingTitle }}</span>
-          <p class="text-gray-300 font-light text-xs md:text-base truncate w-full">{{ meetingSubtitle }}</p>
+          <p :class="`${meetingSubtitleColor} font-light text-xs md:text-base truncate w-full`">{{ meetingSubtitle }}</p>
         </div>
         
         <!-- Arrow Button -->
@@ -181,10 +189,5 @@ export default {
 /* Clase base para gradientes */
 .gradient-overlay {
   /* El estilo se aplica dinámicamente via :style */
-}
-
-/* Gradiente personalizado de Bestiari */
-.bestiari-gradient {
-  background: linear-gradient(180deg, rgba(142, 45, 254, 0) 0%, rgba(142, 45, 254, 0.8) 38%, rgba(230, 22, 85, 1) 100%);
 }
 </style>

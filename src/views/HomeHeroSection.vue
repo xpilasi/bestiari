@@ -1,12 +1,13 @@
 <script>
-import RegularCard from '../components/RegularCard.vue'
-import RegularMobileCard from '../components/RegularMobileCard.vue'
+import HeroContent from '@/components/HeroContent.vue'
+import fluidBgImage from '@/assets/img/bg/fluid-bg.png'
+import horseImage from '@/assets/img/animals/horse-cool.png'
+import avatarImage from '@/assets/img/animals/panda-avatar.png'
 
 export default {
   name: 'HomeHeroSection',
   components: {
-    RegularCard,
-    RegularMobileCard
+    HeroContent
   },
   data() {
     return {
@@ -14,20 +15,21 @@ export default {
       heroSubtitle: 'Haz crecer tu presencia digital y atrae más clientes.',
       highlightedWord: 'aquí', // Palabra que se va a destacar
       meetingTitle: 'Reserva una Meeting de 15 minutos',
-      meetingSubtitle: 'Agenda ahora'
+      meetingSubtitle: 'Agenda ahora',
+      fluidBgImage: fluidBgImage,
+      horseImage: horseImage,
+      avatarImage: avatarImage,
+      useCustomGradient: true,
+      gradientColor: 'blue-500',
+      customGradientClasses: 'bg-gradient-to-b from-transparent to-blue-500',
+      bgTopPosition: '-top-[8rem] md:-top-[16rem]',
+      bgHeight: 'h-[400px] md:h-[800px]',
+      startButtonText: 'Empezar hoy',
+      contactButtonText: 'Contactar',
+      mobileCardWidth: 'w-[20rem] md:w-[40rem]'
     }
   },
-  computed: {
-    processedTitle() {
-      if (!this.highlightedWord) return this.heroTitle;
-      
-      // Regex que maneja tildes y acentos correctamente
-      const regex = new RegExp(`(^|\\s)(${this.highlightedWord})(\\s|$|[.,!?;:])`, 'gi');
-      return this.heroTitle.replace(regex, (match, before, word, after) => {
-        return `${before}<span class="italic font-light text-5xl lg:text-[80px] highlighted-word" style="font-family: 'Instrument Serif', serif;">${word}</span>${after}`;
-      });
-    }
-  },
+
   methods: {
     handleContactClick() {
       // Navegación a contacto
@@ -47,59 +49,26 @@ export default {
 
 <template>
   <section class="min-h-screen-[100vh] bg-primary flex flex-col justify-center xl:justify-start py-10 xl:py-30  ">
-    <div class="mx-auto w-full ">
-      <div class="flex flex-col xl:flex-row items-center justify-between gap-8 lg:gap-16">
-        
-        <!-- Hero Header - Lado Izquierdo -->
-        <div class="flex flex-col  ">
-          <h1 class="text-4xl lg:text-7xl font-medium tracking-tighter leading-0.5 text-black  mb-6 max-w-3xl" 
-              style="font-family: Inter; letter-spacing: -6%; line-height: 1em;"
-              v-html="processedTitle">
-          </h1>
-          <p class="text-base lg:text-xl text-gray-600 font-extralight !leading-[25px] tracking-tight"
-             style="font-family: Inter; letter-spacing: -6%; line-height: 3.2em;">
-            {{ heroSubtitle }}
-          </p>
-        </div>
-
-        <!-- Regular Cards - Lado Derecho -->
-        <div class="flex justify-center">
-          <!-- Mobile Card - Visible solo en móvil -->
-          <div class="block xl:hidden">
-            <RegularMobileCard 
-              :meeting-title="meetingTitle"
-              :meeting-subtitle="meetingSubtitle"
-              @start-today="handleStartTodayClick"
-              @contact-click="handleContactClick"
-              @meeting-click="handleMeetingClick"
-            />
-          </div>
-          
-          <!-- Desktop Card - Visible solo en desktop -->
-          <div class="hidden xl:block">
-            <RegularCard 
-              :meeting-title="meetingTitle"
-              :meeting-subtitle="meetingSubtitle"
-              
-              @start-today="handleStartTodayClick"
-              @contact-click="handleContactClick"
-              @meeting-click="handleMeetingClick"
-            />
-          </div>
-        </div>
-        
-      </div>
-    </div>
+    <HeroContent 
+      :hero-title="heroTitle"
+      :hero-subtitle="heroSubtitle"
+      :highlighted-word="highlightedWord"
+      :meeting-title="meetingTitle"
+      :meeting-subtitle="meetingSubtitle"
+      :fluid-bg-image="fluidBgImage"
+      :horse-image="horseImage"
+      :avatar-image="avatarImage"
+      :use-custom-gradient="useCustomGradient"
+      :gradient-color="gradientColor"
+      :custom-gradient-classes="customGradientClasses"
+      :bg-top-position="bgTopPosition"
+      :bg-height="bgHeight"
+      :start-button-text="startButtonText"
+      :contact-button-text="contactButtonText"
+      :card-width="mobileCardWidth"
+      @start-today="handleStartTodayClick"
+      @contact-click="handleContactClick"
+      @meeting-click="handleMeetingClick"
+    />
   </section>
 </template>
-
-<style scoped>
-/* Estilo para la palabra destacada - Solo gradiente */
-.highlighted-word {
-  background: linear-gradient(135deg, #8E2DFE 0%, #E61655 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-decoration: none;
-}
-</style>
