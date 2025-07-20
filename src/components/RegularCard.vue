@@ -26,7 +26,11 @@ export default {
       default: avatarDefault
     },
     
-    // Props para el gradiente
+    // Props para el gradiente personalizado
+    useCustomGradient: {
+      type: Boolean,
+      default: false
+    },
     gradientColor: {
       type: String,
       default: 'blue-500'
@@ -80,7 +84,30 @@ export default {
   },
   computed: {
     gradientClasses() {
-      return `bg-gradient-to-b from-transparent to-${this.gradientColor}`;
+      if (this.useCustomGradient) {
+        return 'bestiari-gradient';
+      }
+      return 'gradient-overlay';
+    },
+    gradientStyle() {
+      if (this.useCustomGradient) {
+        return {};
+      }
+      
+      const colorMap = {
+        'blue-500': '59, 130, 246',
+        'red-500': '239, 68, 68',
+        'green-500': '34, 197, 94',
+        'purple-500': '168, 85, 247',
+        'yellow-500': '234, 179, 8',
+        'pink-500': '236, 72, 153'
+      };
+      
+      const colorRgb = colorMap[this.gradientColor] || '59, 130, 246';
+      
+      return {
+        background: `linear-gradient(180deg, rgba(${colorRgb}, 0) 0%, rgba(${colorRgb}, 0.6) 50%, rgba(${colorRgb}, 1) 100%)`
+      };
     },
     fluidBgClasses() {
       return `absolute ${this.bgTopPosition} w-[30rem] ${this.bgHeight} object-cover z-0`;
@@ -106,7 +133,8 @@ export default {
       
       <!-- Gradiente inferior -->
       <div class="absolute bottom-0 left-0 right-0 h-56 z-20"
-           :class="gradientClasses"></div>
+           :class="gradientClasses"
+           :style="gradientStyle"></div>
       
       <!-- Botón Empieza hoy -->
       <button @click="handleStartToday"
@@ -147,4 +175,16 @@ export default {
       </div>
     </div>
   </div>
-</template> 
+</template>
+
+<style scoped>
+/* Clase base para gradientes */
+.gradient-overlay {
+  /* El estilo se aplica dinámicamente via :style */
+}
+
+/* Gradiente personalizado de Bestiari */
+.bestiari-gradient {
+  background: linear-gradient(180deg, rgba(142, 45, 254, 0) 0%, rgba(142, 45, 254, 0.8) 38%, rgba(230, 22, 85, 1) 100%);
+}
+</style>

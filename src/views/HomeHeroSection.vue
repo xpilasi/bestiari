@@ -80,6 +80,7 @@ export default {
             <RegularCard 
               :meeting-title="meetingTitle"
               :meeting-subtitle="meetingSubtitle"
+              
               @start-today="handleStartTodayClick"
               @contact-click="handleContactClick"
               @meeting-click="handleMeetingClick"
