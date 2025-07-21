@@ -95,7 +95,7 @@ export default {
 
 <template>
   <div class="mx-auto w-full">
-    <div class="flex flex-col xl:flex-row items-center justify-between gap-8 lg:gap-16">
+    <div class="flex flex-col xl:flex-row items-center  justify-between gap-20 lg:gap-16">
       
       <!-- Hero Header - Lado Izquierdo -->
       <div class="flex flex-col">
