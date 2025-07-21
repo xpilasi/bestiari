@@ -27,7 +27,7 @@ export default {
       startButtonText: 'Empezar hoy',
       contactButtonText: 'Contactar',
       mobileCardWidth: 'w-[20rem] md:w-[40rem]',
-      meetingSubtitleColor: 'text-black'
+      
     }
   },
 

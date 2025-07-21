@@ -1,16 +1,21 @@
 <script>
 import HomeHeroSection from '@/views/HomeHeroSection.vue'
-
+import HomePresentationSection from '@/views/HomePresentationSection.vue'
+import HomeWhatWeDoSection from '@/views/HomeWhatWeDoSection.vue'
 export default {
   name: 'HomeView',
   components: {
-    HomeHeroSection
+    HomeHeroSection,
+    HomePresentationSection,
+    HomeWhatWeDoSection
   }
 }
 </script>
 
 <template>
-  <div class="bg-bg-primary min-h-screen px-4  xl:px-48 2xl:px-80">
+  <div class="bg-bg-primary min-h-screen ">
     <HomeHeroSection />
+    <HomePresentationSection />
+    <HomeWhatWeDoSection />
   </div>
 </template>
