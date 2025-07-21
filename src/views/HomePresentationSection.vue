@@ -33,13 +33,13 @@ export default {
 </script>
 
 <template>
-  <section class="min-h-screen  flex flex-col justify-center xl:justify-start py-10 xl:py-30 ">
+  <section class="min-h-screen  flex flex-col justify-center  py-10 xl:py-30  ">
     <!-- Contenedor principal -->
     <div class=" w-full relative">
       
       
       <!-- Sección de presentación con gradiente -->
-      <div class="absolute top-[123px] left-0 w-full h-[500px] overflow-hidden "
+      <div class="  h-[500px] overflow-hidden "
            style="background: linear-gradient(90deg, #560F61 0%, #E61655 50%, #FFD93B 100%);">
         
         <!-- Imagen de fondo fluida -->

@@ -15,7 +15,8 @@ export default {
 <template>
   <div class="bg-bg-primary min-h-screen ">
     <HomeHeroSection />
-    <HomePresentationSection />
     <HomeWhatWeDoSection />
+    <HomePresentationSection />
+   
   </div>
 </template>
