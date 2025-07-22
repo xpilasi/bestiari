@@ -6,15 +6,18 @@ import fluidBgMobileApp from '@/assets/img/bg/fluid-bg-pink.png'
 import websiteSolutionImg from '@/assets/img/solutions/website.png'
 import mobileAppSolutionImg from '@/assets/img/solutions/mobile-app.png'
 import webAppSolutionImg from '@/assets/img/solutions/web-app.png'
+import SectionSubTitle from '@/components/SectionSubTitle.vue'
 
 export default {
   name: 'HomeWhatWeDoSection',
   components: {
-    SectionTitle
+    SectionTitle,
+    SectionSubTitle
   },
   data() {
     return {
       sectionTitle: 'Creamos soluciones atractivas, funcionales e intuitivas',
+      sectionSubtitle: 'Los detalles marcan la diferencia. Contar con sitios de calidad o aplicaciones que faciliten el acceso a tus servicios potencia la fidelización e impulsa el crecimiento de tu negocio.',
       highlightedWord: 'soluciones',
       fluidBgMobileApp: fluidBgMobileApp,
       fluidBgWebApp: fluidBgWebApp,
@@ -114,16 +117,27 @@ export default {
 </script>
 
 <template>
-  <section class="min-h-screen  flex flex-col justify-center gap-15 xl:justify-between py-10 xl:py-30 px-4 xl:px-48 2xl:px-80">
+  <section class="min-h-screen  flex flex-col justify-center gap-5 xl:justify-between py-10 xl:py-30 px-4 xl:px-48 2xl:px-80">
     <!-- Contenedor principal -->
     
       
       <!-- Título principal -->
+       <div class="text-center mb-10 flex flex-col gap-5">
         <SectionTitle 
           :title="sectionTitle"
           :highlighted-word="highlightedWord"
           alignment="center"
+
         />
+        <SectionSubTitle
+          :subtitle="sectionSubtitle"
+          alignment="center"
+          subtitle-color="text-gray-600"
+          subtitle-size="text-lg"
+          max-width="max-w-3xl"
+        />
+       </div>
+        
 
       <!-- Desktop Cards Container (xl and up) -->
       <div class="hidden xl:flex justify-between pb-20">
@@ -247,14 +261,14 @@ export default {
         </div>
         
         <!-- Carousel Indicators -->
-        <div class="flex justify-center mt-6 space-x-2">
+        <div class="flex justify-center mt-8 space-x-3">
           <button v-for="(card, index) in cards" 
                   :key="index"
                   @click="goToSlide(index)"
-                  :class="[
-                    'w-3 h-3 rounded-full transition-all duration-300',
-                    currentSlide === index ? 'bg-black' : 'bg-gray-400'
-                  ]">
+                  class="h-2 rounded-full transition-all duration-300 cursor-pointer"
+                  :class="currentSlide === index 
+                    ? 'bg-gradient-to-r from-[#8E2DFE] to-[#E61655] w-8 shadow-lg shadow-purple-500/30' 
+                    : 'bg-gray-300 hover:bg-gray-500 w-2 hover:w-4 hover:shadow-md'">
           </button>
         </div>
       </div>

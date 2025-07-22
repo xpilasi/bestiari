@@ -1,12 +1,14 @@
 <script>
 import RegularCard from './RegularCard.vue'
 import RegularMobileCard from './RegularMobileCard.vue'
+import SectionSubTitle from './SectionSubTitle.vue'
 
 export default {
   name: 'HeroContent',
   components: {
     RegularCard,
-    RegularMobileCard
+    RegularMobileCard,
+    SectionSubTitle
   },
   props: {
     heroTitle: {
@@ -16,6 +18,14 @@ export default {
     heroSubtitle: {
       type: String,
       required: true
+    },
+    subtitleAlignment: {
+      type: String,
+      default: 'left'
+    },
+    subtitleColor: {
+      type: String,
+      default: 'text-gray-600'
     },
     highlightedWord: {
       type: String,
@@ -103,10 +113,11 @@ export default {
             style="font-family: Inter; letter-spacing: -6%; line-height: 1em;"
             v-html="processedTitle">
         </h1>
-        <p class="text-base lg:text-xl text-gray-600 font-extralight !leading-[25px] tracking-tight"
-           style="font-family: Inter; letter-spacing: -6%; line-height: 3.2em;">
-          {{ heroSubtitle }}
-        </p>
+        <SectionSubTitle 
+          :subtitle="heroSubtitle"
+          :alignment="subtitleAlignment"
+          :subtitle-color="subtitleColor"
+        />
       </div>
 
       <!-- Regular Cards - Lado Derecho -->
