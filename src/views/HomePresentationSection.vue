@@ -1,32 +1,18 @@
 <script>
 import fluidBgPresentation from '@/assets/img/bg/fluid-bg-presentation.png'
+import PresentationTitle from '@/components/PresentationTitle.vue'
 
 export default {
   name: 'HomePresentationSection',
+  components: {
+    PresentationTitle
+  },
   data() {
     return {
       presentationText: 'Desarrollamos aplicaciones y sitios web a medida para negocios que buscan mejorar su servicio, optimizar procesos o consolidar su presencia digital.',
       fluidBgPresentation: fluidBgPresentation,
       // Palabras que se van a destacar con cursiva
       highlightedWords: ['medida', 'consolidar'] 
-    }
-  },
-  computed: {
-    processedPresentationText() {
-      if (!this.highlightedWords || this.highlightedWords.length === 0) return this.presentationText;
-      
-      let processedText = this.presentationText;
-      
-      // Procesar cada palabra destacada
-      this.highlightedWords.forEach(word => {
-        // Regex que maneja tildes y acentos correctamente
-        const regex = new RegExp(`(^|\\s)(${word})(\\s|$|[.,!?;:])`, 'gi');
-        processedText = processedText.replace(regex, (match, before, word, after) => {
-          return `${before}<span class="italic font-light text-4xl lg:text-5xl highlighted-word" style="font-family: 'Instrument Serif', serif;">${word}</span>${after}`;
-        });
-      });
-      
-      return processedText;
     }
   }
 }
@@ -39,24 +25,15 @@ export default {
 
    </div>
       <!-- Contenido del texto -->
-        <div class=" bottom-15 max-w-4xl 2xl:max-w-6xl flex items-center px-4 xl:px-48 2xl:px-80">
-          <h2 class="text-black text-4xl lg:text-5xl font-normal tracking-tighter   mb-6 max-w-3xl"
-              style="font-family: Inter;"
-              v-html="processedPresentationText">
-          </h2>
-        </div>
+      <PresentationTitle 
+        :text="presentationText"
+        :highlighted-words="highlightedWords"
+      />
        
   
   </section>
 </template>
 
 <style scoped>
-/* Estilo para las palabras destacadas - Solo gradiente */
-.highlighted-word {
-  background: linear-gradient(135deg, #8E2DFE 0%, #E61655 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-decoration: none;
-}
+/* Styles specific to HomePresentationSection if needed */
 </style>
