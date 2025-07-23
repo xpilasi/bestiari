@@ -33,30 +33,20 @@ export default {
 </script>
 
 <template>
-  <section id="presentation" class="min-h-screen  flex flex-col justify-center  py-10 xl:py-30  ">
-    <!-- Contenedor principal -->
-    <div class=" w-full relative">
-      
-      
-      <!-- Sección de presentación con gradiente -->
-      <div class="  h-[500px] overflow-hidden "
-           style="background: linear-gradient(90deg, #560F61 0%, #E61655 50%, #FFD93B 100%);">
-        
-        <!-- Imagen de fondo fluida -->
-        <img :src="fluidBgPresentation" 
-             alt="Fluid background presentation"
-             class="absolute inset-0 w-full h-full object-cover opacity-30">
-        
-                 <!-- Contenido del texto -->
-         <div class="absolute bottom-15 max-w-4xl flex items-center px-4 xl:px-48 2xl:px-80">
-           <h2 class="text-white text-4xl lg:text-5xl font-medium tracking-tighter   mb-6 max-w-3xl"
-               style="font-family: Inter;"
-               v-html="processedPresentationText">
-           </h2>
-         </div>
+  <section id="presentation" class="min-h-screen 0  flex flex-col justify-start items-start  gap-50">
+   
+   <div class="h-3 w-full bg-gradient-to-r from-blue-600 to-pink-600">
+
+   </div>
+      <!-- Contenido del texto -->
+        <div class=" bottom-15 max-w-4xl 2xl:max-w-6xl flex items-center px-4 xl:px-48 2xl:px-80">
+          <h2 class="text-black text-4xl lg:text-5xl font-normal tracking-tighter   mb-6 max-w-3xl"
+              style="font-family: Inter;"
+              v-html="processedPresentationText">
+          </h2>
+        </div>
        
-      </div>
-    </div>
+  
   </section>
 </template>
 
