@@ -79,7 +79,7 @@ export default {
         </h3>
         
         <!-- Subtitle -->
-        <p class="text-gray-500 font-light text-xs sm:text-sm lg:text-sm tracking-tighter leading-tight"
+        <p class="text-gray-500 font-extralight text-sm leading-tight"
            style="font-family: Inter;">
           {{ subtitle }}
         </p>

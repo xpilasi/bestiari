@@ -46,7 +46,16 @@ export default {
     scrollToSection(sectionId) {
       console.log('Intentando navegar a:', sectionId)
       
-      // Intentar múltiples estrategias
+      // Caso especial para hero: scroll al top de la página completa
+      if (sectionId === 'hero') {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        })
+        return
+      }
+      
+      // Intentar múltiples estrategias para otras secciones
       let element = document.getElementById(sectionId)
       
       if (!element) {

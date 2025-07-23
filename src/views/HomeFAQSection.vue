@@ -1,11 +1,13 @@
 <script>
 import SectionTitle from '@/components/SectionTitle.vue'
+import ContactCard from '@/components/ContactCard.vue'
 import pandaAvatarFaq from '@/assets/img/faq/panda-avatar-faq.png'
 
 export default {
   name: 'HomeFAQSection',
   components: {
-    SectionTitle
+    SectionTitle,
+    ContactCard
   },
   data() {
     return {
@@ -63,6 +65,16 @@ export default {
   methods: {
     toggleFaq(index) {
       this.faqs[index].isOpen = !this.faqs[index].isOpen
+    },
+    handleContactClick() {
+      // Handle contact button click - could open a modal, redirect, etc.
+      console.log('Contact button clicked')
+    },
+    handleEmailClick(email) {
+      // Handle email click - could copy to clipboard, open email client, etc.
+      console.log('Email clicked:', email)
+      // Example: open email client
+      window.location.href = `mailto:${email}`
     }
   }
 }
@@ -96,9 +108,9 @@ export default {
             <!-- Question -->
             <button
               @click="toggleFaq(index)"
-              class="w-full py-6 flex items-center justify-between text-left group hover:bg-gray-50 transition-colors duration-200"
+              class="w-full py-6 flex items-center justify-between text-left group cursor-pointer transition-colors duration-200"
             >
-              <h3 class="text-black font-medium text-base pr-4 leading-relaxed tracking-[-0.06em]"
+              <h3 class="text-black font-light text-base pr-4 leading-relaxed tracking-[-0.06em]"
                   style="font-family: Inter;">
                 {{ faq.question }}
               </h3>
@@ -118,105 +130,69 @@ export default {
             </button>
             
             <!-- Answer -->
-            <div 
-              v-show="faq.isOpen"
-              class="pb-6 pr-8 transition-all duration-300 ease-in-out"
-            >
-              <p class="text-gray-600 font-light text-sm leading-relaxed"
-                 style="font-family: Inter;">
-                {{ faq.answer }}
-              </p>
-            </div>
+            <transition name="accordion">
+              <div 
+                v-if="faq.isOpen"
+                class="overflow-hidden"
+              >
+                <div class="pb-6 pr-8">
+                  <p class="text-gray-500 font-extralight text-sm leading-tight"
+                     style="font-family: Inter;">
+                    {{ faq.answer }}
+                  </p>
+                </div>
+              </div>
+            </transition>
           </div>
         </div>
       </div>
       
       <!-- Right Column: Contact Card -->
-      <div class="flex justify-center xl:justify-end">
-        <div class="relative w-full max-w-[250px] h-[320px] rounded-2xl overflow-hidden shadow-2xl">
-          
-          <!-- Background Gradient -->
-          <div class="absolute inset-0 bg-gradient-to-b from-blue-600 to-pink-500"></div>
-          
-          <!-- Overlay Gradient -->
-          <div class="absolute inset-0 bg-gradient-to-t from-pink-500 via-transparent to-transparent opacity-60"></div>
-          
-          <!-- Content Container -->
-          <div class="relative h-full flex flex-col justify-between p-6">
-            
-            <!-- Top Section with Avatar and Title -->
-            <div class="flex flex-col items-center text-center">
-              
-              <!-- Avatar Container -->
-              <div class="relative mb-4">
-                <div class="w-16 h-16 bg-white rounded-full overflow-hidden">
-                  <img :src="pandaAvatarFaq" 
-                       alt="Panda avatar"
-                       class="w-20 h-24 object-cover -mt-2 -ml-3">
-                </div>
-                
-                <!-- CODE label -->
-                <div class="absolute -top-1 -right-1 bg-gray-800 text-white text-xs font-bold px-2 py-1 rounded-full">
-                  CODE
-                </div>
-              </div>
-              
-              <!-- Meeting Title -->
-              <h3 class="text-white font-medium text-lg leading-tight tracking-[-0.06em] mb-6"
-                  style="font-family: Inter;">
-                Agenda una<br>reunión de 15<br>minutos
-              </h3>
-            </div>
-            
-            <!-- Bottom Section with Button and Email -->
-            <div class="space-y-4">
-              
-              <!-- Contact Button -->
-              <button class="w-full bg-white text-gray-700 font-semibold text-base py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105"
-                      style="font-family: Inter;">
-                Contáctanos
-              </button>
-              
-              <!-- Email Section -->
-              <div class="flex items-center justify-between">
-                <div class="flex-1">
-                  <p class="text-white font-semibold text-sm tracking-[-0.06em]"
-                     style="font-family: Inter;">
-                    Prefires enviar un Email?
-                  </p>
-                  <p class="text-gray-200 font-normal text-xs tracking-[-0.06em]"
-                     style="font-family: Inter;">
-                    hola@bestiari.art
-                  </p>
-                </div>
-                
-                <!-- Arrow Icon -->
-                <button class="w-5 h-5 bg-white rounded-full flex items-center justify-center ml-2 hover:scale-110 transition-transform duration-200">
-                  <svg class="w-3 h-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="xl:flex justify-center xl:justify-end hidden  ">
+        <ContactCard 
+          :avatar-image="pandaAvatarFaq"
+          gradient-from="from-blue-600"
+          gradient-via="via-purple-600"
+          gradient-to="to-pink-600"
+          overlay-from="from-pink-500"
+          @contact-click="handleContactClick"
+          @email-click="handleEmailClick"
+        />
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-/* Animaciones suaves para el acordeón */
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s ease;
+/* Smooth accordion transitions */
+.accordion-enter-active {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top;
 }
 
-.fade-enter-from, .fade-leave-to {
+.accordion-leave-active {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top;
+}
+
+.accordion-enter-from {
+  max-height: 0;
   opacity: 0;
+  transform: scaleY(0.8);
 }
 
-/* Efecto hover para la card de contacto */
-.contact-card:hover {
-  transform: translateY(-4px);
+.accordion-leave-to {
+  max-height: 0;
+  opacity: 0;
+  transform: scaleY(0.8);
 }
+
+.accordion-enter-to,
+.accordion-leave-from {
+  max-height: 200px;
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+
 </style>
