@@ -48,7 +48,7 @@ export default {
 </script>
 
 <template>
-  <section class="min-h-[calc(100vh-4rem)] xl:min-h-[calc(100vh-5rem)]  flex flex-col justify-center xl:justify-start py-10 xl:py-30 px-4 xl:px-48 2xl:px-80">
+  <section id="hero" class="min-h-[calc(100vh-4rem)] xl:min-h-[calc(100vh-5rem)]  flex flex-col justify-center xl:justify-start py-10 xl:py-30 px-4 xl:px-48 2xl:px-80">
     <HeroContent 
       :hero-title="heroTitle"
       :hero-subtitle="heroSubtitle"

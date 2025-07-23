@@ -91,7 +91,7 @@ export default {
 </script>
 
 <template>
-  <section class="min-h-screen bg-bg-primary flex flex-col justify-center py-10 xl:py-30 px-4 xl:px-48 2xl:px-80">
+  <section id="why-us" class="min-h-screen bg-bg-primary flex flex-col justify-center py-10 xl:py-30 px-4 xl:px-48 2xl:px-80">
     
     <!-- Header Section -->
     <div class="text-center mb-16">

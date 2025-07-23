@@ -117,7 +117,7 @@ export default {
 </script>
 
 <template>
-  <section class="min-h-screen  flex flex-col justify-center gap-5 xl:justify-between py-10 xl:py-30 px-4 xl:px-48 2xl:px-80">
+  <section id="what-we-do" class="min-h-screen  flex flex-col justify-center gap-5 xl:justify-between py-10 xl:py-30 px-4 xl:px-48 2xl:px-80">
     <!-- Contenedor principal -->
     
       
@@ -129,13 +129,16 @@ export default {
           alignment="center"
 
         />
-        <SectionSubTitle
+        <div class="hidden xl:block">
+          <SectionSubTitle
           :subtitle="sectionSubtitle"
           alignment="center"
           subtitle-color="text-gray-600"
           subtitle-size="text-lg"
           max-width="max-w-3xl"
         />
+        </div>
+        
        </div>
         
 

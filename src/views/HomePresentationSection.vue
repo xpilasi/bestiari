@@ -33,7 +33,7 @@ export default {
 </script>
 
 <template>
-  <section class="min-h-screen  flex flex-col justify-center  py-10 xl:py-30  ">
+  <section id="presentation" class="min-h-screen  flex flex-col justify-center  py-10 xl:py-30  ">
     <!-- Contenedor principal -->
     <div class=" w-full relative">
       
