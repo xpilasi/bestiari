@@ -29,6 +29,11 @@ export default {
       type: String,
       default: 'from-pink-500'
     },
+    gradientDirection: {
+      type: String,
+      default: 'vertical', // 'vertical' or 'diagonal'
+      validator: (value) => ['vertical', 'diagonal'].includes(value)
+    },
     title: {
       type: String,
       default: 'Agenda una<br>reunión de 15<br>minutos'
@@ -48,7 +53,8 @@ export default {
   },
   computed: {
     backgroundGradient() {
-      return `bg-gradient-to-b ${this.gradientFrom} ${this.gradientVia} ${this.gradientTo}`
+      const direction = this.gradientDirection === 'diagonal' ? 'bg-gradient-to-br' : 'bg-gradient-to-b'
+      return `${direction} ${this.gradientFrom} ${this.gradientVia} ${this.gradientTo}`
     },
     overlayGradient() {
       return `bg-gradient-to-t ${this.overlayFrom} via-transparent to-transparent`

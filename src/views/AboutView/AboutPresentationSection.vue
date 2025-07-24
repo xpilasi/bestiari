@@ -1,6 +1,7 @@
 <script>
 import PresentationTitle from '@/components/PresentationTitle.vue'
 import PhonesImg from '@/assets/img/design/phones.png'
+import MobileImg from '@/assets/img/design/mobile-cool.png'
 
 export default {
   name: 'AboutPresentationSection',
@@ -11,6 +12,7 @@ export default {
   data() {
     return {
       phonesImg: PhonesImg,
+      mobileImg: MobileImg,
       presentationText: 'Desarrollamos aplicaciones y sitios web a medida para negocios que buscan mejorar su servicio, optimizar procesos o consolidar su presencia digital.',
       // Palabras que se van a destacar con cursiva
       highlightedWords: ['medida', 'consolidar'] 
@@ -24,7 +26,18 @@ export default {
     
       <div class="flex flex-col w-full lg:flex-row justify-between gap-16 items-center">
         
-        <!-- Left Column: Text Content -->
+        <!-- Left Column: Mobile Card -->
+        <div class="flex justify-center lg:justify-end w-full lg:w-2/4 ">
+          <div class="relative w-full  lg:h-[500px] h-[250px] rounded-3xl overflow-hidden shadow-2xl">
+
+            
+            <img :src="mobileImg" alt="Phones" class="w-full h-full object-cover">
+            
+          </div>
+        </div>
+        
+        <!-- Right Column: Presentation Title -->
+        
         <div class="lg:w-2/4">
           <PresentationTitle 
             :text="presentationText"
@@ -35,15 +48,6 @@ export default {
           />
         </div>
         
-        <!-- Right Column: Photo Card -->
-        <div class="flex justify-center lg:justify-end w-full lg:w-2/4 ">
-          <div class="relative w-full  lg:h-[500px] h-[250px] rounded-3xl overflow-hidden shadow-2xl">
-
-            
-            <img :src="phonesImg" alt="Phones" class="w-full h-full object-cover">
-            
-          </div>
-        </div>
         
       
     </div>

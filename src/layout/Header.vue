@@ -144,8 +144,8 @@ export default {
 </script>
 
 <template>
-  <!-- Header Desktop (xl y superior) -->
-  <header class="hidden xl:flex w-full h-20 flex-row items-center justify-between bg-bg-primary px-4 xl:px-48 2xl:px-80">
+  <!-- Header Desktop (lg y superior) -->
+  <header class="hidden lg:flex w-full h-20 flex-row items-center justify-between bg-bg-primary px-4 xl:px-48 2xl:px-80">
     <!-- Logo Section -->
     <RouterLink to="/" class="flex flex-col justify-center">
       <BestiariLogo class="h-10" />
@@ -176,8 +176,8 @@ export default {
     </nav>
   </header>
 
-  <!-- Header Mobile/Tablet (xl y menor) -->
-  <header class="xl:hidden w-full h-16 flex items-center justify-between bg-bg-primary px-4 relative z-50">
+  <!-- Header Mobile/Tablet (lg y menor) -->
+  <header class="lg:hidden w-full h-16 flex items-center justify-between bg-bg-primary px-4 relative z-50">
     <!-- Logo Section Mobile -->
     <RouterLink to="/" class="flex items-center" @click="closeMobileMenu">
       <BestiariLogo class="h-8" />

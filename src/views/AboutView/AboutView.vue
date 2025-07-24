@@ -3,13 +3,15 @@ import AboutHeroSection from '@/views/AboutView/AboutHeroSection.vue'
 import AboutPresentationSection from '@/views/AboutView/AboutPresentationSection.vue' 
 import AboutTeamSection from '@/views/AboutView/AboutTeamSection.vue'
 import AboutValuesSection from '@/views/AboutView/AboutValuesSection.vue'
+import AboutContactSection from '@/views/AboutView/AboutContactSection.vue'
 export default {
   name: 'AboutView',
   components: {
     AboutHeroSection,
     AboutPresentationSection,
     AboutTeamSection,
-    AboutValuesSection
+    AboutValuesSection,
+    AboutContactSection
   }
 }
 </script>
@@ -20,6 +22,7 @@ export default {
     <AboutPresentationSection />
     <AboutTeamSection />
     <AboutValuesSection />
+    <AboutContactSection />
     
   </div>
 </template>
