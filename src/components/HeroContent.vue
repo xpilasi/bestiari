@@ -75,6 +75,10 @@ export default {
     contactButtonText: {
       type: String,
       default: 'Contáctanos'
+    },
+    mobileCardWidth: {
+      type: String,
+      default: ''
     }
   },
   emits: ['start-today', 'contact-click', 'meeting-click'],
@@ -105,25 +109,24 @@ export default {
 
 <template>
   <div class="mx-auto w-full">
-    <div class="flex flex-col xl:flex-row items-center  justify-between gap-20 lg:gap-16">
-      
-      <!-- Hero Header - Lado Izquierdo -->
-      <div class="flex flex-col">
-        <h1 class="text-4xl lg:text-7xl font-medium tracking-tighter leading-0.5 text-black mb-6 max-w-3xl" 
-            style="font-family: Inter; letter-spacing: -6%; line-height: 1em;"
-            v-html="processedTitle">
-        </h1>
-        <SectionSubTitle 
-          :subtitle="heroSubtitle"
-          :alignment="subtitleAlignment"
-          :subtitle-color="subtitleColor"
-        />
-      </div>
-
-      <!-- Regular Cards - Lado Derecho -->
-      <div class="flex justify-center">
-        <!-- Mobile Card - Visible solo en móvil -->
-        <div class="block xl:hidden">
+    <!-- Layout Mobile/Tablet -->
+    <div class="xl:hidden">
+      <div class="flex flex-col items-center gap-8">
+        <!-- Hero Header - Móvil -->
+        <div class="flex flex-col text-center">
+          <h1 class="text-4xl lg:text-7xl font-medium tracking-tighter leading-0.5 text-black mb-6 max-w-3xl" 
+              style="font-family: Inter; letter-spacing: -6%; line-height: 1em;"
+              v-html="processedTitle">
+          </h1>
+          <SectionSubTitle 
+            :subtitle="heroSubtitle"
+            alignment="center"
+            :subtitle-color="subtitleColor"
+          />
+        </div>
+        
+        <!-- Mobile Card -->
+        <div class="w-full max-w-sm">
           <RegularMobileCard 
             :meeting-title="meetingTitle"
             :meeting-subtitle="meetingSubtitle"
@@ -136,33 +139,49 @@ export default {
             :custom-gradient-classes="customGradientClasses"
             :start-button-text="startButtonText"
             :contact-button-text="contactButtonText"
-            @start-today="handleStartTodayClick"
-            @contact-click="handleContactClick"
-            @meeting-click="handleMeetingClick"
-          />
-        </div>
-        
-        <!-- Desktop Card - Visible solo en desktop -->
-        <div class="hidden xl:block">
-          <RegularCard 
-            :meeting-title="meetingTitle"
-            :meeting-subtitle="meetingSubtitle"
-            :meeting-subtitle-color="meetingSubtitleColor"
-            :fluid-bg-image="fluidBgImage"
-            :horse-image="horseImage"
-            :avatar-image="avatarImage"
-            :use-custom-gradient="useCustomGradient"
-            :gradient-color="gradientColor"
-            :custom-gradient-classes="customGradientClasses"
-            :start-button-text="startButtonText"
-            :contact-button-text="contactButtonText"
+            card-width="w-full h-96"
             @start-today="handleStartTodayClick"
             @contact-click="handleContactClick"
             @meeting-click="handleMeetingClick"
           />
         </div>
       </div>
-      
+    </div>
+
+    <!-- Layout Desktop -->
+    <div class="hidden xl:flex xl:flex-row items-center justify-between gap-20">
+      <!-- Hero Header - Desktop -->
+      <div class="flex flex-col">
+        <h1 class="text-4xl lg:text-7xl font-medium tracking-tighter leading-0.5 text-black mb-6 max-w-3xl" 
+            style="font-family: Inter; letter-spacing: -6%; line-height: 1em;"
+            v-html="processedTitle">
+        </h1>
+        <SectionSubTitle 
+          :subtitle="heroSubtitle"
+          :alignment="subtitleAlignment"
+          :subtitle-color="subtitleColor"
+        />
+      </div>
+
+      <!-- Desktop Card -->
+      <div class="flex justify-center">
+        <RegularCard 
+          :meeting-title="meetingTitle"
+          :meeting-subtitle="meetingSubtitle"
+          :meeting-subtitle-color="meetingSubtitleColor"
+          :fluid-bg-image="fluidBgImage"
+          :horse-image="horseImage"
+          :avatar-image="avatarImage"
+          :use-custom-gradient="useCustomGradient"
+          :gradient-color="gradientColor"
+          :custom-gradient-classes="customGradientClasses"
+          :start-button-text="startButtonText"
+          :contact-button-text="contactButtonText"
+          @start-today="handleStartTodayClick"
+          @contact-click="handleContactClick"
+          @meeting-click="handleMeetingClick"
+        />
+      </div>
     </div>
   </div>
 </template>

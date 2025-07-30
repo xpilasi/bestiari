@@ -2,6 +2,9 @@
 import SectionTitle from '@/components/SectionTitle.vue'
 import SectionSubTitle from '@/components/SectionSubTitle.vue'
 import TeamCard from '@/components/TeamCard.vue'
+import ferImage from '@/assets/img/team/fer-img.jpeg'
+import xaviImage from '@/assets/img/team/xavi-img.png'
+import ModernTeamCard from '@/components/ModernTeamCard.vue'
 // Import team member images (you'll need to add the actual image files)
 // import ferImage from '@/assets/img/team/fer.jpg'
 
@@ -10,34 +13,37 @@ export default {
   components: {
     SectionTitle,
     SectionSubTitle,
-    TeamCard
+    TeamCard,
+    ModernTeamCard
   },
   data() {
     return {
-      sectionTitle: 'Creamos soluciones atractivas, funcionales e intuitivas',
+      sectionTitle: 'Las personas que hacen que las ideas sucedan',
       sectionSubtitle: 'Los detalles marcan la diferencia. Contar con sitios de calidad o aplicaciones que faciliten el acceso a tus servicios potencia la fidelización e impulsa el crecimiento de tu negocio.',
-      highlightedWord: 'soluciones',
+      highlightedWord: 'ideas',
       // Team members data
       teamMembers: [
         {
           id: 1,
           name: 'Fer',
           role: 'Project Manager / Psicóloga',
-          image: '/src/assets/img/team/fer.jpg', // You'll need to add this image
+          image: ferImage, // You'll need to add this image
           gradientFrom: 'from-transparent',
           gradientVia: 'via-pink-500',
           gradientTo: 'to-purple-500',
-          description: 'Fer es una psicóloga con experiencia en el campo de la psicología clínica y la psicología del trabajo. Tiene un fuerte compromiso con la calidad y el bienestar de sus clientes y colaboradores.'
+          description: 'Fer es una psicóloga con experiencia en el campo de la psicología clínica y la psicología del trabajo. Tiene un fuerte compromiso con la calidad y el bienestar de sus clientes y colaboradores.',
+          linkedin: 'https://www.linkedin.com/in/fernanda-bravo-luengo/'
         },
         {
           id: 2,
           name: 'Xavi',
           role: 'Desarrollador / Ing. Comercial',
-          image: '/src/assets/img/team/xavi.jpg', // You'll need to add this image
+          image:  xaviImage, // You'll need to add this image
           gradientFrom: 'from-transparent',
           gradientVia: 'via-amber-500',
           gradientTo: 'to-teal-500',
-          description: 'Xavi es un desarrollador con experiencia en el campo de la programación y la ingeniería de software. Tiene un fuerte compromiso con la calidad y el bienestar de sus clientes y colaboradores.'
+          description: 'Xavi es un desarrollador con experiencia en el campo de la programación y la ingeniería de software. Tiene un fuerte compromiso con la calidad y el bienestar de sus clientes y colaboradores.',
+          linkedin: 'https://www.linkedin.com/in/xavierpilasi/?locale=en_US'
         }
         // Add more team members here as needed
       ]
@@ -72,7 +78,7 @@ export default {
        <!-- Team Cards Section -->
         <div class="flex flex-col xl:flex-row items-center  justify-between gap-20 lg:gap-16">
             <div class="flex flex-wrap justify-center gap-8 mt-16">
-         <TeamCard 
+         <ModernTeamCard 
            v-for="member in teamMembers"
            :key="member.id"
            :name="member.name"
@@ -82,7 +88,8 @@ export default {
            :gradient-via="member.gradientVia"
            :gradient-to="member.gradientTo"
            :description="member.description"
-         />
+           :linkedin="member.linkedin"
+           />
        </div>
        
         </div>

@@ -111,7 +111,7 @@ export default {
 </script>
 
 <template>
-  <div class="relative w-full overflow-hidden">
+  <div class="relative w-full overflow-hidden ">
     <!-- Carousel Wrapper -->
     <div 
       class="flex transition-transform duration-300 ease-out"
@@ -126,7 +126,7 @@ export default {
       <div 
         v-for="(item, index) in items" 
         :key="index"
-        class="w-full flex-shrink-0 flex justify-center px-6 py-4"
+        class="w-full flex-shrink-0 flex justify-center  py-4"
       >
         <slot :item="item" :index="index"></slot>
       </div>

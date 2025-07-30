@@ -1,15 +1,19 @@
 <script>
-import phonesImg from '@/assets/img/design/phones.png'
+import coolDesktopImg from '@/assets/img/design/orange-cool-desktop.png'
 import SectionTitle from '@/components/SectionTitle.vue'
+import FeatureWidget from '@/components/FeatureWidget.vue'
+import ImageWidget from '@/components/ImageWidget.vue'
 
 export default {
   name: 'AboutValuesSection',
   components: {
-    SectionTitle
+    SectionTitle,
+    FeatureWidget,
+    ImageWidget
   },
   data() {
     return {
-      phonesImg: phonesImg,
+      coolDesktopImg: coolDesktopImg,
       sectionTitle: 'Creamos con intención, trabajamos con valores',
       highlightedWord: 'valores',
       values: [
@@ -17,19 +21,19 @@ export default {
           id: 1,
           number: '01',
           title: 'Transparencia',
-          description: 'Nos comunicamos sin rodeos. Plazos, presupuestos y alcances bien definidos desde el inicio. Sin ambigüedades ni sorpresas.'
+          subtitle: 'Nos comunicamos sin rodeos. Plazos, presupuestos y alcances bien definidos desde el inicio. Sin ambigüedades ni sorpresas.'
         },
         {
           id: 2,
           number: '02',
           title: 'Calidad',
-          description: 'Cada línea de código, cada diseño y cada interacción está pensada para ofrecer la mejor experiencia posible.'
+          subtitle: 'Cada línea de código, cada diseño y cada interacción está pensada para ofrecer la mejor experiencia posible.'
         },
         {
           id: 3,
           number: '03',
           title: 'Compromiso',
-          description: 'Tu éxito es nuestro éxito. Nos involucramos en cada proyecto como si fuera nuestro propio negocio.'
+          subtitle: 'Tu éxito es nuestro éxito. Nos involucramos en cada proyecto como si fuera nuestro propio negocio.'
         }
       ]
     }
@@ -56,39 +60,36 @@ export default {
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         <!-- Left Column: Image -->
-        <div class="flex justify-center lg:justify-start">
-          <div class="relative w-full max-w-[400px] h-[500px] rounded-2xl overflow-hidden shadow-xl">
-            <img :src="phonesImg" 
-                 alt="Phones design" 
-                 class="w-full h-full object-cover">
-          </div>
-        </div>
+        <ImageWidget
+          :src="coolDesktopImg"
+          alt="Phones design"
+          container-width="w-full"
+          container-height="h-auto"
+          container-class="flex justify-center lg:justify-start"
+          width="w-full"
+          max-width="max-w-[400px]"
+          height="h-[500px]"
+          border-radius="rounded-2xl"
+          shadow="shadow-xl"
+        />
         
         <!-- Right Column: Values Cards -->
         <div class="space-y-8">
-          <div 
-            v-for="value in values" 
+          <FeatureWidget
+            v-for="value in values"
             :key="value.id"
-            class="space-y-4"
-          >
-            <!-- Value Number -->
-            <div class="text-pink-600 text-3xl font-italic font-instrument-serif " 
-                 >
-              {{ value.number }}
-            </div>
-            
-            <!-- Value Title -->
-            <h3 class="text-gray-800 text-xl font-semibold tracking-tight leading-tight "
-                style="font-family: Inter;">
-              {{ value.title }}
-            </h3>
-            
-            <!-- Value Description -->
-            <p class="text-gray-600 font-light text-base leading-relaxed tracking-tight max-w-md"
-               style="font-family: Inter;">
-              {{ value.description }}
-            </p>
-          </div>
+            :number="value.number"
+            :title="value.title"
+            :subtitle="value.subtitle"
+            number-color="text-pink-600"
+            title-color="text-gray-800"
+            subtitle-color="text-gray-600"
+            number-size="text-3xl"
+            title-size="text-xl"
+            subtitle-size="text-base"
+            max-width=""
+            spacing="space-y-3"
+          />
         </div>
         
       </div>

@@ -1,5 +1,6 @@
 <script>
 import ContactCard from '@/components/ContactCard.vue'
+import MobileContactCard from '@/components/MobileContactCard.vue'
 import pandaAvatarFaq from '@/assets/img/faq/panda-avatar-faq.png'
 import leonaAvatarFaq from '@/assets/img/animals/leona-cool.png'
 import SectionTitle from '@/components/SectionTitle.vue'
@@ -8,6 +9,7 @@ export default {
   name: 'AboutContactSection',
   components: {
     ContactCard,
+    MobileContactCard,
     SectionTitle
   },
   data() {
@@ -50,19 +52,35 @@ export default {
           />
         </div>
         
-        <!-- Right Column: Contact Card -->
+        <!-- Right Column: Contact Cards (Responsive) -->
         <div class="flex justify-center lg:justify-end">
-          <ContactCard 
-            :avatar-image="leonaAvatarFaq"
-            :gradient-direction="'diagonal'"
-            gradient-from="from-green-600"
-            gradient-via="via-blue-600"
-            gradient-to="to-purple-600"
-            
-            @contact-click="handleContactClick"
-            @email-click="handleEmailClick"
-            
-          />
+          <!-- Desktop Contact Card -->
+          <div class="hidden lg:block">
+            <ContactCard 
+              :avatar-image="leonaAvatarFaq"
+              :gradient-direction="'diagonal'"
+              gradient-from="from-green-600"
+              gradient-via="via-blue-600"
+              gradient-to="to-purple-600"
+              
+              @contact-click="handleContactClick"
+              @email-click="handleEmailClick"
+            />
+          </div>
+          
+          <!-- Mobile Contact Card -->
+          <div class="block lg:hidden w-full">
+            <MobileContactCard 
+              :avatar-image="leonaAvatarFaq"
+              :gradient-direction="'diagonal'"
+              gradient-from="from-green-600"
+              gradient-via="via-blue-600"
+              gradient-to="to-purple-600"
+              
+              @contact-click="handleContactClick"
+              @email-click="handleEmailClick"
+            />
+          </div>
         </div>
         
       </div>

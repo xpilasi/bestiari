@@ -75,7 +75,7 @@ export default {
     // Props para dimensiones de la card (optimizado para móvil y tablet)
     cardWidth: {
       type: String,
-      default: 'w-72 h-96 md:w-[36rem] md:h-[48rem]'
+      default: 'w-full h-96 md:h-[48rem]'
     }
   },
   emits: ['start-today', 'contact-click', 'meeting-click'],
@@ -126,8 +126,8 @@ export default {
 
 <template>
   <div class="relative">
-    <div :class="`${cardWidth} bg-gray-300 rounded-2xl shadow-2xl overflow-hidden relative`"
-         style="box-shadow: 0px 4px 34px 0px rgba(0, 0, 0, 0.74);">
+    <div :class="`${cardWidth}  rounded-2xl shadow-2xl overflow-hidden relative `"
+         >
       
       <!-- Imagen de fondo fluida -->
       <img :src="fluidBgImage" 
@@ -184,10 +184,3 @@ export default {
     </div>
   </div>
 </template>
-
-<style scoped>
-/* Clase base para gradientes */
-.gradient-overlay {
-  /* El estilo se aplica dinámicamente via :style */
-}
-</style>

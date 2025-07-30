@@ -49,7 +49,7 @@ export default {
 </script>
 
 <template>
-  <section class="min-h-screen-[100vh] bg-primary flex flex-col justify-center xl:justify-start py-10 xl:py-30  ">
+  <section id="about-hero" class="min-h-screen-[100vh] bg-primary flex flex-col justify-center xl:justify-start py-10 xl:py-30">
     <HeroContent 
       :hero-title="heroTitle"
       :hero-subtitle="heroSubtitle"

@@ -1,6 +1,8 @@
 <script>
+import modernTeamImage from '@/assets/img/team/modern-team-member.png'
+
 export default {
-  name: 'TeamCard',
+  name: 'ModernTeamCard',
   props: {
     name: {
       type: String,
@@ -41,7 +43,8 @@ export default {
   },
   data() {
     return {
-      isModalOpen: false
+      isModalOpen: false,
+      modernTeamImage
     }
   },
   computed: {
@@ -61,39 +64,38 @@ export default {
 </script>
 
 <template>
-  <div>
-    <!-- Clickable Team Card -->
-    <div class="cursor-pointer" @click="openModal" style="width: 320px; height: 400px; position: relative; background: linear-gradient(to bottom, #fce7f3, #f9a8d4); border-radius: 24px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+  
+    
+     <div class="flex flex-col items-center justify-center  lg:w-[300px] w-full ">
+      <!-- Modern Team Card based on Figma Design -->
+      <div class="cursor-pointer relative overflow-hidden rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl" 
+          @click="openModal">
       
-      <!-- Profile Image -->
-      <div style="position: absolute; top: 32px; left: 50%; transform: translateX(-50%); width: 128px; height: 128px; border-radius: 50%; overflow: hidden; border: 4px solid white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
-        <img :src="image" 
-             :alt="name"
-             style="width: 100%; height: 100%; object-fit: cover;">
+      <!-- Background with Figma Gradient -->
+          <div class=" inset-0 bg-gradient-to-br from-white via-pink-500 to-purple-600 h-[350px]" 
+              >
+              <!-- Profile Image (using Figma image as reference, but will use prop image) -->
+          
+                <img :src="modernTeamImage" 
+                    :alt="name"
+                    class="w-full h-full object-cover">
+          </div>
+          
       </div>
-      
-      <!-- Content Container -->
-      <div style="position: absolute; bottom: 0; left: 0; right: 0; background: white; border-radius: 24px 24px 0 0; padding: 24px; padding-top: 80px;">
-        <!-- Name -->
-        <h3 style="font-size: 24px; font-weight: bold; color: #1f2937; text-align: center; margin-bottom: 8px; font-family: Inter;">
+      <div class="flex flex-col items-start justify-start py-4">
+        <div class="text-pink-600 text-3xl font-light italic font-instrument-serif mb-1">
           {{ name }}
-        </h3>
-        
-        <!-- Role Badge -->
-        <div style="background: #f3f4f6; border-radius: 9999px; padding: 8px 16px; margin: 0 auto; width: fit-content; margin-bottom: 16px;">
-          <p style="font-size: 14px; color: #4b5563; font-weight: 500; text-align: center; font-family: Inter;">
-            {{ role }}
-          </p>
         </div>
-        
-        <!-- Year Badge -->
-        <div style="background: #1f2937; color: white; border-radius: 8px; padding: 4px 12px; width: fit-content; margin: 0 auto;">
-          <span style="font-size: 12px; font-weight: 500;">2024</span>
+        <div class="text-black text-2xl  font-medium font-inter leading-6 tracking-tight">
+          {{ role }}
         </div>
       </div>
+    
     </div>
+     
+    
 
-    <!-- Modal -->
+    <!-- Modal (same as original) -->
     <div v-if="isModalOpen" class="fixed inset-0 bg-gradient-to-br from-purple-600 via-pink-600/50 to-black/40 flex items-center justify-center z-50" @click="closeModal">
       <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-8 max-w-md w-full mx-4 relative" @click.stop>
         <!-- Close Button -->
@@ -111,10 +113,10 @@ export default {
           </div>
           
           <!-- Name -->
-          <h2 class="text-2xl font-semibold text-gray-800" style="font-family: Inter;">{{ name }}</h2>
+          <h2 class="text-2xl font-semibold text-black" style="font-family: Inter;">{{ name }}</h2>
           
           <!-- Role -->
-          <p class="text-lg text-pink-600 font-medium" style="font-family: Inter;">{{ role }}</p>
+          <p class="text-lg text-pink-600 font-light italic font-instrument-serif"  >{{ role }}</p>
           
           <!-- Description -->
           <p class="text-black text-center leading-relaxed" style="font-family: Inter;">{{ description }}</p>
@@ -128,19 +130,5 @@ export default {
         </div>
       </div>
     </div>
-  </div>
+ 
 </template>
-
-<style scoped>
-/* Custom animations for decorative elements */
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.1);
-  }
-}
-</style>

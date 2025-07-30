@@ -26,7 +26,7 @@ export default {
       bgHeight: 'h-[400px] md:h-[800px]',
       startButtonText: 'Empezar hoy',
       contactButtonText: 'Contactar',
-      mobileCardWidth: 'w-[20rem] md:w-[40rem]',
+      mobileCardWidth: 'w-full h-96 md:h-[48rem]',
     }
   },
 
@@ -65,7 +65,7 @@ export default {
       :bg-height="bgHeight"
       :start-button-text="startButtonText"
       :contact-button-text="contactButtonText"
-      :card-width="mobileCardWidth"
+      :mobile-card-width="mobileCardWidth"
       @start-today="handleStartTodayClick"
       @contact-click="handleContactClick"
       @meeting-click="handleMeetingClick"
