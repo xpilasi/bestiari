@@ -4,12 +4,15 @@ import pandaAvatarFaq from '@/assets/img/faq/panda-avatar-faq.png'
 import leonaAvatarFaq from '@/assets/img/animals/leona-cool.png'
 import conejaAvatarFaq from '@/assets/img/animals/coneja-cool.png'
 import SectionTitle from '@/components/SectionTitle.vue'
+import MobileContactCard from '@/components/MobileContactCard.vue'
+
 
 export default {
   name: 'ProjectsContactPage',
   components: {
     ContactCard,
-    SectionTitle
+    SectionTitle,
+    MobileContactCard
   },
   data() {
     return {
@@ -36,7 +39,7 @@ export default {
 </script>
 
 <template>
-  <section id="contact" class="min-h-screen  flex flex-col justify-center items-center py-20">
+  <section id="projects-contact" class="min-h-screen  flex flex-col justify-center items-center py-20">
     <div class="">
       
       <!-- Main Content Grid -->
@@ -54,6 +57,8 @@ export default {
         
         <!-- Right Column: Contact Card -->
         <div class="flex justify-center lg:justify-end">
+          <!-- Desktop Contact Card -->
+          <div class="hidden lg:block">
           <ContactCard 
             :avatar-image="conejaAvatarFaq"
             :gradient-direction="'diagonal'"
@@ -63,11 +68,25 @@ export default {
             
             @contact-click="handleContactClick"
             @email-click="handleEmailClick"
-            
+
           />
         </div>
+        <!-- Mobile Contact Card -->
+        <div class="block lg:hidden w-full">
+            <MobileContactCard 
+              :avatar-image="conejaAvatarFaq"
+              :gradient-direction="'diagonal'"
+              gradient-from="from-red-600"
+              gradient-via="via-orange-600"
+              gradient-to="to-purple-600"
+              
+              @contact-click="handleContactClick"
+              @email-click="handleEmailClick"
+            />
+          </div>
         
       </div>
+    </div>
     </div>
   </section>
 </template>
