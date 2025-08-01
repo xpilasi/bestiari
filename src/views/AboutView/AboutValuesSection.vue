@@ -3,13 +3,15 @@ import coolDesktopImg from '@/assets/img/design/orange-cool-desktop.png'
 import SectionTitle from '@/components/SectionTitle.vue'
 import FeatureWidget from '@/components/FeatureWidget.vue'
 import ImageWidget from '@/components/ImageWidget.vue'
+import CarouselContainer from '@/components/CarouselContainer.vue'
 
 export default {
   name: 'AboutValuesSection',
   components: {
     SectionTitle,
     FeatureWidget,
-    ImageWidget
+    ImageWidget,
+    CarouselContainer
   },
   data() {
     return {
@@ -64,32 +66,67 @@ export default {
           :src="coolDesktopImg"
           alt="Phones design"
           container-width="w-full"
-          container-height="h-auto"
-          container-class="flex justify-center lg:justify-start"
-          width="w-full"
-          max-width="max-w-[400px]"
-          height="h-[500px]"
-          border-radius="rounded-2xl"
-          shadow="shadow-xl"
+            container-height="h-auto"
+            width="w-full"
+            height="h-[300px] lg:h-[450px]"
+            image-width="w-full"
+            image-height="h-full"
+            object-fit="object-cover"
+            object-position="object-center"
+            border-radius="rounded-2xl"
+            shadow="shadow-xl"
         />
         
         <!-- Right Column: Values Cards -->
-        <div class="space-y-8">
-          <FeatureWidget
-            v-for="value in values"
-            :key="value.id"
-            :number="value.number"
-            :title="value.title"
-            :subtitle="value.subtitle"
-            number-color="text-pink-600"
-            title-color="text-gray-800"
-            subtitle-color="text-gray-600"
-            number-size="text-3xl"
-            title-size="text-xl"
-            subtitle-size="text-base"
-            max-width=""
-            spacing="space-y-3"
-          />
+        <div>
+          
+          <!-- Desktop: Grid Layout -->
+          <div class="hidden lg:block space-y-8">
+            <FeatureWidget
+              v-for="value in values"
+              :key="value.id"
+              :number="value.number"
+              :title="value.title"
+              :subtitle="value.subtitle"
+              number-color="text-pink-600"
+              title-color="text-gray-800"
+              subtitle-color="text-gray-600"
+              number-size="text-3xl"
+              title-size="text-xl"
+              subtitle-size="text-base"
+              max-width=""
+              spacing="space-y-3"
+            />
+          </div>
+
+          <!-- Mobile/Tablet: Carousel -->
+          <div class="lg:hidden">
+            <CarouselContainer
+              :items="values"
+              :autoplay="false"
+              :autoplay-delay="4000"
+              :show-indicators="true"
+              :show-arrows="false"
+            >
+              <template #default="{ item }">
+                <FeatureWidget
+                  :number="item.number"
+                  :title="item.title"
+                  :subtitle="item.subtitle"
+                  number-color="text-pink-600"
+                  title-color="text-gray-800"
+                  subtitle-color="text-gray-600"
+                  number-size="text-3xl"
+                  title-size="text-xl"
+                  subtitle-size="text-base"
+                  max-width="max-w-full"
+                  spacing="space-y-3"
+                  text-align="text-center"
+                />
+              </template>
+            </CarouselContainer>
+          </div>
+
         </div>
         
       </div>

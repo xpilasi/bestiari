@@ -137,7 +137,7 @@ export default {
             container-width="w-full"
             container-height="h-auto"
             width="w-full"
-            height="h-[400px] xl:h-[450px]"
+            height="h-[400px] lg:h-[450px]"
             image-width="w-full"
             image-height="h-full"
             object-fit="object-cover"
