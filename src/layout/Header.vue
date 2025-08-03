@@ -1,12 +1,14 @@
 <script>
 import BestiariLogo from '@/assets/img/logos/logo-bestiari-dark.svg?component'
 import { RouterLink } from 'vue-router'
+import ContactModalCard from '@/components/ContactModalCard.vue'
 
 export default {
   name: 'Header',
   components: {
     BestiariLogo,
-    RouterLink
+    RouterLink,
+    ContactModalCard
   },
   data() {
     return {
@@ -34,7 +36,7 @@ export default {
         },
         { 
           name: 'Contacto →', 
-          to: '/contacto', 
+          action: 'openModal', 
           isSpecial: true
         }
       ],
@@ -43,12 +45,13 @@ export default {
         width: 0,
         opacity: 0
       },
-      isMobileMenuOpen: false
+      isMobileMenuOpen: false,
+      isContactModalOpen: false
     }
   },
   computed: {
     activeIndex() {
-      return this.navigation.findIndex(item => item.to === this.$route.path && !item.isSpecial)
+      return this.navigation.findIndex(item => item.to === this.$route.path && !item.isSpecial && item.to)
     }
   },
   watch: {
@@ -121,9 +124,29 @@ export default {
       this.isMobileMenuOpen = false
       document.body.style.overflow = ''
     },
-    handleMobileNavigation(route) {
-      this.$router.push(route)
+    handleMobileNavigation(item) {
+      if (item.action === 'openModal') {
+        this.openContactModal()
+      } else {
+        this.$router.push(item.to)
+      }
       this.closeMobileMenu()
+    },
+    handleNavigation(item) {
+      if (item.action === 'openModal') {
+        this.openContactModal()
+      } else {
+        this.$router.push(item.to)
+      }
+    },
+    openContactModal() {
+      this.isContactModalOpen = true
+      // Prevenir scroll del body cuando el modal está abierto
+      document.body.style.overflow = 'hidden'
+    },
+    closeContactModal() {
+      this.isContactModalOpen = false
+      document.body.style.overflow = ''
     }
   },
   mounted() {
@@ -139,6 +162,8 @@ export default {
     window.removeEventListener('resize', this.updateLinePosition)
     // Limpiar el overflow del body al desmontar el componente
     document.body.style.overflow = ''
+    // Cerrar modal si está abierto
+    this.isContactModalOpen = false
   }
 }
 </script>
@@ -154,10 +179,19 @@ export default {
     <!-- Navigation Links Desktop -->
     <nav ref="navContainer" class="flex flex-row gap-14 text-md items-center relative">
       <template v-for="(item, index) in navigation" :key="item.name">
-        <RouterLink :to="item.to">
+        <!-- Contacto Button (Special) -->
+        <button
+          v-if="item.isSpecial"
+          @click="handleNavigation(item)"
+          class="cursor-pointer text-white font-light text-md tracking-tighter bg-gradient-to-r from-coolPurple to-coolPink hover:scale-105 rounded-2xl py-1 px-4 flex items-center justify-center group hover:shadow-lg transition-all duration-300"
+        >
+          {{ item.name }}
+        </button>
+        <!-- Regular Navigation Links -->
+        <RouterLink v-else :to="item.to">
           <button
             @click="$router.push(item.to)"
-            :class="item.isSpecial ? ' cursor-pointer text-white  font-light text-md tracking-tighter  bg-gradient-to-r from-[#002BFF] to-[#FF6EFF] hover:scale-105 rounded-2xl py-1 px-4  flex items-center justify-center  group hover:shadow-lg transition-all duration-300 ' : ' py-4 w-20 cursor-pointer flex items-center justify-center font-normal text-md tracking-tighter transition-colors duration-200 relative group ' "
+            class="py-4 w-20 cursor-pointer flex items-center justify-center font-normal text-md tracking-tighter transition-colors duration-200 relative group"
           >
             {{ item.name }}
           </button>
@@ -216,7 +250,7 @@ export default {
         <nav class="flex flex-col justify-between items-center px-6 space-y-1">
           <template v-for="item in navigation" :key="`mobile-${item.name}`">
             <button
-              @click="handleMobileNavigation(item.to)"
+              @click="handleMobileNavigation(item)"
               :class="[
                 'w-full  py-4 px-4 rounded-4xl text-lg font-medium transition-all duration-200',
                 item.isSpecial 
@@ -246,6 +280,12 @@ export default {
       ></div>
     </div>
   </Transition>
+
+  <!-- Contact Modal -->
+  <ContactModalCard 
+    v-if="isContactModalOpen"
+    @close="closeContactModal"
+  />
 </template>
 
 <style scoped>
