@@ -167,10 +167,10 @@ export default {
 </script>
 
 <template>
-  <section class="min-h-screen flex flex-col justify-center py-10 xl:py-20 px-4 xl:px-48 2xl:px-80">
+  <section id="projects-work" class="min-h-screen flex flex-col justify-center py-10 xl:py-20 ">
     
-    <!-- Título principal -->
-    <div class="text-center mb-16">
+    <!-- Título principal con padding -->
+    <div class="text-center mb-16 px-4 xl:px-48 2xl:px-80">
       <SectionTitle 
         :title="sectionTitle"
         :highlighted-word="highlightedWord"
@@ -181,13 +181,13 @@ export default {
       />
     </div>
 
-    <!-- Carousel personalizado para mostrar múltiples cards -->
-    <div class="mb-20">
+    <!-- Carousel personalizado para mostrar múltiples cards - Full Width -->
+    <div class="mb-20 w-full">
       <div class="relative overflow-hidden">
         
         <!-- Carousel Track -->
         <div 
-          class="flex transition-transform duration-300 ease-out"
+          class="flex transition-transform duration-300 ease-out "
           :style="{ transform: carouselTransform }"
           @touchstart="handleTouchStart"
           @touchmove="handleTouchMove"
@@ -212,7 +212,7 @@ export default {
         <!-- Navigation Arrows -->
         <button
           @click="prevSlide"
-          class="absolute left-2 top-1/2 -translate-y-1/2 bg-black hover:bg-white text-white hover:text-black rounded-full p-3 shadow-lg transition-all duration-200 z-10 hover:scale-110"
+          class="absolute left-2 top-1/2 -translate-y-1/2 bg-black cursor-pointer hover:bg-white text-white hover:text-black rounded-full p-3 shadow-lg transition-all duration-200 z-10 hover:scale-110"
           :class="{ 'opacity-50 cursor-not-allowed': currentIndex === 0 }"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -222,7 +222,7 @@ export default {
 
         <button
           @click="nextSlide"
-          class="absolute right-2 top-1/2 -translate-y-1/2 bg-black hover:bg-white text-white hover:text-black rounded-full p-3 shadow-lg transition-all duration-200 z-10 hover:scale-110"
+          class="absolute right-2 top-1/2 -translate-y-1/2 bg-black cursor-pointer hover:bg-white text-white hover:text-black rounded-full p-3 shadow-lg transition-all duration-200 z-10 hover:scale-110"
           :class="{ 'opacity-50 cursor-not-allowed': currentIndex >= maxIndex }"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

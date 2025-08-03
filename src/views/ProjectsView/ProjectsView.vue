@@ -80,12 +80,16 @@ export default {
         })
       }, options)
 
-      // Observar todas las secciones
-      this.sections.forEach(section => {
-        const element = document.getElementById(section.id)
-        if (element) {
-          this.observer.observe(element)
-        }
+      // Esperar a que los componentes se monten y luego observar las secciones
+      this.$nextTick(() => {
+        this.sections.forEach(section => {
+          const element = document.getElementById(section.id)
+          if (element) {
+            this.observer.observe(element)
+          } else {
+            console.warn(`Section element not found: ${section.id}`)
+          }
+        })
       })
     }
   }
@@ -94,18 +98,10 @@ export default {
 
 <template>
   <div class="bg-bg-primary min-h-screen px-4 xl:px-48 2xl:px-80">
-    <!-- Asegurarse de que cada sección tenga su ID -->
-    <section id="projects-hero">
-      <ProjectsHeroSection />
-    </section>
-    
-    <section id="projects-work">
-      <ProjectsWorkSection />
-    </section>
-    
-    <section id="projects-contact">
-      <ProjectsContactPage />
-    </section>
+    <!-- Los IDs están ahora dentro de cada componente -->
+    <ProjectsHeroSection />
+    <ProjectsWorkSection />
+    <ProjectsContactPage />
 
     <!-- Sections Navigator -->
     <SectionsNavigator
