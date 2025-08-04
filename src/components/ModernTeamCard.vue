@@ -140,15 +140,19 @@ export default {
         {{ name }}
       </h3>
       
-      <!-- Indicador visual (opcional) -->
-      <div class="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+     
+    </div>
+     <!-- Indicador visual (opcional) -->
+      <div class="absolute top-3 right-3 ">
+        <div class="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 backdrop-blur-sm rounded-2xl px-3 w-fit py-1">
         <div class="w-2 h-2 bg-[#FFD93B] rounded-full"></div>
         <span :class="`text-gray-300 ${subtitleSize} font-light`" style="font-family: Inter;">
           Ver perfil
         </span>
       </div>
-    </div>
     
+      </div>
+     
   </div>
      
     

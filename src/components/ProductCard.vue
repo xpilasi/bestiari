@@ -18,10 +18,14 @@ export default {
       type: String,
       required: true
     },
+    productType: {
+      type: String,
+      default: 'Producto'
+    },
     // Opcional: personalizar dimensiones de la card
     cardWidth: {
       type: String,
-      default: 'w-[300px]'
+      default: 'w-full max-w-sm'
     },
     cardHeight: {
       type: String,
@@ -30,44 +34,72 @@ export default {
     // Opcional: personalizar posición del texto
     textPosition: {
       type: String,
-      default: 'bottom-[16px] left-[30px]'
+      default: 'bottom-[20px] left-[20px]'
     },
     textWidth: {
       type: String,
-      default: 'w-[160px]'
-    },
-    textHeight: {
-      type: String,
-      default: 'h-[84px]'
+      default: 'w-[200px]'
     },
     // Opcional: personalizar estilo del texto
-    textSize: {
+    titleSize: {
       type: String,
-      default: 'text-[25px]'
+      default: 'text-2xl'
+    },
+    subtitleSize: {
+      type: String,
+      default: 'text-sm'
+    },
+    // Opcional: overlay gradient
+    showOverlay: {
+      type: Boolean,
+      default: true
     }
   }
 }
 </script>
 
 <template>
-  <div :class="`relative ${cardWidth} ${cardHeight} bg-gray-300 rounded-2xl overflow-hidden`">
-    <!-- Imagen de fondo fluida -->
+  <div :class="`relative ${cardWidth} ${cardHeight} cursor-pointer rounded-2xl overflow-hidden ease-in-out transition-all duration-300 group`">
+    
+    <!-- Imagen de fondo -->
     <img :src="bgImage" 
-         :alt="`Fluid background ${title.toLowerCase()}`"
-         class="absolute h-[500px] object-cover">
+         :alt="`${title} background`"
+         class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110 cursor-pointer">
     
     <!-- Imagen del producto/solución -->
     <img :src="solutionImage" 
          :alt="`${title} solution`"
-         :class="`absolute object-cover rotate-[15deg] ${imageClasses}`">
+         :class="`absolute object-cover rotate-[15deg] transition-transform duration-300 ease-in-out group-hover:scale-110 ${imageClasses}`">
     
-    <!-- Texto -->
-    <div :class="`absolute ${textPosition} ${textWidth} ${textHeight}`">
-      <p :class="`text-white font-medium ${textSize} leading-[0.84em] tracking-[-0.06em]`"
-         style="font-family: Inter;"
-         v-html="title.replace(/\n/g, '<br>')">
-      </p>
+    <!-- Overlay gradient (opcional) -->
+    <div v-if="showOverlay" 
+         class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-80 transition-opacity duration-300">
     </div>
+    
+    <!-- Contenido de texto -->
+    <div :class="`absolute ${textPosition} ${textWidth} z-10`">
+      <!-- Tipo de producto (como badge) -->
+      <div class="mb-3">
+        <span class="inline-block px-3 py-1 bg-gradient-to-r from-coolPurple to-coolPink text-white text-xs font-semibold rounded-full uppercase tracking-wide">
+          {{ productType }}
+        </span>
+      </div>
+      
+      <!-- Título del producto -->
+      <h3 :class="`text-white font-medium ${titleSize} leading-tight tracking-[-0.06em] mb-2`"
+          style="font-family: Inter;"
+          v-html="title.replace(/\n/g, '<br>')">
+      </h3>
+      
+      <!-- Indicador visual (opcional) -->
+      <div class="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div class="w-2 h-2 bg-[#FFD93B] rounded-full"></div>
+        <span :class="`text-gray-300 ${subtitleSize} font-light`" style="font-family: Inter;">
+          Ver producto
+        </span>
+      </div>
+    </div>
+    
   </div>
 </template>
 

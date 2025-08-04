@@ -40,24 +40,27 @@ export default {
       cards: [
         {
           id: 1,
-          title: 'Web\nProducto / servicio',
+          title: 'Sitios\nComerciales',
           bgImage: fluidBgWebProduct,
           solutionImage: websiteSolutionImg,
-          imageClasses: 'top-[10px] -right-[50px] h-[250px]'
+          imageClasses: 'top-[10px] -right-[50px] h-[250px]',
+          productType: 'Website'
         },
         {
           id: 2,
-          title: 'Web\nApp',
+          title: 'Aplicaciones de\nGestión',
           bgImage: fluidBgWebApp,
           solutionImage: webAppSolutionImg,
-          imageClasses: 'top-[45px] -right-[30px] h-[180px]'
+          imageClasses: 'top-[45px] -right-[30px] h-[180px]',
+          productType: 'Web App'
         },
         {
           id: 3,
-          title: 'Mobile\nApp',
+          title: 'Aplicaciones\nPersonalizadas',
           bgImage: fluidBgMobileApp,
           solutionImage: mobileAppSolutionImg,
-          imageClasses: 'top-[30px] -right-[30px] h-[280px]'
+          imageClasses: 'top-[30px] -right-[30px] h-[280px]',
+          productType: 'Mobile App'
         }
       ]
     }
@@ -147,7 +150,7 @@ export default {
         
 
       <!-- Desktop Cards Container (xl and up) -->
-      <div class="hidden xl:flex justify-between pb-20">
+      <div class="hidden xl:flex justify-between pb-20 gap-10">
         <ProductCard
           v-for="card in cards"
           :key="card.id"
@@ -155,6 +158,7 @@ export default {
           :bg-image="card.bgImage"
           :solution-image="card.solutionImage"
           :image-classes="card.imageClasses"
+          :product-type="card.productType"
         />
       </div>
 
@@ -178,6 +182,8 @@ export default {
               :bg-image="card.bgImage"
               :solution-image="card.solutionImage"
               :image-classes="card.imageClasses"
+              :product-type="card.productType"
+              card-height="h-[450px]"
             /> 
           </div>
           
