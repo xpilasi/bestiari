@@ -39,6 +39,50 @@ export default {
     circleSize: {
       type: String,
       default: 'w-64 h-64'
+    },
+    // Opcional: overlay gradient
+    showOverlay: {
+      type: Boolean,
+      default: true
+    },
+    textPosition: {
+      type: String,
+      default: 'bottom-[20px] left-[20px]'
+    },
+    textWidth: {
+      type: String,
+      default: 'w-[200px]'
+    },
+    // Opcional: personalizar estilo del texto
+    titleSize: {
+      type: String,
+      default: 'text-2xl'
+    },
+    subtitleSize: {
+      type: String,
+      default: 'text-sm'
+    },
+     // Opcional: personalizar dimensiones de la card
+     cardWidth: {
+      type: String,
+      default: 'w-full max-w-sm'
+    },
+    cardHeight: {
+      type: String,
+      default: 'h-[400px]'
+    },
+    cardBg: {
+      type: String,
+      default: 'bg-gradient-to-br from-coolPurple to-coolPink'
+    },
+    // Props para controlar dimensiones de la foto de perfil en el modal
+    profileImageWidth: {
+      type: String,
+      default: 'w-40'
+    },
+    profileImageHeight: {
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -66,32 +110,46 @@ export default {
 <template>
   
     
-     <div class="flex flex-col items-center justify-center  lg:w-[300px] w-full ">
-      <!-- Modern Team Card based on Figma Design -->
-      <div class="cursor-pointer relative overflow-hidden rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl" 
-          @click="openModal">
-      
-      <!-- Background with Figma Gradient -->
-          <div class=" inset-0 bg-gradient-to-br from-white via-pink-500 to-purple-600 h-[350px]" 
-              >
-              <!-- Profile Image (using Figma image as reference, but will use prop image) -->
-          
-                <img :src="modernTeamImage" 
-                    :alt="name"
-                    class="w-full h-full object-cover">
-          </div>
-          
-      </div>
-      <div class="flex flex-col items-start justify-start py-4">
-        <div class="text-pink-600 text-3xl font-light italic font-instrument-serif mb-1">
-          {{ name }}
-        </div>
-        <div class="text-black text-2xl  font-medium font-inter leading-6 tracking-tight">
-          {{ role }}
-        </div>
-      </div>
+  <div 
+  :class="`relative ${cardWidth} ${cardHeight} cursor-pointer rounded-2xl overflow-hidden ${cardBg} ease-in-out transition-all duration-300  group`"
+  @click="openModal">
     
+    <!-- Imagen del proyecto -->
+    <img :src="image" 
+         :alt="`${name} - ${role}`"
+         :class="` absolute inset-0 ${profileImageWidth} ${profileImageHeight} object-cover transition-transform duration-300 ease-in-out group-hover:scale-110 cursor-pointer`"
+         >
+    
+    <!-- Overlay gradient (opcional) -->
+    <div v-if="showOverlay" 
+         class="absolute inset-0 bg-gradient-to-t from-black/100 via-transparent to-transparent opacity-80  transition-opacity duration-300">
     </div>
+    
+    <!-- Contenido de texto -->
+    <div :class="`absolute ${textPosition} ${textWidth} z-10  h-20`">
+      <!-- Tipo de producto (como badge) -->
+      <div class="mb-3">
+        <span class="inline-block px-3 py-1 bg-gradient-to-r from-coolPurple to-coolPink text-white text-xs font-semibold rounded-full uppercase tracking-wide">
+          {{ role }}
+        </span>
+      </div>
+      
+      <!-- Nombre del proyecto -->
+      <h3 :class="`text-white font-medium ${titleSize} leading-tight tracking-[-0.06em] mb-2`"
+          style="font-family: Inter;">
+        {{ name }}
+      </h3>
+      
+      <!-- Indicador visual (opcional) -->
+      <div class="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div class="w-2 h-2 bg-[#FFD93B] rounded-full"></div>
+        <span :class="`text-gray-300 ${subtitleSize} font-light`" style="font-family: Inter;">
+          Ver perfil
+        </span>
+      </div>
+    </div>
+    
+  </div>
      
     
 
@@ -108,7 +166,7 @@ export default {
         <!-- Modal Content -->
         <div class="flex flex-col items-center space-y-4">
           <!-- Profile Image -->
-          <div class="w-24 h-24 rounded-full overflow-hidden">
+          <div :class="`w-40 h-40 rounded-full overflow-hidden`">
             <img :src="image" :alt="name" class="w-full h-full object-cover">
           </div>
           
