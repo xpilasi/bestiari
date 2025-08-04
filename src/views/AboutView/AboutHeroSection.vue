@@ -49,8 +49,9 @@ export default {
 </script>
 
 <template>
-  <section id="about-hero" class="min-h-screen-[100vh] bg-primary flex flex-col justify-center xl:justify-start py-10 xl:py-30">
+  <section id="about-hero" class="min-h-[93vh] lg:min-h-[91vh] flex flex-col  justify-start xl:justify-start py-10 xl:py-30">
     <HeroContent 
+      animal-width="w-[400px]"
       :hero-title="heroTitle"
       :hero-subtitle="heroSubtitle"
       :highlighted-word="highlightedWord"

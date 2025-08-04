@@ -79,6 +79,10 @@ export default {
     mobileCardWidth: {
       type: String,
       default: ''
+    },
+    animalWidth: {
+      type: String,
+      default: 'w-80 md:w-[32rem]'
     }
   },
   emits: ['start-today', 'contact-click', 'meeting-click'],
@@ -108,7 +112,7 @@ export default {
 </script>
 
 <template>
-  <div class="mx-auto w-full">
+  <div class="mx-auto w-full h-full pt-10">
     <!-- Layout Mobile/Tablet -->
     <div class="xl:hidden">
       <div class="flex flex-col items-center gap-8">
@@ -126,8 +130,9 @@ export default {
         </div>
         
         <!-- Mobile Card -->
-        <div class="w-full max-w-sm">
+        <div class="w-full ">
           <RegularMobileCard 
+            :animal-width="animalWidth"
             :meeting-title="meetingTitle"
             :meeting-subtitle="meetingSubtitle"
             :meeting-subtitle-color="meetingSubtitleColor"

@@ -3,6 +3,7 @@ import HeroContent from '@/components/HeroContent.vue'
 import fluidBgImage from '@/assets/img/bg/fluid-bg-green.png'
 import animalImage from '@/assets/img/animals/jabali-cool.png'
 import avatarImage from '@/assets/img/animals/panda-avatar.png'
+import LeonaImage from '@/assets/img/animals/leona-cool.png'
 
 export default {
   name: 'ProjectsHeroSection',
@@ -27,7 +28,8 @@ export default {
       startButtonText: 'Empezar hoy',
       contactButtonText: 'Contactar',
       mobileCardWidth: 'w-[20rem] md:w-[40rem]',
-      meetingSubtitleColor: 'text-black'
+      meetingSubtitleColor: 'text-black',
+      leonaImage: LeonaImage
     }
   },
 
@@ -51,6 +53,7 @@ export default {
 <template>
   <section id="projects-hero" class="min-h-screen-[100vh] bg-primary flex flex-col justify-center xl:justify-start py-10 xl:py-30  ">
     <HeroContent 
+      animal-width="w-[400px]"
       :hero-title="heroTitle"
       :hero-subtitle="heroSubtitle"
       :highlighted-word="highlightedWord"
@@ -58,7 +61,7 @@ export default {
       :meeting-subtitle="meetingSubtitle"
       :meeting-subtitle-color="meetingSubtitleColor"
       :fluid-bg-image="fluidBgImage"
-      :horse-image="animalImage"
+      :horse-image="leonaImage"
       :avatar-image="avatarImage"
       :use-custom-gradient="useCustomGradient"
       :gradient-color="gradientColor"

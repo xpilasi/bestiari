@@ -2,6 +2,7 @@
 
 import LeonaAvatar from '@/assets/img/animals/leona-cool.png'
 import PandaAvatar from '@/assets/img/animals/panda-avatar.png'
+import LogoBestiari from '@/assets/img/logos/logo-bestiari-dark.svg'
 export default {
   name: 'ContactModalCard',
   emits: ['close'],
@@ -14,8 +15,12 @@ export default {
         mensaje: 'Hola, me gustaría crear una aplicación web para mi hotel. ¿Podrías ayudarme?'
       },
       LeonaAvatar: LeonaAvatar,
-      PandaAvatar: PandaAvatar
+      PandaAvatar: PandaAvatar,
+      
     }
+  },
+  components: {
+    LogoBestiari
   },
   methods: {
     closeModal() {
@@ -59,7 +64,7 @@ export default {
         <!-- Left Section - Contact Information -->
         <div class="lg:w-80 w-full bg-gradient-to-br from-coolPurple to-coolPink p-6 lg:px-7 text-white relative rounded-2xl lg:flex lg:flex-col lg:justify-between">
           <!-- Contact Header -->
-          <div class=" flex flex-col justify-between gap-2">
+          <div class=" flex flex-col justify-between gap-2 hidden lg:block">
             <div class="text-md font-bold  tracking-tighter ">
               Información de contacto
             </div>
@@ -69,7 +74,7 @@ export default {
           </div>
 
           <!-- Contact Items -->
-          <div class="space-y-4 ">
+          <div class="space-y-4 hidden lg:block">
             <!-- Email -->
             <div class="flex items-center gap-4">
               <div class="w-4 h-4 flex-shrink-0">
@@ -187,13 +192,16 @@ export default {
             </div>
 
             <!-- Submit Button -->
-            <div class="pt-4">
+            <div class=" flex flex-col items-center justify-between gap-4 lg:flex-row mt-10 ">
               <button 
                 type="submit"
-                class="bg-gradient-to-r from-coolPurple to-coolPink cursor-pointer text-white font-medium  leading-tight mb-2 tracking-tighter px-6 py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                class="bg-gradient-to-r from-coolPurple to-coolPink cursor-pointer text-white font-medium  leading-tight  tracking-tighter px-6 py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
               >
                 ENVIAR MENSAJE →
               </button>
+              <div class="flex   justify-center items-center">
+                <LogoBestiari class=" h-10 w-auto opacity-20" />
+              </div>
             </div>
           </form>
         </div>

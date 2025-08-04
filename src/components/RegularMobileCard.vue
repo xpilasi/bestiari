@@ -76,6 +76,10 @@ export default {
     cardWidth: {
       type: String,
       default: 'w-full h-96 md:h-[48rem]'
+    },
+    animalWidth: {
+      type: String,
+      default: 'w-70 md:w-[32rem]'
     }
   },
   emits: ['start-today', 'contact-click', 'meeting-click'],
@@ -126,7 +130,7 @@ export default {
 
 <template>
   <div class="relative">
-    <div :class="`${cardWidth}  rounded-2xl shadow-2xl overflow-hidden relative `"
+    <div :class="`${cardWidth}  rounded-2xl shadow-2xl overflow-hidden relative h-[500px] `"
          >
       
       <!-- Imagen de fondo fluida -->
@@ -137,7 +141,7 @@ export default {
       <!-- Imagen del caballo -->
       <img :src="horseImage" 
            alt="Horse cool character"
-           class="absolute top-0 left-[3rem] md:left-[6rem] bottom-0 w-64 md:w-[32rem] object-cover z-10">
+           :class="`absolute top-0 right-2 bottom-0 ${animalWidth} object-cover z-10`">
       
       <!-- Gradiente inferior -->
       <div class="absolute bottom-0 left-0 right-0 h-40 md:h-80 z-20"
