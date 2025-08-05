@@ -46,15 +46,15 @@ export default {
 
 <template>
   <!-- Navigation Button - Fixed Bottom Center -->
-  <div v-show="isVisible" class="fixed bottom-10 left-1/2 right-1/2  transform  z-50">
+  <div v-show="isVisible" class="fixed bottom-10 lg:left-1/2 lg:right-1/2 right-0  transform  z-50 ">
     <div class="relative">
       <!-- Main Navigation Button -->
       <button 
         @click="navigateToNextSection()"
-        class="group relative bg-transparent cursor-pointer from-purple-600 to-pink-500 text-black px-8 py-3 rounded-full shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105 animate-bounce-subtle"
+        class="group relative lg:bg-white/70 cursor-pointer bg-gradient-to-br  from-purple-600 to-pink-500 text-black px-3 lg:px-8 py-3 rounded-full shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105 animate-bounce-subtle"
       >
         <div class="flex items-center space-x-2">
-          <svg class="w-4 h-4 transform transition-transform duration-300" 
+          <svg class="w-4 h-4 transform transition-transform duration-300 text-white" 
                :class="currentSection === lastSectionId ? 'rotate-180' : ''"
                fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
