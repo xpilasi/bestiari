@@ -130,7 +130,7 @@ export default {
 
 <template>
   <div class="relative">
-    <div :class="`${cardWidth}  rounded-2xl shadow-2xl overflow-hidden relative h-[500px] `"
+    <div :class="`${cardWidth}  rounded-2xl shadow-2xl overflow-hidden relative h-1/3 `"
          >
       
       <!-- Imagen de fondo fluida -->

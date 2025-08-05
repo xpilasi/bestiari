@@ -118,7 +118,7 @@ export default {
     @click="toggleOverlay"
   >
     
-    <!-- Imagen del proyecto -->
+    <!-- Imagen de perfil -->
     <img 
       :src="image" 
       :alt="`${name} - ${role}`"
@@ -147,14 +147,14 @@ export default {
       v-if="!isOverlayOpen"
       :class="`absolute ${textPosition} ${textWidth} z-10 h-20 transition-opacity duration-300`"
     >
-      <!-- Tipo de producto (como badge) -->
+      <!-- Tipo de perfil (como badge) -->
       <div class="mb-3">
         <span class="inline-block px-3 py-1 bg-gradient-to-r from-coolPurple to-coolPink text-white text-xs font-semibold rounded-full uppercase tracking-wide">
           {{ role }}
         </span>
       </div>
       
-      <!-- Nombre del proyecto -->
+      <!-- Nombre del perfil -->
       <h3 
         :class="`text-white font-medium ${titleSize} leading-tight tracking-[-0.06em] mb-2`"
         style="font-family: Inter;"

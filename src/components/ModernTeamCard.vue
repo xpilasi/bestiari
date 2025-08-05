@@ -114,7 +114,7 @@ export default {
   :class="`relative ${cardWidth} ${cardHeight} cursor-pointer rounded-2xl overflow-hidden ${cardBg} ease-in-out transition-all duration-300  group`"
   @click="openModal">
     
-    <!-- Imagen del proyecto -->
+    <!-- Imagen de perfil -->
     <img :src="image" 
          :alt="`${name} - ${role}`"
          :class="` absolute inset-0 ${profileImageWidth} ${profileImageHeight} object-cover transition-transform duration-300 ease-in-out group-hover:scale-110 cursor-pointer`"
@@ -127,14 +127,14 @@ export default {
     
     <!-- Contenido de texto -->
     <div :class="`absolute ${textPosition} ${textWidth} z-10  h-20`">
-      <!-- Tipo de producto (como badge) -->
+      <!-- Tipo de perfil (como badge) -->
       <div class="mb-3">
         <span class="inline-block px-3 py-1 bg-gradient-to-r from-coolPurple to-coolPink text-white text-xs font-semibold rounded-full uppercase tracking-wide">
           {{ role }}
         </span>
       </div>
       
-      <!-- Nombre del proyecto -->
+      <!-- Nombre del perfil -->
       <h3 :class="`text-white font-medium ${titleSize} leading-tight tracking-[-0.06em] mb-2`"
           style="font-family: Inter;">
         {{ name }}
@@ -158,8 +158,8 @@ export default {
     
 
     <!-- Modal (same as original) -->
-    <div v-if="isModalOpen" class="fixed inset-0 bg-gradient-to-br from-purple-600 via-pink-600/50 to-black/40 flex items-center justify-center z-50" @click="closeModal">
-      <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-8 max-w-md w-full mx-4 relative" @click.stop>
+    <div v-if="isModalOpen" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50" @click="closeModal">
+      <div class="bg-white backdrop-blur-sm rounded-2xl p-8 max-w-md w-full mx-4 relative" @click.stop>
         <!-- Close Button -->
         <button @click="closeModal" class="cursor-pointer absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-all duration-300 hover:rotate-90">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -170,7 +170,7 @@ export default {
         <!-- Modal Content -->
         <div class="flex flex-col items-center space-y-4">
           <!-- Profile Image -->
-          <div :class="`w-40 h-40 rounded-full overflow-hidden`">
+          <div :class="`w-40 h-40 rounded-full overflow-hidden bg-gradient-to-br from-coolPurple/30 to-coolPink/30`">
             <img :src="image" :alt="name" class="w-full h-full object-cover">
           </div>
           
