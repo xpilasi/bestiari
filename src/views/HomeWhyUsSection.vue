@@ -57,31 +57,29 @@ export default {
 </script>
 
 <template>
-  <section id="why-us" class="min-h-screen bg-[#F4F4F4] flex flex-col justify-center py-10 xl:py-30 px-4 xl:px-48 2xl:px-80">
+  <section id="why-us" class="min-h-screen  flex flex-col justify-start py-10  px-4 xl:px-48 2xl:px-80">
     
     <!-- Main Container based on Figma layout (852x606) -->
     <div class=" mx-auto w-full">
       
       <!-- Title Section (centered, full width) -->
-      <div class="text-center mb-20">
+      <div class="text-center  mb-10 lg:mb-20">
         <SectionTitle 
           :title="sectionTitle"
           :highlighted-word="highlightedWord"
           alignment="center"
-          title-size="text-3xl lg:text-4xl xl:text-5xl"
-          title-color="text-black"
-          max-width="max-w-4xl"
+          
         />
       </div>
 
       <!-- Main Content Area (675x398 from Figma) -->
-      <div class="flex flex-col lg:flex-row items-start justify-between gap-12">
+      <div class="flex flex-col lg:flex-row items-start justify-between  gap-12">
         
         <!-- Left Side: Values Cards (372x245 from Figma) -->
-        <div class="flex-1 lg:max-w-2xl">
+        <div class="flex flex-col lg:max-w-2xl ">
           
           <!-- Desktop: Grid Layout -->
-          <div class="hidden lg:grid lg:grid-cols-2 gap-8">
+          <div class="hidden lg:grid lg:grid-cols-2 gap-8  lg:py-7 ">
             <FeatureWidget
               v-for="card in valuesCards"
               :key="card.id"
@@ -130,7 +128,7 @@ export default {
         </div>
 
         <!-- Right Side: Image Widget - Desktop Only -->
-        <div class="hidden lg:block flex-shrink-0  lg:w-[400px] xl:w-[450px]">
+        <div class="hidden lg:block flex-shrink-0  lg:w-[350px] xl:w-[400px] ">
           <ImageWidget
             :src="justListImage"
             alt="Just list"

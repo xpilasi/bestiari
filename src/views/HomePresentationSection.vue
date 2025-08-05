@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  <section id="presentation" class="min-h-screen flex flex-col lg:items-center py-20">
+  <section id="presentation" class="min-h-screen flex flex-col justify-center lg:items-center py-10">
     
       <div class="flex flex-col w-full lg:flex-row justify-between gap-16 items-center px-4 xl:px-48 2xl:px-80">
         

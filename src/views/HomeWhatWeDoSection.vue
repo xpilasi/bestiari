@@ -124,7 +124,7 @@ export default {
 </script>
 
 <template>
-  <section id="what-we-do" class="min-h-screen  flex flex-col justify-center gap-5 xl:justify-between py-10 xl:py-30 px-4 xl:px-48 2xl:px-80">
+  <section id="what-we-do" class="min-h-screen  flex flex-col justify-center gap-5 xl:justify-start py-10 xl:py-10 px-4 xl:px-48 2xl:px-80 ">
     <!-- Contenedor principal -->
     
       
@@ -150,7 +150,7 @@ export default {
         
 
       <!-- Desktop Cards Container (xl and up) -->
-      <div class="hidden xl:flex justify-between pb-20 gap-10">
+      <div class="hidden xl:flex justify-between  gap-10">
         <ProductCard
           v-for="card in cards"
           :key="card.id"
