@@ -2,8 +2,8 @@
 import SectionTitle from '@/components/SectionTitle.vue'
 import SectionSubTitle from '@/components/SectionSubTitle.vue'
 import TeamCard from '@/components/TeamCard.vue'
-import modernFer from '@/assets/img/team/modern-fer.png'
-import modernXavi from '@/assets/img/team/modern-team-guy.png'
+import modernFer from '@/assets/img/team/fer-1.png'
+import modernXavi from '@/assets/img/team/xavi-1.png'
 import xaviImage from '@/assets/img/team/xavi-img.png'
 import ModernTeamCard from '@/components/ModernTeamCard.vue'
 import MobileModernTeamCard from '@/components/MobileModernTeamCard.vue'
@@ -57,8 +57,8 @@ export default {
           linkedin: 'https://www.linkedin.com/in/fernanda-bravo-luengo/',
           profileImageWidth: '',
           profileImageWidthMobile: '',
-          profileImageHeight: 'h-[520px] bg-gradient-to-br from-yellow-400 to-orange-800 w-full',
-          profileImageHeightMobile: 'h-[600px] bg-gradient-to-br from-yellow-400 to-orange-800 w-full',
+          profileImageHeight: 'h-full ',
+          profileImageHeightMobile: 'h-full',
         },
         {
           id: 2,
@@ -72,8 +72,8 @@ export default {
           linkedin: 'https://www.linkedin.com/in/xavierpilasi/?locale=en_US',
           profileImageWidth: '',
           profileImageWidthMobile: '',
-          profileImageHeight: 'h-[540px] bg-gradient-to-br from-red-400 to-orange-600 w-full',
-          profileImageHeightMobile: 'h-[550px] bg-gradient-to-br from-red-400 to-orange-600 w-full'
+          profileImageHeight: 'h-full bg-gradient-to-br from-red-400 to-orange-600 w-full',
+          profileImageHeightMobile: 'h-full '
         }
         // Add more team members here as needed
       ]

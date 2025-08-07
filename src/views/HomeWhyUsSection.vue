@@ -2,7 +2,8 @@
 import SectionTitle from '@/components/SectionTitle.vue'
 import FeatureWidget from '@/components/FeatureWidget.vue'
 import ImageWidget from '@/components/ImageWidget.vue'
-import CarouselContainer from '@/components/CarouselContainer.vue'
+import ProfessionalCarousel from '@/components/ProfessionalCarousel.vue'
+import MobileFeatureWidget from '@/components/MobileFeatureWidget.vue'
 
 // Importar la imagen de phones
 import phonesImage from '@/assets/img/design/phones.png'
@@ -14,7 +15,8 @@ export default {
     SectionTitle,
     FeatureWidget,
     ImageWidget,
-    CarouselContainer
+    ProfessionalCarousel,
+    MobileFeatureWidget
   },
   data() {
     return {
@@ -57,29 +59,28 @@ export default {
 </script>
 
 <template>
-  <section id="why-us" class="min-h-screen  flex flex-col justify-start py-10  px-4 xl:px-48 2xl:px-80">
+  <section id="why-us" class="min-h-screen flex flex-col justify-start py-10 px-4 xl:px-48 2xl:px-80">
     
     <!-- Main Container based on Figma layout (852x606) -->
-    <div class=" mx-auto w-full">
+    <div class="mx-auto w-full">
       
       <!-- Title Section (centered, full width) -->
-      <div class="text-center  mb-10 lg:mb-20">
+      <div class="text-center mb-10 lg:mb-20">
         <SectionTitle 
           :title="sectionTitle"
           :highlighted-word="highlightedWord"
           alignment="center"
-          
         />
       </div>
 
       <!-- Main Content Area (675x398 from Figma) -->
-      <div class="flex flex-col lg:flex-row items-start justify-between  gap-12">
+      <div class="flex flex-col lg:flex-row items-start justify-between gap-12">
         
         <!-- Left Side: Values Cards (372x245 from Figma) -->
-        <div class="flex flex-col lg:max-w-2xl ">
+        <div class="flex flex-col lg:max-w-2xl">
           
           <!-- Desktop: Grid Layout -->
-          <div class="hidden lg:grid lg:grid-cols-2 gap-8  lg:py-7 ">
+          <div class="hidden lg:grid lg:grid-cols-2 gap-8 lg:py-7">
             <FeatureWidget
               v-for="card in valuesCards"
               :key="card.id"
@@ -97,38 +98,34 @@ export default {
             />
           </div>
 
-          <!-- Mobile/Tablet: Carousel -->
+          <!-- Mobile/Tablet: Professional Carousel -->
           <div class="lg:hidden">
-            <CarouselContainer
+            <ProfessionalCarousel
               :items="valuesCards"
               :autoplay="false"
-              :autoplay-delay="4000"
               :show-indicators="true"
-              :show-arrows="false"
+              card-width="w-72"
             >
               <template #default="{ item }">
-                <FeatureWidget
+                <MobileFeatureWidget
                   :number="item.number"
                   :title="item.title"
                   :subtitle="item.subtitle"
-                  number-color="text-pink-600"
-                  title-color="text-gray-800"
+                  number-color="text-[#E61655]"
+                  title-color="text-[#3D3D3D]"
                   subtitle-color="text-gray-600"
-                  number-size="text-3xl"
-                  title-size="text-xl"
-                  subtitle-size="text-base"
-                  max-width="max-w-full"
-                  spacing="space-y-3"
-                  text-align="text-center"
+                  number-size="text-2xl"
+                  title-size="text-lg"
+                  subtitle-size="text-sm"
                 />
               </template>
-            </CarouselContainer>
+            </ProfessionalCarousel>
           </div>
 
         </div>
 
         <!-- Right Side: Image Widget - Desktop Only -->
-        <div class="hidden lg:block flex-shrink-0  lg:w-[350px] xl:w-[400px] ">
+        <div class="hidden lg:block flex-shrink-0 lg:w-[350px] xl:w-[400px]">
           <ImageWidget
             :src="justListImage"
             alt="Just list"
@@ -148,7 +145,7 @@ export default {
       </div>
 
       <!-- Image Widget - Mobile/Tablet Only -->
-      <div class="lg:hidden mt-12 ">
+      <div class="lg:hidden mt-12">
         <ImageWidget
           :src="justListImage"
           alt="Just list"

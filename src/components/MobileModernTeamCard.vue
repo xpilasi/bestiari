@@ -71,7 +71,7 @@ export default {
     },
     cardBg: {
       type: String,
-      default: 'bg-gradient-to-br from-coolPurple to-coolPink'
+      default: ''
     },
     // Props para controlar dimensiones de la foto de perfil en el overlay
     profileImageWidth: {
@@ -128,7 +128,7 @@ export default {
     <!-- Overlay gradient (opcional) -->
     <div 
       v-if="showOverlay && !isOverlayOpen" 
-      class="absolute inset-0 bg-gradient-to-t from-black/100 via-transparent to-transparent opacity-80 transition-opacity duration-300"
+      class="absolute inset-0 bg-gradient-to-t from-purple-500/50 via-transparent to-transparent opacity-80 transition-opacity duration-300"
     />
     
     <!-- Botón Maximizar (esquina superior derecha) -->
