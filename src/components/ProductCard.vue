@@ -25,7 +25,7 @@ export default {
     // Opcional: personalizar dimensiones de la card
     cardWidth: {
       type: String,
-      default: 'w-full max-w-sm'
+      default: 'w-full '
     },
     cardHeight: {
       type: String,
@@ -50,9 +50,9 @@ export default {
       default: 'text-sm'
     },
     // Opcional: overlay gradient
-    showOverlay: {
-      type: Boolean,
-      default: true
+    overlay: {
+      type: String,
+      default:""
     }
   }
 }
@@ -67,13 +67,13 @@ export default {
          class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110 cursor-pointer">
     
     <!-- Imagen del producto/solución -->
-    <img :src="solutionImage" 
+    <!-- <img :src="solutionImage" 
          :alt="`${title} solution`"
          :class="`absolute object-cover rotate-[15deg] transition-transform duration-300 ease-in-out group-hover:scale-110 ${imageClasses}`">
-    
+     -->
     <!-- Overlay gradient (opcional) -->
-    <div v-if="showOverlay" 
-         class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-80 transition-opacity duration-300">
+    <div  
+         :class="`absolute inset-0 ${overlay}`">
     </div>
     
     <!-- Contenido de texto -->

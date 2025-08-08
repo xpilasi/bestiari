@@ -134,13 +134,13 @@ export default {
 </script>
 
 <template>
-  <section id="why-us" class="min-h-screen flex flex-col justify-start py-10 px-4 xl:px-48 2xl:px-80">
+  <section id="why-us" class="min-h-screen flex flex-col justify-start py-10 px-4 xl:px-48 2xl:px-80 ">
     
     <!-- Main Container based on Figma layout (852x606) -->
     <div class="mx-auto w-full">
       
       <!-- Title Section (centered, full width) -->
-      <div class="text-center mb-10 lg:mb-20">
+      <div class="text-center mb-20 lg:mb-20">
         <SectionTitle 
           :title="sectionTitle"
           :highlighted-word="highlightedWord"
@@ -149,7 +149,7 @@ export default {
       </div>
 
       <!-- Main Content Area (675x398 from Figma) -->
-      <div class="flex flex-col lg:flex-row items-start justify-between gap-12">
+      <div class="flex flex-col lg:flex-row items-start justify-between lg:gap-12 ">
         
         <!-- Left Side: Values Cards (372x245 from Figma) -->
         <div class="flex flex-col w-full lg:max-w-2xl">

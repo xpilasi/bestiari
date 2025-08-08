@@ -25,7 +25,7 @@ export default {
     // Opcional: personalizar dimensiones de la card
     cardMaxWidth: {
       type: String,
-      default: 'max-w-sm'
+      default: ''
     },
     cardHeight: {
       type: String,
@@ -50,9 +50,9 @@ export default {
       default: 'text-xs md:text-sm'
     },
     // Opcional: overlay gradient
-    showOverlay: {
-      type: Boolean,
-      default: true
+    overlay: {
+      type: String,
+      default: ''
     }
   },
   computed: {
@@ -68,7 +68,7 @@ export default {
 </script>
 
 <template>
-  <div class="w-full flex-shrink-0 px-4">
+  <div class="w-full flex-shrink-0 ">
     <div :class="`relative w-full ${cardMaxWidth} mx-auto ${cardHeight} cursor-pointer rounded-2xl overflow-hidden ease-in-out transition-all duration-300 group`">
       
       <!-- Imagen de fondo -->
@@ -77,13 +77,13 @@ export default {
            class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110 cursor-pointer">
       
       <!-- Imagen del producto/solución -->
-      <img :src="solutionImage" 
+      <!-- <img :src="solutionImage" 
            :alt="`${title} solution`"
-           :class="`absolute object-cover rotate-[15deg] transition-transform duration-300 ease-in-out group-hover:scale-110 ${processedImageClasses}`">
+           :class="`absolute object-cover transition-transform duration-300 ease-in-out group-hover:scale-110 ${processedImageClasses}`"> -->
       
       <!-- Overlay gradient (opcional) -->
-      <div v-if="showOverlay" 
-           class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-80 transition-opacity duration-300">
+      <div 
+           :class="`absolute inset-0  ${overlay}`">
       </div>
       
       <!-- Contenido de texto -->

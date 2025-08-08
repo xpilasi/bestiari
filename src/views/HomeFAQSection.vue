@@ -113,7 +113,7 @@ export default {
 </script>
 
 <template>
-  <section id="faq" class="min-h-screen bg-gray-100 flex flex-col justify-center py-10 xl:py-30 px-4 xl:px-48 2xl:px-80">
+  <section id="faq" class="lg:min-h-screen bg-gray-100 flex flex-col justify-start lg:justify-center pt-10 pb-20 lg:pt-0 lg:pb-0 xl:py-30 px-4 xl:px-48 2xl:px-80">
     
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-20 items-start">
       

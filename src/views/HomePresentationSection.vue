@@ -27,7 +27,7 @@ export default {
 <template>
   <section id="presentation" class="min-h-screen flex flex-col lg:justify-center lg:items-center lg:py-10 py-20">
     
-      <div class="flex flex-col w-full lg:flex-row justify-between gap-16 items-center px-4 xl:px-48 2xl:px-80">
+      <div class="flex flex-col w-full lg:flex-row justify-between gap-10 lg:gap-16 items-center px-4 xl:px-48 2xl:px-80">
         
         <!-- Left Column: Mobile Card -->
         <div class="lg:w-2/4">
@@ -60,7 +60,7 @@ export default {
       </div>
 
     <!-- Image Widget - Mobile/Tablet Only (fuera del contenedor con padding) -->
-    <div class="lg:hidden mt-12 px-4">
+    <div class="lg:hidden mt-14 px-4">
       <ImageWidget
         :src="responsiveImg"
         alt="Tablet"
@@ -69,7 +69,7 @@ export default {
         container-height="h-auto"
         width="w-full"
         max-width=""
-        height="h-[250px] md:h-[350px]"
+        height="h-1/2"
         image-width="w-full"
         image-height="h-full"
         object-fit="object-cover"

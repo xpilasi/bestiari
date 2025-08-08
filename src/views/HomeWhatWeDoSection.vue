@@ -9,6 +9,8 @@ import websiteSolutionImg from '@/assets/img/solutions/website.png'
 import mobileAppSolutionImg from '@/assets/img/solutions/mobile-app.png'
 import webAppSolutionImg from '@/assets/img/solutions/web-app.png'
 import SectionSubTitle from '@/components/SectionSubTitle.vue'
+import dashboardImg from '@/assets/img/design/dashboard.png'
+import appImg from '@/assets/img/design/app.png'
 
 export default {
   name: 'HomeWhatWeDoSection',
@@ -29,7 +31,7 @@ export default {
       websiteSolutionImg: websiteSolutionImg,
       webAppSolutionImg: webAppSolutionImg,
       mobileAppSolutionImg: mobileAppSolutionImg,
-      
+
       // Carrusel
       currentSlide: 0,
       isTransitioning: false,
@@ -41,26 +43,29 @@ export default {
         {
           id: 1,
           title: 'Sitios\nComerciales',
-          bgImage: fluidBgWebProduct,
+          bgImage: websiteSolutionImg,
           solutionImage: websiteSolutionImg,
-          imageClasses: 'top-[10px] -right-[50px] h-[250px]',
-          productType: 'Website'
+          imageClasses: '-top-[220px] right-[0px] h-[800px]',
+          productType: 'Website',
+          overlay: 'bg-gradient-to-br from-indigo/200 via-orange-500/40 to-red-500  '
         },
         {
           id: 2,
           title: 'Aplicaciones de\nGestión',
-          bgImage: fluidBgWebApp,
-          solutionImage: webAppSolutionImg,
+          bgImage: dashboardImg,
+          solutionImage: dashboardImg,
           imageClasses: 'top-[45px] -right-[30px] h-[180px]',
-          productType: 'Web App'
+          productType: 'Web App',
+          overlay: 'bg-gradient-to-br from-indigo/200 via-red-500/70 to-pink-500  '
         },
         {
           id: 3,
           title: 'Aplicaciones\nPersonalizadas',
-          bgImage: fluidBgMobileApp,
-          solutionImage: mobileAppSolutionImg,
+          bgImage: appImg,
+          solutionImage: appImg,
           imageClasses: 'top-[30px] -right-[30px] h-[280px]',
-          productType: 'Mobile App'
+          productType: 'Mobile App',
+          overlay: 'bg-gradient-to-br from-indigo/200 via-blue-500/70 to-purple-500  '
         }
       ]
     }
@@ -159,11 +164,12 @@ export default {
           :solution-image="card.solutionImage"
           :image-classes="card.imageClasses"
           :product-type="card.productType"
+          :overlay="card.overlay"
         />
       </div>
 
       <!-- Mobile/Tablet Carousel (below xl) -->
-      <div class="xl:hidden pb-20">
+      <div class="xl:hidden pb-20  relative">
         <!-- Carousel Container -->
         <div class="relative overflow-hidden"
              @touchstart="handleTouchStart"
@@ -183,25 +189,27 @@ export default {
               :solution-image="card.solutionImage"
               :image-classes="card.imageClasses"
               :product-type="card.productType"
-              card-height="h-[450px]"
+              card-height="h-[500px]"
+              :overlay="card.overlay"
             /> 
           </div>
           
-          <!-- Navigation Arrows -->
-          <button @click="prevSlide"
-                  class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-70 transition-all z-10">
+          
+        </div>
+        <!-- Navigation Arrows -->
+        <button @click="prevSlide"
+                  class="absolute -left-1 top-60 transform -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-70 transition-all z-10">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
           </button>
           
           <button @click="nextSlide"
-                  class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-70 transition-all z-10">
+                  class="absolute -right-1 top-60 transform -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-70 transition-all z-10">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </button>
-        </div>
         
         <!-- Carousel Indicators -->
         <div class="flex justify-center mt-8 space-x-3">
