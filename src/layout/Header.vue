@@ -211,7 +211,7 @@ export default {
   </header>
 
   <!-- Header Mobile/Tablet (lg y menor) -->
-  <header class="lg:hidden w-full h-16 flex items-center justify-between bg-bg-primary px-4 relative z-50">
+  <header class=" sticky top-0 lg:hidden w-full h-16 flex items-center justify-between bg-bg-primary px-4 relative z-50">
     <!-- Logo Section Mobile -->
     <RouterLink to="/" class="flex items-center" @click="closeMobileMenu">
       <BestiariLogo class="h-8" />

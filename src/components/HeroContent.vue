@@ -144,7 +144,7 @@ export default {
             :custom-gradient-classes="customGradientClasses"
             :start-button-text="startButtonText"
             :contact-button-text="contactButtonText"
-            card-width="w-full h-96"
+            card-width="w-full h-[600px]"
             @start-today="handleStartTodayClick"
             @contact-click="handleContactClick"
             @meeting-click="handleMeetingClick"

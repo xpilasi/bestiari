@@ -75,7 +75,7 @@ export default {
     // Props para dimensiones de la card (optimizado para móvil y tablet)
     cardWidth: {
       type: String,
-      default: 'w-full h-96 md:h-[48rem]'
+      default: 'w-full h-[500px] md:h-[48rem]'
     },
     animalWidth: {
       type: String,

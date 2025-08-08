@@ -46,7 +46,7 @@ export default {
 
 <template>
   <!-- Navigation Button - Fixed Bottom Center -->
-  <div v-show="isVisible" class="fixed bottom-10 lg:left-1/2 lg:right-1/2 right-0  transform  z-50 ">
+  <div v-show="isVisible" class="hidden lg:fixed bottom-10 lg:left-1/2 lg:right-1/2 right-0  transform  z-50 ">
     <div class="relative">
       <!-- Main Navigation Button -->
       <button 
