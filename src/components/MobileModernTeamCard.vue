@@ -89,6 +89,10 @@ export default {
     profileImageWidthMobile: {
       type: String,
       default: ''
+    },
+    overlay: {
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -128,8 +132,8 @@ export default {
     <!-- Overlay gradient (opcional) -->
     <div 
       v-if="showOverlay && !isOverlayOpen" 
-      class="absolute inset-0 bg-gradient-to-t from-purple-500/50 via-transparent to-transparent opacity-80 transition-opacity duration-300"
-    />
+      :class="`absolute inset-0  ${overlay}`"
+    ></div>
     
     <!-- Botón Maximizar (esquina superior derecha) -->
     <button 

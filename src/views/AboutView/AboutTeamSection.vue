@@ -2,8 +2,8 @@
 import SectionTitle from '@/components/SectionTitle.vue'
 import SectionSubTitle from '@/components/SectionSubTitle.vue'
 import TeamCard from '@/components/TeamCard.vue'
-import modernFer from '@/assets/img/team/fer-3.png'
-import modernXavi from '@/assets/img/team/xavi-2.png'
+import modernFer from '@/assets/img/team/fer-4.png'
+import modernXavi from '@/assets/img/team/xavi-4.png'
 import xaviImage from '@/assets/img/team/xavi-img.png'
 import ModernTeamCard from '@/components/ModernTeamCard.vue'
 import MobileModernTeamCard from '@/components/MobileModernTeamCard.vue'
@@ -51,14 +51,15 @@ export default {
           role: 'Project Manager / Psicóloga',
           image: modernFer, // You'll need to add this image
           gradientFrom: 'from-transparent',
-          gradientVia: 'via-pink-500',
-          gradientTo: 'to-purple-500',
+          gradientVia: 'via-red-500',
+          gradientTo: 'to-red-500',
           description: 'Fer es una psicóloga con experiencia en el campo de la psicología clínica y la psicología del trabajo. Tiene un fuerte compromiso con la calidad y el bienestar de sus clientes y colaboradores.',
           linkedin: 'https://www.linkedin.com/in/fernanda-bravo-luengo/',
           profileImageWidth: '',
           profileImageWidthMobile: '',
           profileImageHeight: 'h-full bg-gradient-to-br from-yellow-400 to-orange-800 w-full',
-          profileImageHeightMobile: 'h-full bg-gradient-to-br from-red-400 to-orange-600 w-full'
+          profileImageHeightMobile: 'h-full bg-gradient-to-br from-red-400 to-orange-600 w-full',
+          overlay: 'bg-gradient-to-b from-transparent via-transparent to-black/90 w-full'
         },
         {
           id: 2,
@@ -73,7 +74,8 @@ export default {
           profileImageWidth: '',
           profileImageWidthMobile: '',
           profileImageHeight: 'h-full bg-gradient-to-br from-red-400 to-orange-600 w-full',
-          profileImageHeightMobile: 'h-full '
+          profileImageHeightMobile: 'h-full ',
+          overlay: 'bg-gradient-to-b from-transparent via-transparent to-black/90 w-full'
         }
         // Add more team members here as needed
       ]
@@ -257,6 +259,7 @@ export default {
                  :gradient-to="member.gradientTo"
                  :description="member.description"
                  :linkedin="member.linkedin"
+                 :overlay="member.overlay"
                />
              </div>
            </div>

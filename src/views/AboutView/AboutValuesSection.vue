@@ -44,7 +44,7 @@ export default {
 </script>
 
 <template>
-  <section id="values" class="min-h-screen  flex flex-col justify-center py-20">
+  <section id="values" class="min-h-screen  flex flex-col justify-start py-10">
     <div class="max-w-7xl ">
       
       <!-- Section Title -->
