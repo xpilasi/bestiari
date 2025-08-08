@@ -45,42 +45,44 @@ export default {
 </script>
 
 <template>
-  <!-- Navigation Button - Fixed Bottom Center -->
-  <div v-show="isVisible" class="hidden lg:fixed bottom-10 lg:left-1/2 lg:right-1/2 right-0  transform  z-50 ">
-    <div class="relative">
-      <!-- Main Navigation Button -->
-      <button 
-        @click="navigateToNextSection()"
-        class="group relative lg:bg-white/70 cursor-pointer bg-gradient-to-br  from-purple-600 to-pink-500 text-black px-3 lg:px-8 py-3 rounded-full shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105 animate-bounce-subtle"
-      >
-        <div class="flex items-center space-x-2">
-          <svg class="w-4 h-4 transform transition-transform duration-300 text-white" 
-               :class="currentSection === lastSectionId ? 'rotate-180' : ''"
-               fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-          </svg>
-        </div>
-        
-        <!-- Pulse Ring Effect - Only on Hover -->
-        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 opacity-0 group-hover:opacity-20 group-hover:animate-ping"></div>
-      </button>
-      
-      <!-- Section Dots -->
-      <div v-if="Dots" class="absolute -top-16 left-1/2 transform -translate-x-1/2 flex space-x-2">
+  <!-- Navigation Button - Fixed Bottom Center - Desktop Only -->
+  <div v-show="isVisible" class="hidden lg:block">
+    <div class="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50">
+      <div class="relative">
+        <!-- Main Navigation Button -->
         <button 
-          v-for="section in sections" 
-          :key="section.id"
-          @click="scrollToSection(section.id)"
-          class="h-2 rounded-full transition-all duration-200 hover:scale-125 group"
-          :class="currentSection === section.id 
-            ? 'bg-gradient-to-r from-[#8E2DFE] to-[#E61655] w-6 shadow-lg shadow-purple-500/30' 
-            : 'bg-white/30 hover:bg-white/60 w-2 hover:w-4 cursor-pointer'"
-          :title="section.label"
+          @click="navigateToNextSection()"
+          class="group relative bg-gradient-to-br  from-purple-600 to-pink-500 cursor-pointer text-white px-8 py-3 rounded-full shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105 animate-bounce-subtle"
         >
-          <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-            {{ section.icon }} {{ section.label }}
-          </span>
+          <div class="flex items-center space-x-2">
+            <svg class="w-4 h-4 transform transition-transform duration-300 text-white" 
+                 :class="currentSection === lastSectionId ? 'rotate-180' : ''"
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </div>
+          
+          <!-- Pulse Ring Effect - Only on Hover -->
+          <div class="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 opacity-0 group-hover:opacity-20 group-hover:animate-ping"></div>
         </button>
+        
+        <!-- Section Dots -->
+        <div v-if="Dots" class="absolute -top-16 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          <button 
+            v-for="section in sections" 
+            :key="section.id"
+            @click="scrollToSection(section.id)"
+            class="h-2 rounded-full transition-all duration-200 hover:scale-125 group"
+            :class="currentSection === section.id 
+              ? 'bg-gradient-to-r from-[#8E2DFE] to-[#E61655] w-6 shadow-lg shadow-purple-500/30' 
+              : 'bg-white/30 hover:bg-white/60 w-2 hover:w-4 cursor-pointer'"
+            :title="section.label"
+          >
+            <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+              {{ section.icon }} {{ section.label }}
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   </div>

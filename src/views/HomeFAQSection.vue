@@ -213,7 +213,7 @@ export default {
           @click="closeModal"
         >
           <!-- Modal Backdrop -->
-          <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+          <div class="absolute inset-0 bg-black/80 "></div>
           
           <!-- Modal Content -->
           <div 

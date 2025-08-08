@@ -27,11 +27,11 @@ export default {
     },
     titleColor: {
       type: String,
-      default: 'text-[#3D3D3D]'
+      default: 'text-white'
     },
     subtitleColor: {
       type: String,
-      default: 'text-black'
+      default: 'text-white'
     },
     numberSize: {
       type: String,
@@ -58,15 +58,15 @@ export default {
 </script>
 
 <template>
-    <div class="relative rounded-2xl bg-white py-10 overflow-hidden">
+    <div class="relative rounded-2xl bg-gradient-to-br from-black to-blue-900 py-8 mx-4 overflow-hidden h-64">
         <!-- Background Image -->
-        <img :src="MobileFeatureBg" alt="Mobile Feature Background" class="absolute inset-0 w-full h-full object-cover">
+        <!-- <img :src="MobileFeatureBg" alt="Mobile Feature Background" class="absolute inset-0 w-full h-full object-cover"> -->
         
         <!-- Overlay -->
-        <div class="absolute inset-0 backdrop-blur-sm bg-white/50"></div> 
+        <div class="absolute inset-0 backdrop-blur-sm bg-white/0"></div> 
         
         <!-- Content Container -->
-        <div class="relative z-10 px-6 space-y-4">
+        <div :class="`relative z-10 px-6 h-full flex flex-col justify-center ${spacing}`">
             <!-- Feature Number -->
             <div :class="`${numberColor} ${numberSize} font-normal leading-none tracking-[2px] font-instrument-serif italic`">
                 {{ number }}
@@ -80,7 +80,7 @@ export default {
             
             <!-- Feature Subtitle -->
             <p :class="`${subtitleColor} ${subtitleSize} font-extralight leading-relaxed tracking-[-0.06em]`"
-               style="font-family: Inter; max-width: 200px;">
+               style="font-family: Inter;">
                 {{ subtitle }}
             </p>
         </div>

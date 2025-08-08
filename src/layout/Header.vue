@@ -169,7 +169,7 @@ export default {
 </script>
 
 <template>
-  <!-- Header Desktop (lg y superior) -->
+  <!-- Header Desktop (lg y superior) - NO sticky -->
   <header class="hidden lg:flex w-full h-20 flex-row items-center justify-between bg-bg-primary px-4 xl:px-48 2xl:px-80">
     <!-- Logo Section -->
     <RouterLink to="/" class="flex flex-col justify-center">
@@ -210,8 +210,8 @@ export default {
     </nav>
   </header>
 
-  <!-- Header Mobile/Tablet (lg y menor) -->
-  <header class=" sticky top-0 lg:hidden w-full h-16 flex items-center justify-between bg-bg-primary px-4 relative z-50">
+  <!-- Header Mobile/Tablet (lg y menor) - STICKY -->
+  <header class="sticky top-0 lg:hidden w-full h-16 flex items-center justify-between bg-bg-primary px-4 z-50" >
     <!-- Logo Section Mobile -->
     <RouterLink to="/" class="flex items-center" @click="closeMobileMenu">
       <BestiariLogo class="h-8" />
@@ -242,7 +242,7 @@ export default {
   <Transition name="mobile-menu">
     <div 
       v-if="isMobileMenuOpen"
-      class="xl:hidden fixed inset-0 bg-white z-40 overflow-y-auto"
+      class="xl:hidden fixed inset-0 bg-gray-50 z-40 overflow-y-auto"
     >
       <!-- Mobile Menu Content -->
       <div class="flex flex-col h-full pt-20 pb-8">

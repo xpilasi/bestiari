@@ -2,8 +2,8 @@
 import SectionTitle from '@/components/SectionTitle.vue'
 import SectionSubTitle from '@/components/SectionSubTitle.vue'
 import TeamCard from '@/components/TeamCard.vue'
-import modernFer from '@/assets/img/team/fer-1.png'
-import modernXavi from '@/assets/img/team/xavi-1.png'
+import modernFer from '@/assets/img/team/fer-3.png'
+import modernXavi from '@/assets/img/team/xavi-2.png'
 import xaviImage from '@/assets/img/team/xavi-img.png'
 import ModernTeamCard from '@/components/ModernTeamCard.vue'
 import MobileModernTeamCard from '@/components/MobileModernTeamCard.vue'
@@ -57,8 +57,8 @@ export default {
           linkedin: 'https://www.linkedin.com/in/fernanda-bravo-luengo/',
           profileImageWidth: '',
           profileImageWidthMobile: '',
-          profileImageHeight: 'h-full ',
-          profileImageHeightMobile: 'h-full',
+          profileImageHeight: 'h-full bg-gradient-to-br from-yellow-400 to-orange-800 w-full',
+          profileImageHeightMobile: 'h-full bg-gradient-to-br from-red-400 to-orange-600 w-full'
         },
         {
           id: 2,
@@ -181,7 +181,7 @@ export default {
 </script>
 
 <template>
-  <section id="team" class="min-h-screen  flex flex-col justify-center items-center py-20">
+  <section id="team" class="min-h-screen  flex flex-col justify-start items-center py-10">
      <!-- Título principal -->
      <div class="text-center mb-10 flex flex-col gap-5">
         <SectionTitle 

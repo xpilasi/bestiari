@@ -94,7 +94,7 @@ export default {
 </script>
 
 <template>
-  <div class="bg-bg-primary min-h-screen">
+  <div class="bg-bg-primary min-h-screen overflow-x-hidden">
     <HomeHeroSection />
     <HomeWhatWeDoSection />
     <HomePresentationSection />

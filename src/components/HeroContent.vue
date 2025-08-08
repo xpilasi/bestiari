@@ -154,7 +154,7 @@ export default {
     </div>
 
     <!-- Layout Desktop -->
-    <div class="hidden xl:flex xl:flex-row items-center justify-between gap-20">
+    <div class="hidden xl:flex xl:flex-row items-center justify-between gap-20 ">
       <!-- Hero Header - Desktop -->
       <div class="flex flex-col">
         <h1 class="text-4xl lg:text-7xl font-medium tracking-tighter leading-0.5 text-black mb-6 max-w-3xl" 

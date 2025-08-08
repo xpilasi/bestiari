@@ -51,7 +51,7 @@ export default {
 </script>
 
 <template>
-  <section id="projects-hero" class="min-h-[93vh] lg:min-h-[91vh] bg-primary flex flex-col justify-start xl:justify-start py-0 xl:py-30  ">
+  <section id="projects-hero" class="min-h-[93vh] lg:min-h-[91vh] bg-primary flex flex-col justify-start xl:justify-start py-0 xl:py-10  ">
     <HeroContent 
       animal-width="w-[400px]"
       :hero-title="heroTitle"

@@ -16,7 +16,7 @@ export default {
 <template>
   <div class="font-poppins min-h-screen bg-white">
     <Header />
-    <main class="">
+    <main>
       <RouterView />
     </main>
     <Footer />
