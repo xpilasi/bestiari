@@ -1,31 +1,27 @@
 <script>
 import SectionTitle from '@/components/SectionTitle.vue'
-import CarouselContainer from '@/components/CarouselContainer.vue'
 import WorkCard from '@/components/WorkCard.vue'
+import ProjectModal from '@/components/ProjectModal.vue'
 
-// Importar imágenes de ejemplo (puedes reemplazar con imágenes reales)
-import project1Image from '@/assets/img/design/phones.png'
-import project2Image from '@/assets/img/design/just-list.webp'
-import project3Image from '@/assets/img/solutions/website.png'
-import project4Image from '@/assets/img/solutions/web-app.png'
-import project5Image from '@/assets/img/solutions/mobile-app.png'
+import activitierImage from '@/assets/img/proyectos/activitier.png'
+import rockvibesImage from '@/assets/img/proyectos/rockvibes.png'
+import goodRootsImage from '@/assets/img/proyectos/good-roots.png'
+import gorillaImage from '@/assets/img/proyectos/gorilla_web2.png'
 
 export default {
   name: 'ProjectsWorkSection',
   components: {
     SectionTitle,
-    CarouselContainer,
-    WorkCard
+    WorkCard,
+    ProjectModal
   },
   mounted() {
-    // Establecer ancho inicial y agregar listener para resize
     if (typeof window !== 'undefined') {
       this.windowWidth = window.innerWidth
       window.addEventListener('resize', this.handleResize)
     }
   },
   beforeUnmount() {
-    // Remover listener
     if (typeof window !== 'undefined') {
       window.removeEventListener('resize', this.handleResize)
     }
@@ -34,58 +30,84 @@ export default {
     return {
       sectionTitle: 'Nuestros proyectos destacados',
       highlightedWord: 'proyectos',
-      
+
+      // Modal state
+      selectedProject: null,
+      showModal: false,
+
       // Carousel state
       currentIndex: 0,
       touchStartX: 0,
       touchEndX: 0,
-      windowWidth: 1024, // Valor por defecto
-      
-      // Datos de los proyectos
+      windowWidth: 1024,
+
       projects: [
         {
           id: 1,
-          projectName: 'E-commerce Moderno',
+          projectName: 'Aplicación Web',
           productType: 'Web App',
-          projectImage: project1Image
+          projectImage: activitierImage,
+          modalDescription: 'Una aplicación web es tu negocio funcionando en internet, accesible desde cualquier dispositivo sin instalar nada. Tus clientes entran, interactúan y completan lo que necesitan al instante. Ideal para ofrecer servicios online, gestionar reservas, membresías, usuarios o cualquier proceso que hoy haces en persona o por teléfono.',
+          modalFeatures: [
+            'Accesible desde móvil, tablet y computadora',
+            'Sin descargas ni actualizaciones para el usuario',
+            'Cada cliente tiene su espacio y acceso personalizado',
+            'Se conecta con pagos, calendarios, correo y más'
+          ],
+          modalUrl: '#' // Reemplazar con URL real del proyecto
         },
         {
           id: 2,
-          projectName: 'Dashboard Analytics',
-          productType: 'Web App',
-          projectImage: project2Image
+          projectName: 'Landing Corporativa',
+          productType: 'Landing',
+          projectImage: rockvibesImage,
+          modalDescription: 'Tu carta de presentación en internet. Una landing corporativa comunica con claridad quiénes son, qué ofrecen y por qué elegirlos. Diseñada para causar una primera impresión impecable y convertir cada visita en un contacto o cliente potencial.',
+          modalFeatures: [
+            'Diseño premium que transmite profesionalismo',
+            'Optimizada para aparecer en Google (SEO)',
+            'Adaptada perfectamente a móvil y escritorio',
+            'Carga ultra rápida para no perder visitas'
+          ],
+          modalUrl: '#' // Reemplazar con URL real del proyecto
         },
         {
           id: 3,
-          projectName: 'Landing Corporativa',
-          productType: 'Website',
-          projectImage: project3Image
+          projectName: 'Sitio Web Comercial',
+          productType: 'Comercial',
+          projectImage: goodRootsImage,
+          modalDescription: 'Más que una página, es tu vendedor disponible las 24 horas. Un sitio web comercial concentra todo lo que tu negocio necesita: catálogo de productos o servicios, información clave, formas de contacto y herramientas para cerrar ventas. El hub central de tu presencia digital.',
+          modalFeatures: [
+            'Catálogo completo de productos o servicios',
+            'Formularios de contacto y solicitud de cotización',
+            'Integración con redes sociales y WhatsApp',
+            'Analíticas para entender a tus visitantes'
+          ],
+          modalUrl: '#' // Reemplazar con URL real del proyecto
         },
         {
           id: 4,
-          projectName: 'Sistema de Gestión',
-          productType: 'Web App',
-          projectImage: project4Image
-        },
-        {
-          id: 5,
-          projectName: 'App de Productividad',
+          projectName: 'Aplicación Móvil',
           productType: 'Mobile App',
-          projectImage: project5Image
+          projectImage: gorillaImage,
+          modalDescription: 'Tu marca en el bolsillo de tus clientes. Una app móvil ofrece la experiencia más directa y personal que existe: notificaciones instantáneas, acceso sin internet, funciones nativas del teléfono y una experiencia fluida que hace que tus usuarios quieran volver. Disponible en iOS y Android.',
+          modalFeatures: [
+            'Disponible en iOS y Android',
+            'Notificaciones push directas al usuario',
+            'Funciona sin conexión a internet',
+            'Experiencia nativa fluida y de alta velocidad'
+          ],
+          modalUrl: '#' // Reemplazar con URL real del proyecto
         }
       ]
     }
   },
   computed: {
-    // Responsive: número de cards por slide
     cardsPerSlide() {
-      if (this.windowWidth >= 1280) return 4 // xl
-      if (this.windowWidth >= 1024) return 3 // lg
-      if (this.windowWidth >= 768) return 2  // md
-      return 1 // mobile
+      if (this.windowWidth >= 1280) return 4
+      if (this.windowWidth >= 1024) return 3
+      if (this.windowWidth >= 768) return 2
+      return 1
     },
-    
-    // Ancho de cada slide
     slideWidth() {
       if (this.cardsPerSlide === 1) return 'w-full'
       if (this.cardsPerSlide === 2) return 'w-1/2'
@@ -93,72 +115,58 @@ export default {
       if (this.cardsPerSlide === 4) return 'w-1/4'
       return 'w-full'
     },
-    
-    // Transform para el carrusel
     carouselTransform() {
       const percentage = (this.currentIndex * 100) / this.cardsPerSlide
       return `translateX(-${percentage}%)`
     },
-    
-    // Número total de slides
     totalSlides() {
       return Math.ceil(this.projects.length / this.cardsPerSlide)
     },
-    
-    // Índice máximo
     maxIndex() {
-      return this.projects.length - this.cardsPerSlide
+      return Math.max(0, this.projects.length - this.cardsPerSlide)
     }
   },
   methods: {
+    openModal(project) {
+      this.selectedProject = project
+      this.showModal = true
+    },
+    closeModal() {
+      this.showModal = false
+      setTimeout(() => { this.selectedProject = null }, 300)
+    },
     nextSlide() {
       if (this.currentIndex < this.maxIndex) {
         this.currentIndex += this.cardsPerSlide
       }
     },
-    
     prevSlide() {
       if (this.currentIndex > 0) {
         this.currentIndex -= this.cardsPerSlide
       }
     },
-    
     goToSlide(slideIndex) {
       this.currentIndex = slideIndex * this.cardsPerSlide
     },
-    
-    // Touch events
     handleTouchStart(e) {
       this.touchStartX = e.touches[0].clientX
     },
-    
     handleTouchMove(e) {
       this.touchEndX = e.touches[0].clientX
     },
-    
     handleTouchEnd() {
       if (!this.touchStartX || !this.touchEndX) return
-      
       const distance = this.touchStartX - this.touchEndX
-      const threshold = 50
-      
-      if (distance > threshold) {
-        this.nextSlide()
-      } else if (distance < -threshold) {
-        this.prevSlide()
-      }
-      
+      if (distance > 50) this.nextSlide()
+      else if (distance < -50) this.prevSlide()
       this.touchStartX = 0
       this.touchEndX = 0
     },
-    
     handleResize() {
-      // Actualizar windowWidth y ajustar currentIndex
       if (typeof window !== 'undefined') {
         this.windowWidth = window.innerWidth
-        const newMaxIndex = this.projects.length - this.cardsPerSlide
-        if (this.currentIndex > newMaxIndex) {
-          this.currentIndex = Math.max(0, newMaxIndex)
+        if (this.currentIndex > this.maxIndex) {
+          this.currentIndex = Math.max(0, this.maxIndex)
         }
       }
     }
@@ -167,11 +175,11 @@ export default {
 </script>
 
 <template>
-  <section id="projects-work" class="min-h-screen flex flex-col justify-center py-10 xl:py-20 ">
-    
-    <!-- Título principal con padding -->
+  <section id="projects-work" class="min-h-screen flex flex-col justify-center py-10 xl:py-20">
+
+    <!-- Título -->
     <div class="text-center mb-16 px-4 xl:px-48 2xl:px-80">
-      <SectionTitle 
+      <SectionTitle
         :title="sectionTitle"
         :highlighted-word="highlightedWord"
         alignment="center"
@@ -181,23 +189,24 @@ export default {
       />
     </div>
 
-    <!-- Carousel personalizado para mostrar múltiples cards - Full Width -->
+    <!-- Carousel -->
     <div class="mb-20 w-full">
       <div class="relative overflow-hidden">
-        
-        <!-- Carousel Track -->
-        <div 
-          class="flex transition-transform duration-300 ease-out "
+
+        <!-- Track -->
+        <div
+          class="flex transition-transform duration-300 ease-out"
           :style="{ transform: carouselTransform }"
           @touchstart="handleTouchStart"
           @touchmove="handleTouchMove"
           @touchend="handleTouchEnd"
         >
-          <div 
-            v-for="(project, index) in projects" 
+          <div
+            v-for="project in projects"
             :key="project.id"
-            class="flex-shrink-0 px-3"
+            class="flex-shrink-0 px-3 cursor-pointer"
             :class="slideWidth"
+            @click="openModal(project)"
           >
             <WorkCard
               :project-name="project.projectName"
@@ -209,11 +218,11 @@ export default {
           </div>
         </div>
 
-        <!-- Navigation Arrows -->
+        <!-- Arrows -->
         <button
           @click="prevSlide"
           class="absolute left-2 top-1/2 -translate-y-1/2 bg-black cursor-pointer hover:bg-white text-white hover:text-black rounded-full p-3 shadow-lg transition-all duration-200 z-10 hover:scale-110"
-          :class="{ 'opacity-50 cursor-not-allowed': currentIndex === 0 }"
+          :class="{ 'opacity-40 pointer-events-none': currentIndex === 0 }"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -223,7 +232,7 @@ export default {
         <button
           @click="nextSlide"
           class="absolute right-2 top-1/2 -translate-y-1/2 bg-black cursor-pointer hover:bg-white text-white hover:text-black rounded-full p-3 shadow-lg transition-all duration-200 z-10 hover:scale-110"
-          :class="{ 'opacity-50 cursor-not-allowed': currentIndex >= maxIndex }"
+          :class="{ 'opacity-40 pointer-events-none': currentIndex >= maxIndex }"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -239,11 +248,18 @@ export default {
           @click="goToSlide(index)"
           class="h-2 rounded-full transition-all duration-300 cursor-pointer"
           :class="Math.floor(currentIndex / cardsPerSlide) === index
-            ? 'bg-gradient-to-r from-[#8E2DFE] to-[#E61655] w-8 shadow-lg shadow-purple-500/30' 
+            ? 'bg-gradient-to-r from-[#8E2DFE] to-[#E61655] w-8 shadow-lg shadow-purple-500/30'
             : 'bg-gray-300 hover:bg-gray-500 w-2 hover:w-4 hover:shadow-md'"
         ></button>
       </div>
     </div>
+
+    <!-- Modal -->
+    <ProjectModal
+      :project="selectedProject"
+      :is-open="showModal"
+      @close="closeModal"
+    />
 
   </section>
 </template>
