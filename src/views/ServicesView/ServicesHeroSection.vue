@@ -14,7 +14,7 @@ export default {
       heroTitle: 'Soluciones que inspiran',
       heroSubtitle: 'Todo lo que necesitas para destacar online.',
       highlightedWord: 'inspiran', // Palabra que se va a destacar
-      meetingTitle: 'Reserva una Meeting de 15 minutos',
+      meetingTitle: 'Reserva una Meeting de 30 minutos',
       meetingSubtitle: 'Agenda ahora',
       fluidBgImage: fluidBgImage,
       animalImage: animalImage,
@@ -33,16 +33,16 @@ export default {
 
   methods: {
     handleContactClick() {
-      // Navegación a contacto
-      console.log('Navegando a contacto...')
+      window.dispatchEvent(new CustomEvent('open-contact-modal'))
     },
     handleStartTodayClick() {
       // Acción para empezar hoy
       console.log('Empezando hoy...')
     },
     handleMeetingClick() {
-      // Abrir calendario o enlace de reunión
-      console.log('Agendando reunión...')
+      if (window.Calendly) {
+        window.Calendly.initPopupWidget({ url: 'https://calendly.com/bestiariagencia/30min' })
+      }
     }
   }
 }

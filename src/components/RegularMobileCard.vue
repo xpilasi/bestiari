@@ -61,7 +61,7 @@ export default {
     },
     meetingTitle: {
       type: String,
-      default: 'Reserva una Meeting de 15 minutos'
+      default: 'Reserva una Meeting de 30 minutos'
     },
     meetingSubtitle: {
       type: String,
@@ -150,14 +150,14 @@ export default {
       
       <!-- Botón Empieza hoy -->
       <button @click="handleStartToday"
-              class="absolute top-4 md:top-8 left-4 md:left-8 bg-black rounded-full px-3 md:px-6 py-1.5 md:py-3 flex items-center gap-1.5 md:gap-3 text-white text-xs md:text-base font-normal z-30">
+              class="absolute top-4 md:top-8 left-4 md:left-8 cursor-pointer bg-black rounded-full px-3 md:px-6 py-1.5 md:py-3 flex items-center gap-1.5 md:gap-3 text-white text-xs md:text-base font-normal z-30">
         <div class="w-1.5 h-1.5 md:w-3 md:h-3 bg-yellow-400 rounded-full"></div>
         <span class="py-0.5 md:py-1 text-xs md:text-base">{{ startButtonText }}</span>
       </button>
       
       <!-- Botón Contáctanos -->
       <button @click="handleContactClick"
-              class="absolute bottom-20 md:bottom-40 left-4 md:left-8 right-4 md:right-8 bg-white rounded-lg py-3 md:py-6 text-gray-700 font-semibold tracking-tighter text-lg md:text-3xl shadow-xl z-30">
+              class="absolute bottom-20 md:bottom-40 left-4 md:left-8 right-4 md:right-8 cursor-pointer bg-white rounded-lg py-3 md:py-6 text-gray-700 font-semibold tracking-tighter text-lg md:text-3xl shadow-xl z-30">
         {{ contactButtonText }}
       </button>
       
@@ -181,7 +181,7 @@ export default {
         
         <!-- Arrow Button -->
         <button @click="handleMeetingClick"
-                class="w-8 h-8 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                class="w-8 h-8 md:w-16 md:h-16 cursor-pointer bg-white rounded-full flex items-center justify-center flex-shrink-0">
           <ArrowRight class="w-4 h-4 md:w-8 md:h-8 text-gray-700" />
         </button>
       </div>

@@ -25,8 +25,7 @@ export default {
   },
   methods: {
     handleContactClick() {
-      // Handle contact button click - could open a modal, redirect, etc.
-      console.log('Contact button clicked')
+      window.dispatchEvent(new CustomEvent('open-contact-modal'))
     },
     handleEmailClick(email) {
       // Handle email click - could copy to clipboard, open email client, etc.

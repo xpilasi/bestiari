@@ -5,6 +5,16 @@
     <link rel="icon" type="image/png" href="/src/assets/img/favicon/favicon-bestiari.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bestiari - Desarrollo de Software</title>
+    <!-- Calendly -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <!-- Netlify Forms detection (required for Vue SPA) -->
+    <form name="contacto" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="nombre" />
+      <input type="email" name="email" />
+      <input type="text" name="asunto" />
+      <textarea name="mensaje"></textarea>
+    </form>
   </head>
   <body>
     <div id="app"></div>

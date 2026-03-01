@@ -61,7 +61,7 @@ export default {
     },
     meetingTitle: {
       type: String,
-      default: 'Reserva una Meeting de 15 minutos'
+      default: 'Reserva una Meeting de 30 minutos'
     },
     meetingSubtitle: {
       type: String,
@@ -146,7 +146,7 @@ export default {
       
       <!-- Botón Empieza hoy -->
       <button @click="handleStartToday"
-              class="absolute top-5 left-6 bg-black rounded-full px-4 py-2 flex items-center gap-2 text-white text-xs font-normal z-30">
+              class="absolute top-5 left-6 cursor-pointer bg-black rounded-full px-4 py-2 flex items-center gap-2 text-white text-xs font-normal z-30">
         <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
         <span class="py-1">{{ startButtonText }}</span>
       </button>

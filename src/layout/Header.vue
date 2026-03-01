@@ -150,19 +150,18 @@ export default {
     }
   },
   mounted() {
-    // Asegurar que el DOM esté completamente listo
     this.$nextTick(() => {
       setTimeout(() => {
         this.updateLinePosition()
       }, 100)
     })
     window.addEventListener('resize', this.updateLinePosition)
+    window.addEventListener('open-contact-modal', this.openContactModal)
   },
   unmounted() {
     window.removeEventListener('resize', this.updateLinePosition)
-    // Limpiar el overflow del body al desmontar el componente
+    window.removeEventListener('open-contact-modal', this.openContactModal)
     document.body.style.overflow = ''
-    // Cerrar modal si está abierto
     this.isContactModalOpen = false
   }
 }
@@ -218,9 +217,9 @@ export default {
     </RouterLink>
     
     <!-- Hamburger Menu Button -->
-    <button 
+    <button
       @click="toggleMobileMenu"
-      class="flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none"
+      class="flex flex-col cursor-pointer justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none"
       :class="{ 'open': isMobileMenuOpen }"
     >
       <span 

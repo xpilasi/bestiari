@@ -1,41 +1,71 @@
 <script>
-
-import LeonaAvatar from '@/assets/img/animals/leona-cool.png'
 import PandaAvatar from '@/assets/img/animals/panda-avatar.png'
 import LogoBestiari from '@/assets/img/logos/logo-bestiari-dark.svg'
+
 export default {
   name: 'ContactModalCard',
   emits: ['close'],
+  components: {
+    LogoBestiari
+  },
   data() {
     return {
       formData: {
-        nombre: 'Xavier Pilasi',
-        email: 'xpilasi@bestiari.art',
-        asunto: 'Presupuesto aplicación web para mi hotel',
-        mensaje: 'Hola, me gustaría crear una aplicación web para mi hotel. ¿Podrías ayudarme?'
+        nombre: '',
+        email: '',
+        asunto: '',
+        mensaje: ''
       },
-      LeonaAvatar: LeonaAvatar,
-      PandaAvatar: PandaAvatar,
-      
+      submitting: false,
+      submitted: false,
+      error: false,
+      PandaAvatar
     }
-  },
-  components: {
-    LogoBestiari
   },
   methods: {
     closeModal() {
       this.$emit('close')
     },
     handleOverlayClick(event) {
-      // Solo cerrar si se hace click en el overlay, no en la tarjeta
       if (event.target === event.currentTarget) {
         this.closeModal()
       }
     },
-    handleSubmit() {
-      console.log('Formulario enviado:', this.formData)
-      // Aquí puedes agregar la lógica para enviar el formulario
-      this.closeModal()
+    async handleSubmit() {
+      this.submitting = true
+      this.error = false
+
+      // En desarrollo local Netlify Forms no está disponible — simular éxito
+      if (import.meta.env.DEV) {
+        setTimeout(() => {
+          this.submitted = true
+          this.submitting = false
+        }, 800)
+        return
+      }
+
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            'form-name': 'contacto',
+            nombre: this.formData.nombre,
+            email: this.formData.email,
+            asunto: this.formData.asunto,
+            mensaje: this.formData.mensaje
+          }).toString()
+        })
+        if (response.ok) {
+          this.submitted = true
+        } else {
+          this.error = true
+        }
+      } catch {
+        this.error = true
+      } finally {
+        this.submitting = false
+      }
     }
   }
 }
@@ -43,14 +73,15 @@ export default {
 
 <template>
   <!-- Modal Overlay -->
-  <div 
+  <div
     @click="handleOverlayClick"
-    class="fixed inset-0 bg-black/70  z-50 flex items-center justify-center p-4"
+    class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
   >
-    <!-- Modal Card Container -->
-    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-4xl overflow-hidden h-auto ">
+    <!-- Modal Card -->
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-4xl overflow-hidden">
+
       <!-- Close Button -->
-      <button 
+      <button
         @click="closeModal"
         class="absolute top-4 right-4 z-10 w-8 h-8 cursor-pointer hover:rotate-90 bg-white bg-opacity-90 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-200"
       >
@@ -59,21 +90,18 @@ export default {
         </svg>
       </button>
 
-      <!-- Main Content Container -->
-      <div class="flex flex-col lg:flex-row h-auto  ">
-        <!-- Left Section - Contact Information -->
+      <div class="flex flex-col lg:flex-row">
+
+        <!-- Left — Contact Info -->
         <div class="lg:w-80 w-full bg-gradient-to-br from-coolPurple to-coolPink p-6 lg:px-7 text-white relative rounded-2xl lg:flex lg:flex-col lg:justify-between">
-          <!-- Contact Header -->
-          <div class=" flex flex-col justify-between gap-2 hidden lg:block">
-            <div class="text-md font-bold  tracking-tighter ">
-              Información de contacto
-            </div>
+
+          <div class="flex-col justify-between gap-2 hidden lg:flex">
+            <div class="text-md font-bold tracking-tighter">Información de contacto</div>
             <p class="text-sm font-extralight leading-[13px] tracking-tight opacity-90">
-              Esta es un espacio para poner un subtítulo sobre la información de contacto.
+              Estamos aquí para ayudarte a hacer crecer tu negocio digital.
             </p>
           </div>
 
-          <!-- Contact Items -->
           <div class="space-y-4 hidden lg:block">
             <!-- Email -->
             <div class="flex items-center gap-4">
@@ -82,9 +110,7 @@ export default {
                   <path d="M15.18 4.5H2.82C1.82 4.5 1.01 5.31 1.01 6.31L1 13.19C1 14.19 1.82 15 2.82 15H15.18C16.18 15 17 14.19 17 13.19V6.31C17 5.31 16.18 4.5 15.18 4.5ZM15.18 8.12L9 11.75L2.82 8.12V6.31L9 9.94L15.18 6.31V8.12Z"/>
                 </svg>
               </div>
-              <span class="text-sm font-bold leading-[19px] tracking-tighter">
-                hola@bestiari.art
-              </span>
+              <span class="text-sm font-bold leading-[19px] tracking-tighter">contacto@bestiari.es</span>
             </div>
 
             <!-- WhatsApp -->
@@ -107,103 +133,118 @@ export default {
                   <path d="M9 0C5.7 0 3 2.7 3 6C3 10.5 9 16 9 16S15 10.5 15 6C15 2.7 12.3 0 9 0ZM9 8C7.9 8 7 7.1 7 6C7 4.9 7.9 4 9 4C10.1 4 11 4.9 11 6C11 7.1 10.1 8 9 8Z"/>
                 </svg>
               </div>
-              <span class="text-sm font-bold leading-[19px] tracking-tighter">
-                Barcelona, ES
-              </span>
+              <span class="text-sm font-bold leading-[19px] tracking-tighter">Barcelona, ES</span>
             </div>
           </div>
 
-          <!-- Animal Avatar -->
-          <div class=" bottom-4 transform  flex items-center justify-center w-full">
-            <div class="  flex items-center justify-center">
-              <!-- Avatar Background Circle -->
-              <div class="w-30 h-30 bg-white rounded-full overflow-hidden relative">
-                
-                <!-- Animal Image -->
-                <img 
-                  :src="PandaAvatar" 
-                  alt="Leona Avatar" 
-                  class="absolute  object-cover h-60"
-                />
-              </div>
+          <!-- Avatar -->
+          <div class="flex items-center justify-center w-full mt-6 lg:mt-0">
+            <div class="w-30 h-30 bg-white rounded-full overflow-hidden relative">
+              <img :src="PandaAvatar" alt="Avatar" class="absolute object-cover h-60" />
             </div>
           </div>
         </div>
 
-        <!-- Right Section - Contact Form -->
+        <!-- Right — Form or Success -->
         <div class="flex-1 p-6 lg:p-8 bg-white">
-          <form @submit.prevent="handleSubmit" class="space-y-2">
-            <!-- Nombre and Email Row -->
+
+          <!-- Success State -->
+          <div v-if="submitted" class="h-full min-h-[300px] flex flex-col items-center justify-center text-center py-8">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#8E2DFE] to-[#E61655] flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-black tracking-tight mb-3" style="font-family: Inter;">
+              ¡Mensaje enviado!
+            </h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-8 max-w-xs" style="font-family: Inter;">
+              Nos pondremos en contacto contigo en las próximas 24 horas.
+            </p>
+            <button
+              @click="closeModal"
+              class="px-6 py-2.5 bg-gradient-to-r from-[#8E2DFE] to-[#E61655] text-white text-sm font-medium rounded-full cursor-pointer hover:shadow-lg hover:shadow-purple-500/30 hover:scale-105 transition-all duration-200"
+              style="font-family: Inter;"
+            >
+              Cerrar
+            </button>
+          </div>
+
+          <!-- Form -->
+          <form v-else @submit.prevent="handleSubmit" class="space-y-2">
+            <!-- Honeypot (anti-spam) -->
+            <input type="hidden" name="bot-field" />
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <!-- Nombre Field -->
-              <div class="">
-                <label class="block text-sm font-medium  tracking-tighter text-gray-400 pb-2">
-                  Nombre
-                </label>
-                <div class="relative">
-                  <input 
-                    v-model="formData.nombre"
-                    type="text" 
-                    class="w-full bg-transparent text-md font-bold leading-[19px] tracking-tighter text-gray-700 border-0 border-b-[0.5px] border-black focus:outline-none focus:border-coolPink pb-2"
-                  />
-                </div>
+              <!-- Nombre -->
+              <div>
+                <label class="block text-sm font-medium tracking-tighter text-gray-400 pb-2">Nombre</label>
+                <input
+                  v-model="formData.nombre"
+                  type="text"
+                  required
+                  placeholder="Tu nombre"
+                  class="w-full bg-transparent text-md font-bold leading-[19px] tracking-tighter text-gray-700 border-0 border-b-[0.5px] border-black focus:outline-none focus:border-coolPink pb-2 placeholder:font-normal placeholder:text-gray-300"
+                />
               </div>
 
-              <!-- Email Field -->
-              <div class="">
-                <label class="block text-sm font-medium  tracking-tighter text-gray-400 pb-2">
-                  Email
-                </label>
-                <div class="relative">
-                  <input 
-                    v-model="formData.email"
-                    type="email" 
-                    class="w-full bg-transparent text-md font-bold leading-[19px] tracking-tighter text-gray-700 border-0 border-b-[0.5px] border-black focus:outline-none focus:border-coolPink pb-2"
-                  />
-                </div>
+              <!-- Email -->
+              <div>
+                <label class="block text-sm font-medium tracking-tighter text-gray-400 pb-2">Email</label>
+                <input
+                  v-model="formData.email"
+                  type="email"
+                  required
+                  placeholder="tu@email.com"
+                  class="w-full bg-transparent text-md font-bold leading-[19px] tracking-tighter text-gray-700 border-0 border-b-[0.5px] border-black focus:outline-none focus:border-coolPink pb-2 placeholder:font-normal placeholder:text-gray-300"
+                />
               </div>
             </div>
 
-             <!-- Subject Field -->
-             <div class="py-7">
-                <label class="block text-sm font-medium  tracking-tighter text-gray-400 pb-2">
-                  Asunto
-                </label>
-                <div class="relative">
-                  <input 
-                    v-model="formData.asunto"
-                    type="text" 
-                    class="w-full bg-transparent text-md font-bold leading-[19px] tracking-tighter text-gray-700 border-0 border-b-[0.5px] border-black focus:outline-none focus:border-coolPink pb-2"
-                  />
-                </div>
-              </div>
-            <!-- Message Field -->
-            <div class="">
-              <label class="block text-sm font-medium  tracking-tighter text-gray-400 pb-2">
-                Mensaje
-              </label>
-              <div class="relative">
-                <textarea 
-                  v-model="formData.mensaje"
-                  rows="3"
-                  class="w-full bg-transparent text-md font-bold leading-[19px] tracking-tighter text-gray-700 border-0 border-b-[0.5px] border-black focus:outline-none focus:border-coolPink pb-2 resize-none"
-                ></textarea>
-              </div>
+            <!-- Asunto -->
+            <div class="py-7">
+              <label class="block text-sm font-medium tracking-tighter text-gray-400 pb-2">Asunto</label>
+              <input
+                v-model="formData.asunto"
+                type="text"
+                required
+                placeholder="¿En qué podemos ayudarte?"
+                class="w-full bg-transparent text-md font-bold leading-[19px] tracking-tighter text-gray-700 border-0 border-b-[0.5px] border-black focus:outline-none focus:border-coolPink pb-2 placeholder:font-normal placeholder:text-gray-300"
+              />
             </div>
 
-            <!-- Submit Button -->
-            <div class=" flex flex-col items-center justify-between gap-4 lg:flex-row mt-10 ">
-              <button 
+            <!-- Mensaje -->
+            <div>
+              <label class="block text-sm font-medium tracking-tighter text-gray-400 pb-2">Mensaje</label>
+              <textarea
+                v-model="formData.mensaje"
+                rows="3"
+                required
+                placeholder="Cuéntanos sobre tu proyecto..."
+                class="w-full bg-transparent text-md font-bold leading-[19px] tracking-tighter text-gray-700 border-0 border-b-[0.5px] border-black focus:outline-none focus:border-coolPink pb-2 resize-none placeholder:font-normal placeholder:text-gray-300"
+              ></textarea>
+            </div>
+
+            <!-- Error message -->
+            <p v-if="error" class="text-red-500 text-xs pt-2" style="font-family: Inter;">
+              Algo salió mal. Por favor, inténtalo de nuevo o escríbenos directamente a contacto@bestiari.es
+            </p>
+
+            <!-- Submit -->
+            <div class="flex flex-col items-center justify-between gap-4 lg:flex-row mt-10">
+              <button
                 type="submit"
-                class="bg-gradient-to-r from-coolPurple to-coolPink cursor-pointer text-white font-medium  leading-tight  tracking-tighter px-6 py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                :disabled="submitting"
+                class="bg-gradient-to-r from-coolPurple to-coolPink cursor-pointer text-white font-medium leading-tight tracking-tighter px-6 py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
               >
-                ENVIAR MENSAJE →
+                {{ submitting ? 'Enviando...' : 'ENVIAR MENSAJE →' }}
               </button>
-              <div class="flex   justify-center items-center">
-                <LogoBestiari class=" h-10 w-auto opacity-20" />
+              <div class="flex justify-center items-center">
+                <LogoBestiari class="h-10 w-auto opacity-20" />
               </div>
             </div>
           </form>
+
         </div>
       </div>
     </div>
@@ -211,30 +252,11 @@ export default {
 </template>
 
 <style scoped>
-/* Animación de entrada del modal */
-@keyframes modal-enter {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.modal-card {
-  animation: modal-enter 0.3s ease-out;
-}
-
-/* Estilos para inputs con focus */
 input:focus,
 textarea:focus {
   border-bottom-color: #E61655;
 }
-
-/* Remover estilos por defecto del textarea */
 textarea {
   resize: none;
 }
-</style> 
+</style>
