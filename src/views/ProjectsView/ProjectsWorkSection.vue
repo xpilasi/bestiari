@@ -6,7 +6,7 @@ import ProjectModal from '@/components/ProjectModal.vue'
 import activitierImage from '@/assets/img/proyectos/activitier.png'
 import rockvibesImage from '@/assets/img/proyectos/rockvibes.png'
 import goodRootsImage from '@/assets/img/proyectos/good-roots.png'
-import gorillaImage from '@/assets/img/proyectos/gorilla_web2.png'
+import easyBudgeImage from '@/assets/img/proyectos/easybudget.png'
 
 export default {
   name: 'ProjectsWorkSection',
@@ -44,38 +44,38 @@ export default {
       projects: [
         {
           id: 1,
-          projectName: 'Aplicación Web',
+          projectName: 'Activitier',
           productType: 'Web App',
           projectImage: activitierImage,
-          modalDescription: 'Una aplicación web es tu negocio funcionando en internet, accesible desde cualquier dispositivo sin instalar nada. Tus clientes entran, interactúan y completan lo que necesitan al instante. Ideal para ofrecer servicios online, gestionar reservas, membresías, usuarios o cualquier proceso que hoy haces en persona o por teléfono.',
+          modalDescription: 'Activitier es una plataforma de gestión de actividades diseñada para hoteles boutique y alojamientos que ofrecen experiencias a sus huéspedes. Permite coordinar de forma ágil el catálogo de actividades disponibles, la disponibilidad de instructores externos y las reservas de los clientes, todo desde un único panel de control. El resultado: menos gestión manual, menos emails de ida y vuelta, y una experiencia más profesional tanto para el equipo del hotel como para los huéspedes que quieren reservar una excursión, una clase de yoga o cualquier otra actividad con solo unos clics.',
           modalFeatures: [
             'Accesible desde móvil, tablet y computadora',
             'Sin descargas ni actualizaciones para el usuario',
             'Cada cliente tiene su espacio y acceso personalizado',
-            'Se conecta con pagos, calendarios, correo y más'
+            
           ],
-          modalUrl: '#' // Reemplazar con URL real del proyecto
+          modalUrl: 'https://absmanager.netlify.app/' // Reemplazar con URL real del proyecto
         },
         {
           id: 2,
-          projectName: 'Landing Corporativa',
-          productType: 'Landing',
+          projectName: 'Rock Vibes',
+          productType: 'Website',
           projectImage: rockvibesImage,
-          modalDescription: 'Tu carta de presentación en internet. Una landing corporativa comunica con claridad quiénes son, qué ofrecen y por qué elegirlos. Diseñada para causar una primera impresión impecable y convertir cada visita en un contacto o cliente potencial.',
+          modalDescription: 'Rock Vibes es el sitio web oficial del Rock Vibes Climbing Center de Bilbao: un espacio digital donde los amantes de la escalada pueden descubrir las instalaciones del centro, consultar los servicios disponibles (clases, abonos, pases de día, entrenamiento personal y eventos privados), ver las últimas noticias y ponerse en contacto fácilmente. Diseñado con la estética y el espíritu de la escalada, la web refleja la identidad del centro y facilita que tanto nuevos visitantes como socios habituales encuentren todo lo que necesitan en un solo lugar.',
           modalFeatures: [
             'Diseño premium que transmite profesionalismo',
-            'Optimizada para aparecer en Google (SEO)',
+            'Multilenguaje: Español, Inglés',
             'Adaptada perfectamente a móvil y escritorio',
             'Carga ultra rápida para no perder visitas'
           ],
-          modalUrl: '#' // Reemplazar con URL real del proyecto
+          modalUrl: 'https://rock-vibes.netlify.app/' // Reemplazar con URL real del proyecto
         },
         {
           id: 3,
-          projectName: 'Sitio Web Comercial',
-          productType: 'Comercial',
+          projectName: 'Good Roots',
+          productType: 'Website',
           projectImage: goodRootsImage,
-          modalDescription: 'Más que una página, es tu vendedor disponible las 24 horas. Un sitio web comercial concentra todo lo que tu negocio necesita: catálogo de productos o servicios, información clave, formas de contacto y herramientas para cerrar ventas. El hub central de tu presencia digital.',
+          modalDescription: 'Good Roots es el sitio web de un restaurante de comida saludable con varios locales en España. La web permite a los clientes explorar el menú, reservar mesa y descubrir cada local, todo con un diseño moderno que transmite a la perfección la filosofía del restaurante: ingredientes naturales, cocina honesta y un estilo de vida consciente.',
           modalFeatures: [
             'Catálogo completo de productos o servicios',
             'Formularios de contacto y solicitud de cotización',
@@ -86,15 +86,15 @@ export default {
         },
         {
           id: 4,
-          projectName: 'Aplicación Móvil',
+          projectName: 'Easy Budget',
           productType: 'Mobile App',
-          projectImage: gorillaImage,
-          modalDescription: 'Tu marca en el bolsillo de tus clientes. Una app móvil ofrece la experiencia más directa y personal que existe: notificaciones instantáneas, acceso sin internet, funciones nativas del teléfono y una experiencia fluida que hace que tus usuarios quieran volver. Disponible en iOS y Android.',
+          projectImage: easyBudgeImage,
+          modalDescription: 'EasyBudget es una app móvil para crear y gestionar listas de la compra con control de presupuesto integrado. Permite organizar los productos por categorías, calcular totales automáticamente y compartir las listas con otras personas al instante a través de WhatsApp u otras apps, para que todos puedan ver y usar la misma lista en tiempo real.',
           modalFeatures: [
-            'Disponible en iOS y Android',
-            'Notificaciones push directas al usuario',
-            'Funciona sin conexión a internet',
-            'Experiencia nativa fluida y de alta velocidad'
+    
+            'Control de presupuesto en tiempo real',
+            'Seguimiento de precios de productos',
+            'Compartir listas con otras personas a través de WhatsApp',
           ],
           modalUrl: '#' // Reemplazar con URL real del proyecto
         }

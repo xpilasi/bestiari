@@ -4,9 +4,9 @@ import ProductCard from '@/components/ProductCard.vue'
 import MobileProductCard from '@/components/MobileProductCard.vue'
 import ProjectModal from '@/components/ProjectModal.vue'
 import SectionSubTitle from '@/components/SectionSubTitle.vue'
-import websiteSolutionImg from '@/assets/img/solutions/website.png'
-import dashboardImg from '@/assets/img/design/dashboard.png'
-import appImg from '@/assets/img/design/app.png'
+import websiteSolutionImg from '@/assets/img/design/real-food.png'
+import dashboardImg from '@/assets/img/design/activitier.png'
+import appImg from '@/assets/img/proyectos/easybudget.png'
 
 export default {
   name: 'HomeWhatWeDoSection',
