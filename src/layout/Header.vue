@@ -241,7 +241,7 @@ export default {
   <Transition name="mobile-menu">
     <div 
       v-if="isMobileMenuOpen"
-      class="xl:hidden fixed inset-0 bg-gray-50 z-40 overflow-y-auto"
+      class="lg:hidden fixed inset-0 bg-gray-50 z-40 overflow-y-auto"
     >
       <!-- Mobile Menu Content -->
       <div class="flex flex-col h-full pt-20 pb-8">

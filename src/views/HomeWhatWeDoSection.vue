@@ -151,7 +151,7 @@ export default {
 </script>
 
 <template>
-  <section id="what-we-do" class="min-h-screen flex flex-col justify-center gap-5 xl:justify-start py-10 xl:py-10 px-4 xl:px-48 2xl:px-80">
+  <section id="what-we-do" class="min-h-screen flex flex-col justify-center gap-5 lg:justify-start py-10 px-4 lg:px-48 2xl:px-80">
 
     <!-- Título -->
     <div class="text-center mb-10 flex flex-col gap-5">
@@ -160,7 +160,7 @@ export default {
         :highlighted-word="highlightedWord"
         alignment="center"
       />
-      <div class="hidden xl:block">
+      <div class="hidden lg:block">
         <SectionSubTitle
           :subtitle="sectionSubtitle"
           alignment="center"
@@ -171,8 +171,8 @@ export default {
       </div>
     </div>
 
-    <!-- Desktop Cards (xl+) -->
-    <div class="hidden xl:flex justify-between gap-10">
+    <!-- Desktop Cards (lg+) -->
+    <div class="hidden lg:flex justify-between gap-10">
       <div
         v-for="card in cards"
         :key="card.id"
@@ -190,8 +190,8 @@ export default {
       </div>
     </div>
 
-    <!-- Mobile/Tablet Carousel (below xl) -->
-    <div class="xl:hidden pb-20 relative">
+    <!-- Mobile/Tablet Carousel (below lg) -->
+    <div class="lg:hidden pb-20 relative">
       <div
         class="relative overflow-hidden"
         @touchstart="handleTouchStart"

@@ -134,7 +134,7 @@ export default {
 </script>
 
 <template>
-  <section id="why-us" class="min-h-screen flex flex-col justify-start py-10 px-4 xl:px-48 2xl:px-80 ">
+  <section id="why-us" class="min-h-screen flex flex-col justify-start py-10 px-4 lg:px-48 2xl:px-80">
     
     <!-- Main Container based on Figma layout (852x606) -->
     <div class="mx-auto w-full">

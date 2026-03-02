@@ -84,7 +84,7 @@ export default {
       document.body.style.overflow = 'auto'
     },
     checkIsMobile() {
-      this.isMobile = window.innerWidth < 1280 // xl breakpoint
+      this.isMobile = window.innerWidth < 1024 // lg breakpoint
     },
     handleResize() {
       this.checkIsMobile()
@@ -113,9 +113,9 @@ export default {
 </script>
 
 <template>
-  <section id="faq" class="lg:min-h-screen bg-gray-100 flex flex-col justify-start lg:justify-center pt-10 pb-20 lg:pt-0 lg:pb-0 xl:py-30 px-4 xl:px-48 2xl:px-80">
+  <section id="faq" class="lg:min-h-screen bg-gray-100 flex flex-col justify-start lg:justify-center pt-10 pb-20 lg:pt-0 lg:pb-0 px-4 lg:px-48 2xl:px-80">
     
-    <div class="grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-20 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
       
       <!-- Left Column: FAQ Content -->
       <div class="space-y-8">
@@ -147,7 +147,7 @@ export default {
               </h3>
               
               <!-- Arrow Icon - Hidden on mobile, shown on desktop -->
-              <div class="flex-shrink-0 hidden xl:block">
+              <div class="flex-shrink-0 hidden lg:block">
                 <svg 
                   class="w-3 h-3 text-gray-600 transition-transform duration-200"
                   :class="{ 'rotate-180': faq.isOpen }"
@@ -160,7 +160,7 @@ export default {
               </div>
               
               <!-- Chevron Right Icon for mobile -->
-              <div class="flex-shrink-0 xl:hidden">
+              <div class="flex-shrink-0 lg:hidden">
                 <svg 
                   class="w-4 h-4 text-gray-600"
                   fill="none" 
@@ -191,7 +191,7 @@ export default {
       </div>
       
       <!-- Right Column: Contact Card -->
-      <div class="xl:flex justify-center xl:justify-end hidden">
+      <div class="lg:flex justify-center lg:justify-end hidden">
         <ContactCard 
           :avatar-image="pandaAvatarFaq"
           gradient-from="from-blue-600"

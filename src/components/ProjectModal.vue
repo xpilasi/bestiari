@@ -3,7 +3,8 @@ export default {
   name: 'ProjectModal',
   props: {
     project: { type: Object, default: null },
-    isOpen: { type: Boolean, default: false }
+    isOpen: { type: Boolean, default: false },
+    showProjectButton: { type: Boolean, default: false }
   },
   emits: ['close'],
   watch: {
@@ -106,6 +107,20 @@ export default {
               </li>
             </ul>
 
+            <!-- Ver Proyecto button -->
+            <a
+              v-if="showProjectButton && project.modalUrl && project.modalUrl !== '#'"
+              :href="project.modalUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 mt-7 self-start px-6 py-2.5 bg-gradient-to-r from-[#8E2DFE] to-[#E61655] text-white text-sm font-semibold rounded-full hover:opacity-90 transition-opacity duration-200 shadow-md shadow-purple-400/30"
+              style="font-family: Inter;"
+            >
+              Ver proyecto
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
 
           </div>
         </div>

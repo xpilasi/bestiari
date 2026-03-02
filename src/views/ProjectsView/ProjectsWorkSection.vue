@@ -258,6 +258,7 @@ export default {
     <ProjectModal
       :project="selectedProject"
       :is-open="showModal"
+      :show-project-button="true"
       @close="closeModal"
     />
 

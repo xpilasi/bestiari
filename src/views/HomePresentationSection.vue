@@ -27,7 +27,7 @@ export default {
 <template>
   <section id="presentation" class="min-h-screen flex flex-col lg:justify-center lg:items-center lg:py-10 py-20">
     
-      <div class="flex flex-col w-full lg:flex-row justify-between gap-10 lg:gap-16 items-center px-4 xl:px-48 2xl:px-80">
+      <div class="flex flex-col w-full lg:flex-row justify-between gap-10 lg:gap-16 items-center px-4 lg:px-48 2xl:px-80">
         
         <!-- Left Column: Mobile Card -->
         <div class="lg:w-2/4">
