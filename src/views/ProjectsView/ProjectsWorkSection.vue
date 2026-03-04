@@ -3,7 +3,7 @@ import SectionTitle from '@/components/SectionTitle.vue'
 import WorkCard from '@/components/WorkCard.vue'
 import ProjectModal from '@/components/ProjectModal.vue'
 
-import activitierImage from '@/assets/img/proyectos/activitier.png'
+import activitierImage from '@/assets/img/design/activitier.png'
 import rockvibesImage from '@/assets/img/proyectos/rockvibes.png'
 import goodRootsImage from '@/assets/img/proyectos/good-roots.png'
 import easyBudgeImage from '@/assets/img/proyectos/easybudget.png'
@@ -82,7 +82,7 @@ export default {
             'Integración con redes sociales y WhatsApp',
             'Analíticas para entender a tus visitantes'
           ],
-          modalUrl: '#' // Reemplazar con URL real del proyecto
+          modalUrl: 'https://the-good-roots.netlify.app/' // Reemplazar con URL real del proyecto
         },
         {
           id: 4,
@@ -178,7 +178,7 @@ export default {
   <section id="projects-work" class="min-h-screen flex flex-col justify-center py-10 xl:py-20">
 
     <!-- Título -->
-    <div class="text-center mb-16 px-4 xl:px-48 2xl:px-80">
+    <div class="text-center mb-16 px-4 lg:px-48 2xl:px-80">
       <SectionTitle
         :title="sectionTitle"
         :highlighted-word="highlightedWord"

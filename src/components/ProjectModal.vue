@@ -53,7 +53,7 @@ export default {
           </button>
 
           <!-- Image -->
-          <div class="w-full md:w-[46%] h-56 sm:h-72 md:h-auto flex-shrink-0 relative overflow-hidden">
+          <div class="w-full md:w-[46%] h-56 sm:h-72 md:h-auto flex-shrink-0 relative overflow-hidden group">
             <img
               :src="project.projectImage"
               :alt="project.projectName"
@@ -61,6 +61,35 @@ export default {
             />
             <!-- Gradient overlay -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent md:bg-gradient-to-r md:from-transparent md:to-white/5"></div>
+
+            <!-- Hover color overlay (desktop only) -->
+            <div class="hidden lg:block absolute inset-0 bg-gradient-to-br from-[#8E2DFE] to-[#E61655] opacity-0 group-hover:opacity-20 transition-opacity duration-700 ease-in-out pointer-events-none"></div>
+
+            <!-- Image clickable overlay (desktop only) -->
+            <a
+              v-if="showProjectButton && project.modalUrl && project.modalUrl !== '#'"
+              :href="project.modalUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hidden lg:block absolute inset-0 z-10 cursor-pointer"
+              aria-hidden="true"
+              tabindex="-1"
+            />
+
+            <!-- Ver Proyecto button -->
+            <a
+              v-if="showProjectButton && project.modalUrl && project.modalUrl !== '#'"
+              :href="project.modalUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="absolute bottom-4 right-4 z-20 inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#8E2DFE] to-[#E61655] text-white text-sm font-semibold rounded-full transition-opacity duration-700 ease-in-out shadow-md shadow-purple-400/30 opacity-100 lg:opacity-0 lg:group-hover:opacity-100"
+              style="font-family: Inter;"
+            >
+              Ver proyecto
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
           </div>
 
           <!-- Content -->
@@ -91,7 +120,7 @@ export default {
             <div class="w-12 h-px bg-gradient-to-r from-[#8E2DFE] to-[#E61655] mb-6 rounded-full"></div>
 
             <!-- Features -->
-            <ul class="space-y-3">
+            <ul class="hidden md:block space-y-3">
               <li
                 v-for="(feature, i) in project.modalFeatures"
                 :key="i"
@@ -107,20 +136,6 @@ export default {
               </li>
             </ul>
 
-            <!-- Ver Proyecto button -->
-            <a
-              v-if="showProjectButton && project.modalUrl && project.modalUrl !== '#'"
-              :href="project.modalUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 mt-7 self-start px-6 py-2.5 bg-gradient-to-r from-[#8E2DFE] to-[#E61655] text-white text-sm font-semibold rounded-full hover:opacity-90 transition-opacity duration-200 shadow-md shadow-purple-400/30"
-              style="font-family: Inter;"
-            >
-              Ver proyecto
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
-            </a>
 
           </div>
         </div>

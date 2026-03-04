@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <div class="bg-bg-primary min-h-screen px-4  xl:px-48 2xl:px-80">
+  <div class="bg-bg-primary min-h-screen px-4 lg:px-48 2xl:px-80">
     <ServicesHeroSection />
     <ServicesContactPage />
   </div>

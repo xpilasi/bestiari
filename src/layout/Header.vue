@@ -169,7 +169,7 @@ export default {
 
 <template>
   <!-- Header Desktop (lg y superior) - NO sticky -->
-  <header class="hidden lg:flex w-full h-20 flex-row items-center justify-between bg-bg-primary px-4 xl:px-48 2xl:px-80">
+  <header class="hidden lg:flex w-full h-20 flex-row items-center justify-between bg-bg-primary px-4 lg:px-48 2xl:px-80">
     <!-- Logo Section -->
     <RouterLink to="/" class="flex flex-col justify-center">
       <BestiariLogo class="h-10" />
@@ -267,7 +267,7 @@ export default {
         <!-- Footer info in mobile menu -->
         <div class="px-6 pt-6 border-t border-gray-200">
           <p class="text-sm text-gray-500 text-center">
-            Bestiari © 2025
+            Bestiari © 2026
           </p>
         </div>
       </div>
