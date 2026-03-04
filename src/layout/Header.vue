@@ -267,7 +267,7 @@ export default {
         <!-- Footer info in mobile menu -->
         <div class="px-6 pt-6 border-t border-gray-200">
           <p class="text-sm text-gray-500 text-center">
-            Bestiari © 2026
+            Bestiari © 2026 - contacto@bestiari.es
           </p>
         </div>
       </div>

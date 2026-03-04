@@ -138,10 +138,15 @@ export default {
       </div>
 
       <!-- Copyright Desktop -->
-      <div class="hidden lg:flex justify-start mt-8 pt-6 border-t border-gray-800">
-        <p class="text-gray-400 font-light text-sm tracking-tight">
-          © 2026 Bestiari
-        </p>
+      <div class="hidden lg:flex items-center h-16 gap-3 mt-8 pt-6 border-t border-gray-800">
+        <p class="text-gray-400 font-light text-sm tracking-tight">© 2026 Bestiari</p>
+        <a
+          href="mailto:contacto@bestiari.es"
+          class="group inline-flex items-center rounded-full px-0 py-0 hover:px-3.5 hover:py-1.5 text-gray-400 hover:text-white text-sm font-light tracking-tight transition-all duration-300 relative overflow-hidden cursor-pointer"
+        >
+          <span class="absolute inset-0 rounded-full bg-gradient-to-r from-[#8E2DFE] to-[#E61655] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <span class="relative z-10">contacto@bestiari.es</span>
+        </a>
       </div>
 
       <!-- Layout Mobile/Tablet (lg y menor) -->
