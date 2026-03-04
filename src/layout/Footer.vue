@@ -37,7 +37,7 @@ export default {
           title: 'Contáctanos',
           isButtons: true,
           items: [
-            { name: 'Agendar llamado', href: 'https://calendly.com/bestiariagencia/30min', external: true, icon: 'Video' },
+            { name: 'Agendar llamado', action: 'calendly', icon: 'Video' },
             { name: 'Enviar Email', href: 'mailto:contacto@bestiari.es', external: true, icon: 'Mail' },
             { name: 'Enviar formulario', to: '/contacto', icon: 'Send' }
           ]
@@ -50,6 +50,11 @@ export default {
       if (this.$route.path === to) {
         event.preventDefault()
         window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    },
+    handleAction(item) {
+      if (item.action === 'calendly' && window.Calendly) {
+        window.Calendly.initPopupWidget({ url: 'https://calendly.com/bestiariagencia/30min' })
       }
     }
   }
@@ -92,8 +97,16 @@ export default {
                 <!-- Columna con botones (Contáctanos) -->
                 <nav v-if="column.isButtons" class="space-y-2.5">
                   <template v-for="item in column.items" :key="item.name">
+                    <button
+                      v-if="item.action"
+                      @click="handleAction(item)"
+                      class="contact-btn group flex items-center gap-2.5 w-full px-4 py-2.5 rounded-lg border border-transparent text-gray-300 text-sm font-medium tracking-tight hover:border-white hover:text-white hover:bg-white/5 transition-all duration-200 cursor-pointer"
+                    >
+                      <component :is="item.icon" class="w-4 h-4 shrink-0 text-gray-500 group-hover:text-white transition-colors duration-200" />
+                      {{ item.name }}
+                    </button>
                     <a
-                      v-if="item.external"
+                      v-else-if="item.external"
                       :href="item.href"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -214,8 +227,15 @@ export default {
             <!-- Mobile: links simples -->
             <nav class="md:hidden grid grid-cols-2 gap-3">
               <template v-for="item in menuColumns[1].items" :key="item.name">
+                <button
+                  v-if="item.action"
+                  @click="handleAction(item)"
+                  class="block text-left text-gray-400 font-light text-base tracking-tight hover:text-white transition-colors duration-200 py-1 cursor-pointer"
+                >
+                  {{ item.name }}
+                </button>
                 <a
-                  v-if="item.external"
+                  v-else-if="item.external"
                   :href="item.href"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -237,8 +257,16 @@ export default {
             <!-- Tablet: botones atractivos -->
             <nav class="hidden md:flex flex-col gap-2.5">
               <template v-for="item in menuColumns[1].items" :key="item.name">
+                <button
+                  v-if="item.action"
+                  @click="handleAction(item)"
+                  class="contact-btn group flex items-center gap-2.5 w-full px-4 py-2.5 rounded-lg border border-transparent text-gray-300 text-sm font-medium tracking-tight hover:border-white hover:text-white hover:bg-white/5 transition-all duration-200 cursor-pointer"
+                >
+                  <component :is="item.icon" class="w-4 h-4 shrink-0 text-gray-500 group-hover:text-white transition-colors duration-200" />
+                  {{ item.name }}
+                </button>
                 <a
-                  v-if="item.external"
+                  v-else-if="item.external"
                   :href="item.href"
                   target="_blank"
                   rel="noopener noreferrer"
