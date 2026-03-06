@@ -7,11 +7,11 @@
 
 ## Requisitos previos
 
-- Dominio propio registrado en **Hostinger**
-- Cuenta de email corporativo activa en Hostinger (ej. `contacto@tudominio.com`)
-- Web publicada en **Netlify**
-- Cuenta de **Gmail/Google** existente
-- Cuenta en **Calendly** (gratuita o de pago)
+- Dominio propio registrado en **Hostinger** ok
+- Cuenta de email corporativo activa en Hostinger (ej. `contacto@tudominio.com`) ok
+- Web publicada en **Netlify** ok
+- Cuenta de **Gmail/Google** existente ok
+- Cuenta en **Calendly** (gratuita o de pago) ok
 
 ---
 

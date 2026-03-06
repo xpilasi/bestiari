@@ -46,7 +46,7 @@ export default {
             title: this.formData.asunto,
             message: this.formData.mensaje
           },
-          import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+          { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
         )
         this.submitted = true
       } catch {
