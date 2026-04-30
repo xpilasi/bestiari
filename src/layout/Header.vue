@@ -29,14 +29,19 @@ export default {
           to: '/proyectos', 
           isSpecial: false
         },
-        // { 
-        //   name: 'Servicios', 
-        //   to: '/servicios', 
+        // {
+        //   name: 'Servicios',
+        //   to: '/servicios',
         //   isSpecial: false
         // },
-        { 
-          name: 'Contacto →', 
-          action: 'openModal', 
+        {
+          name: 'Blog',
+          to: '/blog',
+          isSpecial: false
+        },
+        {
+          name: 'Contacto →',
+          action: 'openModal',
           isSpecial: true
         }
       ],

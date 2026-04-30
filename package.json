@@ -10,8 +10,13 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@supabase/supabase-js": "^2.105.1",
     "@tailwindcss/vite": "^4.1.11",
+    "gray-matter": "^4.0.3",
     "lucide-vue-next": "^0.525.0",
+    "markdown-it": "^14.1.1",
+    "markdown-it-anchor": "^9.2.0",
+    "pinia": "^3.0.4",
     "tailwindcss": "^4.1.11",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
