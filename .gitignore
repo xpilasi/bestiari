@@ -12,10 +12,11 @@ dist
 dist-ssr
 *.local
 
-# Claude Code context & memory (may contain secrets)
+# Claude Code context, memory & project settings (may contain secrets)
 claude.md
 CLAUDE.md
 memory/
+.claude/
 
 # Editor directories and files
 .vscode/*
