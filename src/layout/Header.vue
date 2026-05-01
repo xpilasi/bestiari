@@ -77,14 +77,9 @@ export default {
   methods: {
     updateLinePosition(retryCount = 0) {
       const activeIndex = this.activeIndex
-      console.log('Updating line position. Active index:', activeIndex, 'Current route:', this.$route.path, 'Retry:', retryCount)
-      
       if (activeIndex >= 0) {
-        // Buscar el botón activo usando querySelector
         const navContainer = this.$refs.navContainer
         if (!navContainer) {
-          console.log('Nav container not found, retry:', retryCount)
-          // Reintentar hasta 3 veces
           if (retryCount < 3) {
             setTimeout(() => {
               this.updateLinePosition(retryCount + 1)
@@ -95,9 +90,7 @@ export default {
         
         const buttons = navContainer.querySelectorAll('button')
         const activeButton = buttons[activeIndex]
-        
-        console.log('Found buttons:', buttons.length, 'Active button:', activeButton)
-        
+
         if (activeButton && navContainer) {
           const buttonRect = activeButton.getBoundingClientRect()
           const containerRect = navContainer.getBoundingClientRect()
@@ -108,11 +101,9 @@ export default {
             opacity: 1
           }
           
-          console.log('New line position:', newPosition)
           this.linePosition = newPosition
         }
       } else {
-        console.log('No active index, hiding line')
         this.linePosition.opacity = 0
       }
     },
