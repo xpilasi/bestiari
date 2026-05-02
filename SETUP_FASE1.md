@@ -15,8 +15,8 @@ src/views/
 
 ## Setup en Supabase (pasos en orden)
 
-### 1. Ejecutar migración SQL
-Ve a Supabase → SQL Editor → pega y ejecuta `supabase/migrations/20260501_approval_system.sql`
+### 1. Migración SQL ✅ APLICADA
+Tablas `approval_tokens`, `social_content_queue` y RPC `handle_approval` ya creadas en Supabase.
 
 ### 2. Deploy Edge Functions
 ```bash
@@ -27,7 +27,7 @@ supabase functions deploy generate-social-content
 ### 3. Configurar secrets en Supabase
 Ve a Supabase → Edge Functions → Secrets:
 ```
-RESEND_API_KEY=re_xxxx           ← Crear cuenta en resend.com (free)
+RESEND_API_KEY=re_3L49DYyS_LfXEKkQWhZfrUoYn7iXvwgrM  ✅ listo
 ANTHROPIC_API_KEY=sk-ant-xxxx
 SUPABASE_URL=https://fkqwlqketwtxuqxizzwr.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=xxxx   ← En Supabase → Settings → API
@@ -41,13 +41,11 @@ Ve a Supabase → Database → Webhooks → Create:
 - Tabla: `posts`
 - Eventos: `INSERT`
 - URL: `https://fkqwlqketwtxuqxizzwr.supabase.co/functions/v1/send-approval-email`
-- Headers: `Authorization: Bearer {SUPABASE_ANON_KEY}`
 
 **Webhook 2: generate-social-content**
 - Tabla: `posts`
 - Eventos: `UPDATE`
 - URL: `https://fkqwlqketwtxuqxizzwr.supabase.co/functions/v1/generate-social-content`
-- Headers: `Authorization: Bearer {SUPABASE_ANON_KEY}`
 
 ### 5. Añadir ruta en Vue Router
 En `src/router/index.js`, añadir:
@@ -57,12 +55,6 @@ En `src/router/index.js`, añadir:
   component: () => import('../views/ApproveView.vue')
 }
 ```
-
-### 6. Crear cuenta Resend
-- Ir a https://resend.com
-- Crear cuenta gratis (100 emails/día)
-- Verificar dominio `bestiari.es`
-- Copiar API key → añadir como secret en Supabase
 
 ## Flujo completo
 
