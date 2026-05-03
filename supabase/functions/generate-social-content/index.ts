@@ -23,7 +23,6 @@ serve(async (req) => {
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
 
-    // Obtener info del agente
     const { data: agent } = await supabase
       .from('agents')
       .select('name, animal, personality')
@@ -34,7 +33,6 @@ serve(async (req) => {
     const agentName = agent?.name ?? 'Bestiari'
     const agentPersonality = agent?.personality ?? ''
 
-    // Generar contenido social con Claude
     const prompt = `Eres ${agentName}, un agente de la agencia digital Bestiari con esta personalidad: ${agentPersonality}
 
 Acabas de publicar este artículo en el blog de Bestiari:
@@ -42,13 +40,10 @@ Título: ${record.title}
 Excerpt: ${record.excerpt ?? ''}
 URL: ${postUrl}
 
-Genera contenido para redes sociales. Responde SOLO con JSON válido, sin markdown:
-{
-  "twitter": ["tweet1 (max 280 chars con URL)", "tweet2 (max 280 chars)", "tweet3 (max 280 chars)"],
-  "linkedin": "post completo para LinkedIn (200-400 chars, profesional pero con tu voz, incluye la URL al final)"
-}
+Genera contenido para redes sociales. Responde SOLO con JSON válido, sin markdown ni backticks:
+{"twitter":["tweet1 (max 280 chars, incluye URL en al menos uno)","tweet2 (max 280 chars)","tweet3 (max 280 chars)"],"linkedin":"post completo para LinkedIn (200-400 chars, profesional pero con tu voz, incluye la URL al final)"}
 
-Tono: directo, sin buzzwords, con personalidad real. Incluye siempre la URL del post en al menos un tweet y en LinkedIn.`
+Tono: directo, sin buzzwords, con personalidad real.`
 
     const aiResponse = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -58,8 +53,8 @@ Tono: directo, sin buzzwords, con personalidad real. Incluye siempre la URL del 
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 800,
         messages: [{ role: 'user', content: prompt }],
       }),
     })
@@ -67,36 +62,26 @@ Tono: directo, sin buzzwords, con personalidad real. Incluye siempre la URL del 
     if (!aiResponse.ok) throw new Error(`Anthropic error: ${await aiResponse.text()}`)
 
     const aiData = await aiResponse.json()
-    const rawText = aiData.content[0].text.trim()
-    const social = JSON.parse(rawText)
+    const social = JSON.parse(aiData.content[0].text.trim())
 
-    // Fechas de scheduling: Twitter T+1h, T+24h, T+48h / LinkedIn T+2h
     const now = new Date()
-    const schedules = {
-      twitter: [
-        new Date(now.getTime() + 1 * 60 * 60 * 1000),
-        new Date(now.getTime() + 24 * 60 * 60 * 1000),
-        new Date(now.getTime() + 48 * 60 * 60 * 1000),
-      ],
-      linkedin: new Date(now.getTime() + 2 * 60 * 60 * 1000),
-    }
 
-    // Insertar tweets en cola
+    // Twitter: +1h, +24h, +48h
     const twitterInserts = social.twitter.map((content: string, i: number) => ({
       post_id: record.id,
       platform: 'twitter',
       content,
       status: 'scheduled',
-      scheduled_at: schedules.twitter[i].toISOString(),
+      scheduled_at: new Date(now.getTime() + (i === 0 ? 1 : i === 1 ? 24 : 48) * 60 * 60 * 1000).toISOString(),
     }))
 
-    // Insertar LinkedIn en cola
+    // LinkedIn: +2h
     const linkedinInsert = {
       post_id: record.id,
       platform: 'linkedin',
       content: social.linkedin,
       status: 'scheduled',
-      scheduled_at: schedules.linkedin.toISOString(),
+      scheduled_at: new Date(now.getTime() + 2 * 60 * 60 * 1000).toISOString(),
     }
 
     const { error: insertError } = await supabase
