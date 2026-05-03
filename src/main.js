@@ -21,6 +21,9 @@ const routes = [
   { path: '/blog', name: 'Blog', component: () => import('@/views/BlogView.vue') },
   { path: '/blog/:slug', name: 'BlogPost', component: () => import('@/views/blog/BlogPostView.vue') },
 
+  // Aprobación de posts por email
+  { path: '/api/approve', name: 'ApprovePost', component: () => import('@/views/ApproveView.vue') },
+
   // Admin
   { path: '/admin/login', name: 'AdminLogin', component: () => import('@/views/admin/AdminLoginView.vue') },
   {
