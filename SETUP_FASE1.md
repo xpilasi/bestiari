@@ -18,19 +18,16 @@ src/views/
 ### 1. Migración SQL ✅ APLICADA
 Tablas `approval_tokens`, `social_content_queue` y RPC `handle_approval` ya creadas en Supabase.
 
-### 2. Deploy Edge Functions
-```bash
-supabase functions deploy send-approval-email
-supabase functions deploy generate-social-content
-```
+### 2. Deploy Edge Functions ✅ DEPLOYADAS
+Ambas funciones están ACTIVE en Supabase.
 
 ### 3. Configurar secrets en Supabase
-Ve a Supabase → Edge Functions → Secrets:
+Ve a Supabase → Edge Functions → Secrets y añade:
 ```
-RESEND_API_KEY=re_3L49DYyS_LfXEKkQWhZfrUoYn7iXvwgrM  ✅ listo
-ANTHROPIC_API_KEY=sk-ant-xxxx
+RESEND_API_KEY=<ver .env.local>
+ANTHROPIC_API_KEY=<ver .env.local>
 SUPABASE_URL=https://fkqwlqketwtxuqxizzwr.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=xxxx   ← En Supabase → Settings → API
+SUPABASE_SERVICE_ROLE_KEY=<ver .env.local>
 SITE_URL=https://bestiari.es
 ```
 
@@ -38,13 +35,11 @@ SITE_URL=https://bestiari.es
 Ve a Supabase → Database → Webhooks → Create:
 
 **Webhook 1: send-approval-email**
-- Tabla: `posts`
-- Eventos: `INSERT`
+- Tabla: `posts` | Evento: `INSERT`
 - URL: `https://fkqwlqketwtxuqxizzwr.supabase.co/functions/v1/send-approval-email`
 
 **Webhook 2: generate-social-content**
-- Tabla: `posts`
-- Eventos: `UPDATE`
+- Tabla: `posts` | Evento: `UPDATE`
 - URL: `https://fkqwlqketwtxuqxizzwr.supabase.co/functions/v1/generate-social-content`
 
 ### 5. Añadir ruta en Vue Router
