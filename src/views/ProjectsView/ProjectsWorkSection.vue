@@ -3,6 +3,7 @@ import SectionTitle from '@/components/SectionTitle.vue'
 import WorkCard from '@/components/WorkCard.vue'
 import ProjectModal from '@/components/ProjectModal.vue'
 
+import cutoraImage from '@/assets/img/proyectos/cutora-web.png'
 import activitierImage from '@/assets/img/design/activitier.png'
 import rockvibesImage from '@/assets/img/proyectos/rockvibes.png'
 import goodRootsImage from '@/assets/img/proyectos/good-roots.png'
@@ -43,6 +44,27 @@ export default {
 
       projects: [
         {
+          id: 5,
+          projectName: 'Cutora',
+          productType: 'SaaS Platform',
+          projectImage: cutoraImage,
+          modalDescription: 'Cutora es la plataforma de gestión creada para barberías y peluquerías que entienden una verdad incómoda: una silla vacía es dinero que pagaste y no vuelve. En lugar de medir el negocio en cortes, Cutora lo mide donde realmente importa — en sillas-hora ocupadas. Reúne en un solo panel la agenda en vivo de cada silla y profesional, reservas online disponibles 24/7 y un banco de más de 50 profesionales listo para cubrir los huecos antes de que se conviertan en pérdidas. El resultado es un local que se llena solo, un equipo que rinde al máximo y una visión clara y en tiempo real de la rentabilidad real del negocio.',
+          modalFeatures: [
+            'Agenda en vivo: ocupación de cada silla y profesional de un vistazo',
+            'Reservas online 24/7 sin llamadas ni mensajes',
+            'Banco de +50 profesionales para cubrir sillas vacías al instante',
+            'Métricas de rentabilidad real basadas en sillas-hora ocupadas',
+            'Plan Pro desde 29€/mes'
+          ],
+          // Datos visibles en cutora.es; sustituir por métricas reales de cliente cuando estén
+          modalResults: [
+            { value: '24/7', label: 'Reservas online' },
+            { value: '+50', label: 'Profesionales en banco' },
+            { value: '29€', label: 'Plan Pro / mes' }
+          ],
+          modalUrl: 'https://www.cutora.es'
+        },
+        {
           id: 1,
           projectName: 'Activitier',
           productType: 'Web App',
@@ -52,7 +74,13 @@ export default {
             'Accesible desde móvil, tablet y computadora',
             'Sin descargas ni actualizaciones para el usuario',
             'Cada cliente tiene su espacio y acceso personalizado',
-            
+
+          ],
+          // [REEMPLAZAR con métricas reales del cliente]
+          modalResults: [
+            { value: '−70%', label: 'Gestión manual' },
+            { value: '24/7', label: 'Reservas online' },
+            { value: '+1', label: 'Panel único' }
           ],
           modalUrl: 'https://absmanager.netlify.app/' // Reemplazar con URL real del proyecto
         },
@@ -68,6 +96,12 @@ export default {
             'Adaptada perfectamente a móvil y escritorio',
             'Carga ultra rápida para no perder visitas'
           ],
+          // [REEMPLAZAR con métricas reales del cliente]
+          modalResults: [
+            { value: '2', label: 'Idiomas' },
+            { value: '<1s', label: 'Tiempo de carga' },
+            { value: '100%', label: 'Responsive' }
+          ],
           modalUrl: 'https://rock-vibes.netlify.app/' // Reemplazar con URL real del proyecto
         },
         {
@@ -82,6 +116,12 @@ export default {
             'Integración con redes sociales y WhatsApp',
             'Analíticas para entender a tus visitantes'
           ],
+          // [REEMPLAZAR con métricas reales del cliente]
+          modalResults: [
+            { value: '+3', label: 'Locales' },
+            { value: '100%', label: 'Reservas online' },
+            { value: '4.8★', label: 'Valoración' }
+          ],
           modalUrl: 'https://the-good-roots.netlify.app/' // Reemplazar con URL real del proyecto
         },
         {
@@ -95,6 +135,12 @@ export default {
             'Control de presupuesto en tiempo real',
             'Seguimiento de precios de productos',
             'Compartir listas con otras personas a través de WhatsApp',
+          ],
+          // [REEMPLAZAR con métricas reales del cliente]
+          modalResults: [
+            { value: 'iOS', label: 'y Android' },
+            { value: '1-tap', label: 'Compartir lista' },
+            { value: 'Real-time', label: 'Sincronización' }
           ],
           modalUrl: '#' // Reemplazar con URL real del proyecto
         }

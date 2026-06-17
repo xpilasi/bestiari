@@ -25,7 +25,7 @@ export default {
       type: String,
       required: true
     },
-    Dots:{
+    dots: {
         type: Boolean,
         default: false
     }
@@ -67,7 +67,7 @@ export default {
         </button>
         
         <!-- Section Dots -->
-        <div v-if="Dots" class="absolute -top-16 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <div v-if="dots" class="absolute -top-16 left-1/2 transform -translate-x-1/2 flex space-x-2">
           <button 
             v-for="section in sections" 
             :key="section.id"

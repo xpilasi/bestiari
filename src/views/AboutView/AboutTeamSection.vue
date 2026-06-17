@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       sectionTitle: 'Las personas que hacen que las ideas sucedan',
-      sectionSubtitle: 'Los detalles marcan la diferencia. Contar con sitios de calidad o aplicaciones que faciliten el acceso a tus servicios potencia la fidelización e impulsa el crecimiento de tu negocio.',
+      sectionSubtitle: 'Un equipo pequeño y cercano que combina diseño, tecnología y visión de negocio. Trabajamos contigo, no para ti: entendemos tu operación antes de escribir una línea de código.',
       highlightedWord: 'ideas',
       
       // Carousel state

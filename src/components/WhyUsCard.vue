@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template>
-  <div class="relative w-64 h-80 sm:w-72 sm:h-88 lg:w-50 lg:h-96 rounded-2xl overflow-hidden flex-shrink-0 mx-auto transition-transform duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+  <div class="relative w-64 h-80 sm:w-72 sm:h-88 lg:w-50 lg:h-96 rounded-2xl overflow-hidden flex-shrink-0 mx-auto shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer">
     
     <!-- Background Images -->
     <div v-for="(bgImg, index) in bgImages" :key="index">

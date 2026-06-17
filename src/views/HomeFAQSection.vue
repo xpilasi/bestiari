@@ -24,38 +24,38 @@ export default {
       faqs: [
         {
           id: 1,
-          question: '¿Cuánto tiempo toma desarrollar un proyecto web?',
-          answer: 'El tiempo de desarrollo varía según la complejidad del proyecto. Un sitio web básico puede tomar de 2-4 semanas, mientras que aplicaciones más complejas pueden requerir de 2-6 meses. Te proporcionamos un cronograma detallado después de evaluar tus necesidades específicas.',
+          question: '¿Qué tipo de soluciones desarrolláis?',
+          answer: 'Nuestro foco es el software de gestión a medida: SaaS y web apps que automatizan procesos, centralizan tu información y digitalizan la operación de tu empresa. También creamos sitios comerciales de alta calidad y, cuando el proyecto lo pide, apps móviles.',
           isOpen: false
         },
         {
           id: 2,
-          question: '¿Ofrecen soporte y mantenimiento después del lanzamiento?',
-          answer: 'Sí, ofrecemos planes de mantenimiento y soporte continuo. Esto incluye actualizaciones de seguridad, backups regulares, optimizaciones de rendimiento y soporte técnico. Tenemos diferentes planes que se adaptan a las necesidades de cada proyecto.',
+          question: '¿Para qué tipo de empresas trabajáis?',
+          answer: 'Trabajamos sobre todo con pequeñas y medianas empresas en crecimiento, con una operación real que quieren ordenar, automatizar y escalar. No hacemos plantillas genéricas: cada solución se construye a la medida de cómo funciona tu negocio.',
           isOpen: false
         },
         {
           id: 3,
-          question: '¿Trabajan con tecnologías específicas?',
-          answer: 'Trabajamos con tecnologías modernas y probadas como Vue.js, React, Node.js, Python, y bases de datos como PostgreSQL y MongoDB. Elegimos la mejor tecnología según las necesidades de tu proyecto para garantizar escalabilidad y rendimiento óptimo.',
+          question: '¿Cuánto tiempo toma un proyecto?',
+          answer: 'Depende del alcance. Un sitio comercial suele estar listo en 2-4 semanas; una web app o un SaaS a medida puede llevar de 2 a 6 meses según la complejidad. Tras una sesión de diagnóstico te entregamos un cronograma claro y por etapas.',
           isOpen: false
         },
         {
           id: 4,
-          question: '¿Cuál es el proceso de desarrollo que siguen?',
-          answer: 'Seguimos un proceso estructurado: análisis inicial, diseño de wireframes y mockups, desarrollo iterativo, testing, y despliegue. Mantenemos comunicación constante contigo durante todo el proceso para asegurar que el resultado final supere tus expectativas.',
+          question: '¿Cómo es vuestro proceso de trabajo?',
+          answer: 'Empezamos con una sesión de diagnóstico para entender tu operación y objetivos. A partir de ahí diseñamos la solución, la desarrollamos de forma iterativa con entregas frecuentes y la lanzamos contigo. Comunicación constante y sin sorpresas en todo el proceso.',
           isOpen: false
         },
         {
           id: 5,
-          question: '¿Pueden trabajar con mi presupuesto limitado?',
-          answer: 'Entendemos que cada proyecto tiene un presupuesto diferente. Ofrecemos soluciones escalables y flexibles que se adaptan a diferentes rangos de presupuesto sin comprometer la calidad. Conversemos sobre tus necesidades y encontraremos la mejor opción.',
+          question: '¿Ofrecéis soporte y evolución después del lanzamiento?',
+          answer: 'Sí. Tu software no se queda quieto: ofrecemos soporte continuo, mantenimiento, seguridad y desarrollo de nuevas funcionalidades a medida que tu negocio crece. Nos involucramos a largo plazo, como un socio tecnológico.',
           isOpen: false
         },
         {
           id: 6,
-          question: '¿El sitio web será responsive y compatible con móviles?',
-          answer: 'Absolutamente. Todos nuestros proyectos se desarrollan con un enfoque mobile-first, garantizando una experiencia perfecta en todos los dispositivos: móviles, tablets y desktop. También optimizamos la velocidad de carga y la usabilidad.',
+          question: '¿Con qué tecnologías trabajáis?',
+          answer: 'Usamos tecnologías modernas y probadas (Vue.js, Node.js, Python, PostgreSQL, Supabase, entre otras) elegidas según las necesidades de cada proyecto. Cuidamos el diseño y la experiencia tanto como la ingeniería: interfaces claras, modernas y mobile-first.',
           isOpen: false
         }
       ]

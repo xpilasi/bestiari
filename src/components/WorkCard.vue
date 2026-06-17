@@ -52,7 +52,7 @@ export default {
 </script>
 
 <template>
-  <div :class="`relative ${cardWidth} ${cardHeight} cursor-pointer rounded-2xl overflow-hidden   ease-in-out transition-all duration-300  group`">
+  <div :class="`relative ${cardWidth} ${cardHeight} cursor-pointer rounded-2xl overflow-hidden shadow-lg ease-in-out transition-all duration-300 group`">
     
     <!-- Imagen del proyecto -->
     <img :src="projectImage" 

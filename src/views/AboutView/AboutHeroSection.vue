@@ -14,8 +14,8 @@ export default {
       heroTitle: 'Somos tu equipo de desarrollo',
       heroSubtitle: 'Conoce al equipo que lleva tu marca al siguiente nivel.',
       highlightedWord: 'tu', // Palabra que se va a destacar
-      meetingTitle: 'Reserva una Meeting de 30 minutos',
-      meetingSubtitle: 'Agenda ahora',
+      meetingTitle: 'Agenda un diagnóstico de 30 min',
+      meetingSubtitle: 'Sin compromiso',
       fluidBgImage: fluidBgImage,
       animalImage: animalImage,
       avatarImage: avatarImage,
@@ -36,8 +36,9 @@ export default {
       window.dispatchEvent(new CustomEvent('open-contact-modal'))
     },
     handleStartTodayClick() {
-      // Acción para empezar hoy
-      console.log('Empezando hoy...')
+      if (window.Calendly) {
+        window.Calendly.initPopupWidget({ url: 'https://calendly.com/bestiariagencia/30min' })
+      }
     },
     handleMeetingClick() {
       if (window.Calendly) {

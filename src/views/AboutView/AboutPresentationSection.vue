@@ -13,9 +13,9 @@ export default {
     return {
       phonesImg: PhonesImg,
       mobileImg: MobileImg,
-      presentationText: 'Desarrollamos aplicaciones y sitios web a medida para negocios que buscan mejorar su servicio, optimizar procesos o consolidar su presencia digital.',
+      presentationText: 'Diseñamos y desarrollamos software de gestión a medida —SaaS y web apps— para empresas que quieren automatizar procesos, ordenar su información y operar mejor. Y cuando hace falta, también sitios comerciales que enamoran.',
       // Palabras que se van a destacar con cursiva
-      highlightedWords: ['medida', 'consolidar'] 
+      highlightedWords: ['medida', 'automatizar']
     }
   }
 }

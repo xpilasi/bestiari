@@ -105,7 +105,7 @@ export default {
 
 <template>
   <div class="w-full flex-shrink-0 px-4">
-    <div :class="`relative w-full ${cardMaxWidth || 'max-w-none'} mx-auto ${cardHeight || 'h-96'} cursor-pointer rounded-2xl overflow-hidden ease-in-out transition-all duration-300 group `">
+    <div :class="`relative w-full ${cardMaxWidth || 'max-w-none'} mx-auto ${cardHeight || 'h-96'} cursor-pointer rounded-2xl overflow-hidden shadow-lg ease-in-out transition-all duration-300 group `">
       
       <!-- Imagen de fondo -->
       <img :src="bgImage" 

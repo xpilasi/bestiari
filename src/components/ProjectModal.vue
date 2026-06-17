@@ -116,6 +116,25 @@ export default {
               {{ project.modalDescription }}
             </p>
 
+            <!-- Results / métricas -->
+            <div
+              v-if="project.modalResults && project.modalResults.length"
+              class="grid grid-cols-3 gap-3 mb-7"
+            >
+              <div
+                v-for="(result, i) in project.modalResults"
+                :key="i"
+                class="rounded-2xl bg-gray-50 px-3 py-4 text-center"
+              >
+                <p class="text-xl md:text-2xl font-bold bg-gradient-to-r from-[#8E2DFE] to-[#E61655] bg-clip-text text-transparent leading-none" style="font-family: Inter;">
+                  {{ result.value }}
+                </p>
+                <p class="text-[11px] text-[#767474] mt-1.5 leading-tight" style="font-family: Inter;">
+                  {{ result.label }}
+                </p>
+              </div>
+            </div>
+
             <!-- Divider -->
             <div class="w-12 h-px bg-gradient-to-r from-[#8E2DFE] to-[#E61655] mb-6 rounded-full"></div>
 

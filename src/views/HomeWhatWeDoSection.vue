@@ -7,6 +7,7 @@ import SectionSubTitle from '@/components/SectionSubTitle.vue'
 import websiteSolutionImg from '@/assets/img/design/real-food.png'
 import dashboardImg from '@/assets/img/design/activitier.png'
 import appImg from '@/assets/img/proyectos/easybudget.png'
+import cutoraImg from '@/assets/img/proyectos/cutora-web.png'
 
 export default {
   name: 'HomeWhatWeDoSection',
@@ -20,7 +21,7 @@ export default {
   data() {
     return {
       sectionTitle: 'Creamos soluciones atractivas, funcionales e intuitivas',
-      sectionSubtitle: 'Los detalles marcan la diferencia. Contar con sitios de calidad o aplicaciones que faciliten el acceso a tus servicios potencia la fidelización e impulsa el crecimiento de tu negocio.',
+      sectionSubtitle: 'Desde plataformas SaaS y web apps que automatizan tu gestión, hasta sitios comerciales y apps móviles. Cada solución, pensada para resolver un problema real de tu negocio.',
       highlightedWord: 'soluciones',
 
       // Modal state
@@ -35,24 +36,24 @@ export default {
 
       cards: [
         {
-          id: 1,
-          title: 'Sitios\nComerciales',
-          bgImage: websiteSolutionImg,
-          solutionImage: websiteSolutionImg,
-          imageClasses: '-top-[220px] right-[0px] h-[800px]',
-          productType: 'Website',
-          overlay: 'bg-gradient-to-br from-indigo/200 via-orange-500/40 to-red-500',
+          id: 4,
+          title: 'Plataformas\nSaaS',
+          bgImage: cutoraImg,
+          solutionImage: cutoraImg,
+          imageClasses: 'top-[45px] -right-[30px] h-[180px]',
+          productType: 'SaaS Platform',
+          overlay: 'bg-gradient-to-br from-indigo/200 via-amber-600/60 to-yellow-700',
           // Modal
-          projectImage: websiteSolutionImg,
-          projectName: 'Sitios Comerciales',
-          modalDescription: 'La presencia digital que tu negocio merece. Un sitio comercial reúne todo lo que tus clientes necesitan saber: quién eres, qué ofreces y cómo contactarte. Diseñado para transmitir confianza, posicionarse en Google y convertir visitantes en clientes desde el primer clic.',
+          projectImage: cutoraImg,
+          projectName: 'Plataformas SaaS',
+          modalDescription: 'Productos digitales completos que tus clientes usan mes a mes — y por los que pagan mes a mes. Diseñamos y desarrollamos plataformas SaaS a medida: software escalable en la nube, con suscripciones, paneles de gestión en tiempo real y todo lo necesario para convertir una idea en un negocio recurrente. Nuestra plataforma estrella es Cutora, el software de gestión que ayuda a barberías y peluquerías a no dejar ni una silla vacía.',
           modalFeatures: [
-            'Diseño adaptado a tu marca e identidad',
-            'Optimizado para aparecer en Google (SEO)',
-            'Rápido y adaptado a todos los dispositivos',
-            'Fácil de actualizar sin conocimientos técnicos'
+            'Modelo de suscripción recurrente listo para escalar',
+            'Paneles y métricas en tiempo real',
+            'Multiusuario con roles y permisos personalizados',
+            'Infraestructura en la nube, segura y siempre disponible'
           ],
-          modalUrl: '/proyectos'
+          modalUrl: 'https://www.cutora.es'
         },
         {
           id: 2,
@@ -71,6 +72,26 @@ export default {
             'Roles y permisos personalizados por usuario',
             'Reportes y métricas en tiempo real',
             'Integrable con tus herramientas actuales'
+          ],
+          modalUrl: '/proyectos'
+        },
+        {
+          id: 1,
+          title: 'Sitios\nComerciales',
+          bgImage: websiteSolutionImg,
+          solutionImage: websiteSolutionImg,
+          imageClasses: '-top-[220px] right-[0px] h-[800px]',
+          productType: 'Website',
+          overlay: 'bg-gradient-to-br from-indigo/200 via-orange-500/40 to-red-500',
+          // Modal
+          projectImage: websiteSolutionImg,
+          projectName: 'Sitios Comerciales',
+          modalDescription: 'La presencia digital que tu negocio merece. Un sitio comercial reúne todo lo que tus clientes necesitan saber: quién eres, qué ofreces y cómo contactarte. Diseñado para transmitir confianza, posicionarse en Google y convertir visitantes en clientes desde el primer clic.',
+          modalFeatures: [
+            'Diseño adaptado a tu marca e identidad',
+            'Optimizado para aparecer en Google (SEO)',
+            'Rápido y adaptado a todos los dispositivos',
+            'Fácil de actualizar sin conocimientos técnicos'
           ],
           modalUrl: '/proyectos'
         },

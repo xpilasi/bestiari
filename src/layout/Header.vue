@@ -19,21 +19,21 @@ export default {
           isSpecial: false
          
         },
-        { 
-          name: 'Nosotros', 
-          to: '/nosotros', 
+        {
+          name: 'Nosotros',
+          to: '/nosotros',
           isSpecial: false
         },
-        { 
-          name: 'Proyectos', 
-          to: '/proyectos', 
+        {
+          name: 'Servicios',
+          to: '/servicios',
           isSpecial: false
         },
-        // {
-        //   name: 'Servicios',
-        //   to: '/servicios',
-        //   isSpecial: false
-        // },
+        {
+          name: 'Proyectos',
+          to: '/proyectos',
+          isSpecial: false
+        },
         {
           name: 'Blog',
           to: '/blog',

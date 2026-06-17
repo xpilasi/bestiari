@@ -74,7 +74,7 @@ export default {
 </script>
 
 <template>
-  <div class="relative w-full max-w-sm mx-auto h-auto min-h-[320px] rounded-2xl overflow-hidden shadow-xl">
+  <div class="relative w-full max-w-sm mx-auto h-auto min-h-[320px] rounded-2xl overflow-hidden shadow-lg">
 
     <!-- Background Gradient -->
     <div class="absolute inset-0" :class="backgroundGradient"></div>

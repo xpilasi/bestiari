@@ -2,6 +2,7 @@
 import ProjectsHeroSection from '@/views/ProjectsView/ProjectsHeroSection.vue'
 import ProjectsContactPage from '@/views/ProjectsView/ProjectsContactPage.vue'
 import ProjectsWorkSection from '@/views/ProjectsView/ProjectsWorkSection.vue'
+import TestimonialsSection from '@/components/TestimonialsSection.vue'
 import SectionsNavigator from '@/components/SectionsNavigator.vue'
 
 export default {
@@ -10,6 +11,7 @@ export default {
     ProjectsHeroSection,
     ProjectsContactPage,
     ProjectsWorkSection,
+    TestimonialsSection,
     SectionsNavigator
   },
   data() {
@@ -19,6 +21,7 @@ export default {
       sections: [
         { id: 'projects-hero', label: 'Inicio', icon: '🏠' },
         { id: 'projects-work', label: 'Trabajos', icon: '💼' },
+        { id: 'testimonials', label: 'Para ti', icon: '🎯' },
         { id: 'projects-contact', label: 'Contacto', icon: '📞' }
       ]
     }
@@ -101,6 +104,7 @@ export default {
     <!-- Los IDs están ahora dentro de cada componente -->
     <ProjectsHeroSection />
     <ProjectsWorkSection />
+    <TestimonialsSection padding-x="" />
     <ProjectsContactPage />
 
     <!-- Sections Navigator -->

@@ -4,6 +4,7 @@ import HomePresentationSection from '@/views/HomePresentationSection.vue'
 import HomeWhatWeDoSection from '@/views/HomeWhatWeDoSection.vue'
 import HomeWhyUsSection from '@/views/HomeWhyUsSection.vue'
 import HomeFAQSection from '@/views/HomeFAQSection.vue'
+import TestimonialsSection from '@/components/TestimonialsSection.vue'
 import SectionsNavigator from '@/components/SectionsNavigator.vue'
 
 export default {
@@ -14,6 +15,7 @@ export default {
     HomeWhatWeDoSection,
     HomeWhyUsSection,
     HomeFAQSection,
+    TestimonialsSection,
     SectionsNavigator
   },
   data() {
@@ -25,12 +27,18 @@ export default {
         { id: 'what-we-do', label: 'Servicios', icon: '💼' },
         { id: 'presentation', label: 'Nosotros', icon: '👥' },
         { id: 'why-us', label: 'Por qué elegirnos', icon: '⭐' },
+        { id: 'testimonials', label: 'Para ti', icon: '🎯' },
         { id: 'faq', label: 'FAQ', icon: '❓' }
       ]
     }
   },
   mounted() {
     this.setupSectionObserver()
+  },
+  beforeUnmount() {
+    if (this.observer) {
+      this.observer.disconnect()
+    }
   },
   methods: {
     scrollToSection(sectionId) {
@@ -73,19 +81,19 @@ export default {
         rootMargin: '-10% 0px -10% 0px'
       }
       
-      const observer = new IntersectionObserver((entries) => {
+      this.observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             this.currentSection = entry.target.id
           }
         })
       }, options)
-      
+
       // Observar todas las secciones
       this.sections.forEach(section => {
         const element = document.getElementById(section.id)
         if (element) {
-          observer.observe(element)
+          this.observer.observe(element)
         }
       })
     }
@@ -99,6 +107,7 @@ export default {
     <HomeWhatWeDoSection />
     <HomePresentationSection />
     <HomeWhyUsSection />
+    <TestimonialsSection />
     <HomeFAQSection />
     
     <!-- Sections Navigator -->

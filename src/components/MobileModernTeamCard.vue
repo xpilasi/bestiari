@@ -118,7 +118,7 @@ export default {
 
 <template>
   <div 
-    :class="`relative ${cardWidth} ${cardHeight} cursor-pointer rounded-2xl overflow-hidden ${cardBg} ease-in-out transition-all duration-300 group`"
+    :class="`relative ${cardWidth} ${cardHeight} cursor-pointer rounded-2xl overflow-hidden shadow-lg ${cardBg} ease-in-out transition-all duration-300 group`"
     @click="toggleOverlay"
   >
     
