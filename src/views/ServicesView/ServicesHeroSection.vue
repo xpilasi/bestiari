@@ -50,7 +50,7 @@ export default {
 </script>
 
 <template>
-  <section class="min-h-[93vh] lg:min-h-[91vh] bg-primary flex flex-col justify-start xl:justify-start py-0 xl:py-10  ">
+  <section id="services-hero" class="min-h-[93vh] lg:min-h-[91vh] bg-primary flex flex-col justify-start xl:justify-start py-0 xl:py-10  ">
     <HeroContent 
       :hero-title="heroTitle"
       :hero-subtitle="heroSubtitle"

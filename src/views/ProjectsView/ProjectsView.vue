@@ -113,7 +113,6 @@ export default {
       :current-section="currentSection"
       :is-visible="isVisible"
       :last-section-id="'projects-contact'"
-      :dots="true"
       @navigate-to-next="navigateToNextSection"
       @navigate-to-section="scrollToSection"
     />
